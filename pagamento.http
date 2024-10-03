@@ -1,0 +1,38 @@
+POST http://localhost:3000/pagamento HTTP/1.1
+content-type: application/json
+
+{
+        "codigopagamento":"1",
+        "formapagamento":"PIX",
+        "numerocartao":"5528147836547894",
+        "qtdparcelas":"2",
+        "datavalidade":"12/28",
+        "codigoseguranca":"589",
+        "cobranca_nome":"Pedro",
+        "cobranca_sobrenome":"Leite",
+        "cobranca_endereco":"Rua Melvin Jones",
+        "cobranca_cep":"13570654",
+        "cobranca_telefone":"16997793086"
+}
+
+###
+
+GET http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/user/2 HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:3000/user/2 HTTP/1.1
+content-type: application/json
+
+{
+        "numerocartao":"000000000000000"
+}
+
+###
+DELETE http://localhost:3000/user/2 HTTP/1.1
+content-type: application/json
