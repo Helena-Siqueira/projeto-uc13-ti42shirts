@@ -1,0 +1,36 @@
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+{
+        "nome_completo":"Luiz Fernando Formenton Filho",
+        "data_de_nascimento":"06/10/2004",
+        "sexo":"Masculino",
+        "email":"luizformenton14@gmail.com",
+        "senha":"senac123",
+        "cpf":"563.434.898-60",
+        "numero_de_celular":"(16) 99371-3443",
+        "cep":"13573526"
+}
+
+###
+
+GET http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/user/3 HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:3000/user/4 HTTP/1.1
+content-type: application/json
+
+{
+        "nome_completo":"Luiz Fernando15"
+}
+
+###
+
+DELETE http://localhost:3000/user/1 HTTP/1.1
+content-type: application/json
