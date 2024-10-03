@@ -1,0 +1,46 @@
+POST http://localhost:3000/reviews HTTP/1.1
+content-type: application/json
+
+{
+        "midias": "https://imgur.com/gallery/buy-here-http-chicorei-com-camisetas-639-you-shall-not-pass-html-MMK2v4J",
+        "avaliacao": "produto bom",
+        "nome": "Maria",
+        "qualidade": "qualidade medium", 
+        "email": "maria_lindinha@gmail.com",
+        "classificacao": "4",
+        "tchuru": "tchuru"
+
+}
+
+
+###
+GET http://localhost:3000/reviews HTTP/1.1
+content-type: application/json
+
+
+
+###
+GET http://localhost:3000/reviews/3 HTTP/1.1
+content-type: application/json
+
+
+
+###
+PUT http://localhost:3000/reviews/2 HTTP/1.1
+content-type: application/json
+
+{
+        "midias": "https://imgur.com/gallery/buy-here-http-chicorei-com-camisetas-639-you-shall-not-pass-html-MMK2v4J",
+        "avaliacao": "produto bom",
+        "nome": "Fer",
+        "qualidade": "qualidade medium", 
+        "email": "maria_lindinha@gmail.com",
+        "classificacao": "4",
+        "tchuru": "Tchuru"
+
+}
+
+
+###
+DELETE HTTP://http://localhost:3000/reviews/1 HTTP/1.1
+Content-Type: application/json
