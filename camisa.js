@@ -111,7 +111,7 @@ function delete_camisa(req, res){
     const idx = vcamisas.findIndex(u => u.id == id)
     if(idx != -1){
         //vcamisas.slice(idx)
-        vcamisas.[idx].deletedAt = new Date()
+        vcamisas[idx].deletedAt = new Date()
         return res.status(203).json({
             message: "Camisa apagada"
         })
