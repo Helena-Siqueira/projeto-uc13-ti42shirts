@@ -1,0 +1,36 @@
+POST http://localhost:3000/category HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Camisetas sem Estampa",
+    "discription": "Camiseta basica das basicas",
+    "image": "https://i.imgur.com/iBeOKdt.jpeg"
+    
+}
+
+###
+
+GET http://localhost:3000/category HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/category/2 HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:3000/category/2 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Camisetas sem Estampa",
+    "discription": "Camiseta basica das basicas",
+    "image": "https://i.imgur.com/iBeOKdt.jpeg"
+    
+}
+
+###
+Delete http://localhost:3000/category/2 HTTP/1.1
+content-type: application/json
+
+
