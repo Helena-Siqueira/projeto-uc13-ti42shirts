@@ -53,7 +53,7 @@ app.get ('/category/:id', read_category)
         db: vcategories[idx]
     })
 
-})
+}
 
 function update_category(req, res) {
 
