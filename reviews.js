@@ -9,7 +9,7 @@ function create_reviews(req, res){
     let {comentarios, midias, avaliacao, nome, qualidade, email, classificacao, tchuru} = req.body
 
     var oreviews = {
-        "id": reviews.length+1,
+        "id": vreviews.length+1,
         "comentarios": comentarios,
         "midias": midias, 
         "avaliacao":avaliacao,
