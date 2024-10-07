@@ -1,0 +1,35 @@
+POST http://localhost:3000/camisas HTTP/1.1
+content-type: application/json
+
+{
+    "tamanho": "tamanho M",
+    "material": "Algodão 100%", 
+    "cor": "Azul Escuro"
+}
+
+###
+
+GET http://localhost:3000/camisas HTTP/1.1
+content-type: application/json
+
+
+###
+PUT http://localhost:3000/camisas/1 HTTP/1.1
+content-type: application/json
+
+{
+    "tamanho": "tamanho P",
+    "material": "Algodão 100%", 
+    "cor": "Azul Escuro"
+}
+
+###
+
+DELETE  http://localhost:3000/camisas/1 HTTP/1.1
+content-type: application/json
+
+{
+    "tamanho": "tamanho P",
+    "material": "Algodão 100%", 
+    "cor": "Azul Escuro"
+}
