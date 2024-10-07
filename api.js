@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 
+const cr_pagamentos = require('./pagamento')
+app.use('/pagamento', cr_pagamentos)
+
 const cr_user = require('./user')
 app.use('/user', cr_user)
 

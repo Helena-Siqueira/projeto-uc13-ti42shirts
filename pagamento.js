@@ -1,7 +1,5 @@
 const express = require('express')
-const app = express()
-
-app.use(express.json())
+const router = express.Router
 
 var vpagamento = []
 
@@ -31,7 +29,7 @@ function create_pagamentos(req, res){
 
     })
 }
-app.post('/pagamento', create_pagamentos)
+router.post('/create', create_pagamentos)
 
 
 function read_user(req, res){
@@ -41,10 +39,10 @@ function read_user(req, res){
     })
 }
 
-app.get( '/user', read_user)
+router.get( '/read', read_user)
 
 
-/*app.get( '/user/:id/', (req,res) =>{
+/*router.get( '/user/:id/', (req,res) =>{
     
     //let id = req.params.id
     let {id} = req.params
@@ -82,7 +80,7 @@ function show_user(req,res) {
     })   
 }
 
-app.get( '/user/:id', show_user)
+router.get( '/show/:id', show_user)
     
 
 function upt_id(req,res) {
@@ -119,7 +117,7 @@ function upt_id(req,res) {
     
 }
 
-app.put( '/user/:id', upt_id)
+router.put( '/update/:id', upt_id)
 
 
 function delete_user(res,res){
@@ -138,15 +136,9 @@ function delete_user(res,res){
         message: "Nao encontrado"
     })
 }
-app.delete('/user/:id', delete_user)
+router.delete('/delete/:id', delete_user)
 
 
-
-
-
-
-
-
-app.listen(3000, () => {
+router.listen(3000, () => {
     console.log(`http://localhost:3000`)
 })
