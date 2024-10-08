@@ -1,5 +1,6 @@
 const express = require('express')
-const router = express.Router
+const router = express.Router()
+
 
 var vpagamento = []
 
@@ -41,26 +42,6 @@ function read_user(req, res){
 
 router.get( '/read', read_user)
 
-
-/*router.get( '/user/:id/', (req,res) =>{
-    
-    //let id = req.params.id
-    let {id} = req.params
-
-    for( let i = 0; i < vpagamento.length;i++ ){
-        if( vpagamento[i].id == id){ 
-            return res.status(200).json({
-                message: "Usuario encontrato",
-                db: vpagamento[i]
-            })
-        }
-    }
-    return res.status(404).json({
-        message: "Usuario nao encontrado",
-        db: []
-    })
-
-})*/
 
 function show_user(req,res) {
     let {id} = req.params
@@ -138,7 +119,4 @@ function delete_user(res,res){
 }
 router.delete('/delete/:id', delete_user)
 
-
-router.listen(3000, () => {
-    console.log(`http://localhost:3000`)
-})
+module.exports = router
