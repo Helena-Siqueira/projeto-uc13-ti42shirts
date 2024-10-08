@@ -1,7 +1,6 @@
 const express = require('express')
-const app = express()
+const router = express.Router()
 
-app.use(express.json())
 var vusers = []
 
 function create_user(req, res) {
@@ -28,7 +27,7 @@ function create_user(req, res) {
         db: ouser
     })  
 }
-app.post('/user', create_user)
+router.post('/create', create_user)
 
 function all_users(req, res){
         return res.status(200).json({
@@ -36,10 +35,10 @@ function all_users(req, res){
             db: vusers.filter(u => u.deleteAt == null)
         })
     }
-app.get('/user', all_users)
+router.get('/read', all_users)
 
 
-/*app.get('/user/:id', (req, res) => {
+/*router.get('/user/:id', (req, res) => {
     
     //let id = req.params.id
     let {id} = req.params;
@@ -77,7 +76,7 @@ function id_user(req, res)  {
         db: vusers[idx]
     })    
 }
-app.get('/user/:id', id_user)
+router.get('/show/:id', id_user)
 
 function update_user(req, res)  {
     
@@ -109,7 +108,7 @@ function update_user(req, res)  {
     })
 }
 
-app.put('/user/:id', update_user)
+router.put('/upadte/:id', update_user)
 
 function delete_user(req, res){
     let {id} = req.params
@@ -128,9 +127,6 @@ function delete_user(req, res){
     })
 
 }
-app.delete('user/:id', delete_user)
+router.delete('/delete/:id', delete_user)
 
-
-app.listen(3000, () => {
-    console.log('http://localhost:3000')
-})
+module.exports = router
