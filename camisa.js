@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-app.use( express.json() )
+const router = express.router()
 
 var vcamisas = []
 
@@ -25,7 +24,7 @@ function create_camisa(req, res){
 
 }
 
-app.post('/camisas', create_camisa)
+router.post('/create', create_camisa)
 
 function read_vcamisas(req, res) {
         return res.status(200).json({
@@ -34,28 +33,8 @@ function read_vcamisas(req, res) {
         
     })
 }
-app.get( '/camisas',read_vcamisas )
+router.get( '/show',read_vcamisas )
 
-/*app.get( '/camisas/:id', (req, res) =>{
-
-//let id = req.params.id
-let { id } = req.params;
-
-for( let i = 0; i < vcamisas.length; i++ ){
-if ( vcamisas[i].id == id ){
-    return res.status(200).json({
-        message: "Camisa encontrada",
-        db: vcamisas[i]
-    })
-}
-}
-
-    return res.status(404).json({
-    message: "Camisa não encontrada",
-    db: []
-    
-    })
-} )*/
 function encontrar_id(req, res){
     let {id} = req.params
 
@@ -75,7 +54,7 @@ function encontrar_id(req, res){
         db: vcamisas[idx]
     })
 }
-app.get( '/camisas/:id',encontrar_id )
+router.get( '/read/:id',encontrar_id )
 
 function atualizar_camisa(req, res){
     let {id} = req.params
@@ -103,12 +82,21 @@ function atualizar_camisa(req, res){
         db: vcamisas[idx]
     })
 }
-app.put( '/camisas/:id',atualizar_camisa)
+router.put( '/update/:id',atualizar_camisa)
 
 function delete_camisa(req, res){
     let {id} = req.params
 
-    const idx = vcamisas.findIndex(u => u.id == id)
+ const express = require('express')
+    const app = express()
+    router.use( express.json() )
+    
+    router.listen(3000, () => {
+        console.log("http://localhost:3000")
+    }) 
+    
+    idx = vcamisas.findIndex(u => u.id == id)
+    
     if(idx != -1){
         //vcamisas.slice(idx)
         vcamisas[idx].deletedAt = new Date()
@@ -122,8 +110,7 @@ function delete_camisa(req, res){
     })
 }
 
-app.delete('/camisas/:id', delete_camisa)
+router.delete('/delete/:id', delete_camisa)
 
-app.listen(3000, () => {
-    console.log("http://localhost:3000")
-})
+module.exports = router
+
