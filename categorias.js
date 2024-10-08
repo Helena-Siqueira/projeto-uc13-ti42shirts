@@ -1,7 +1,6 @@
 const express = require('express')
-const app = express()
+const router = express.Router()
 
-app.use( express.json() )
 var vcategories =[]
 
 function create_category(req, res) {
@@ -21,7 +20,7 @@ function create_category(req, res) {
         db: vcategories.filter(u => u.deletedAt == null)
     })
 }
-app.post('/category' , create_category)
+router.post('/create ', create_category)
 
 function read_category(req, res) {
     return res.status(201).json({
@@ -29,10 +28,9 @@ function read_category(req, res) {
         db: vcategories
     })
 }
-app.get ('/category', read_category)
+router.get ('/read', read_category)
     
-
-app.get ('/category/:id', read_category)
+function show_category(req, res){
     //let id = req.params.id
     let {id} = req.params;
 
@@ -54,6 +52,8 @@ app.get ('/category/:id', read_category)
     })
 
 }
+
+router.get ('/show/:id', show_category)
 
 function update_category(req, res) {
 
@@ -83,7 +83,7 @@ function update_category(req, res) {
     })
 
 }
-app.put ('/category/:id', update_category)
+router.put ('/update/:id', update_category)
 
 function delete_user (req, res){
     let {id} = req;params
@@ -100,8 +100,7 @@ function delete_user (req, res){
         message: "Não Encontrado"
     })
 }
-app.delete('/category/:id', delete_user)
+router.delete('/delete/:id', delete_user)
 
-app.listen(3000, () => {
-    console.log('http://localhost:3000')
-})
+module.exports = router 
+

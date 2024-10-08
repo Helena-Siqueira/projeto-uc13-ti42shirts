@@ -10,8 +10,12 @@ app.use('/user', cr_user)
 
 const cr_reviwes = require('./reviews')
 app.use('/reviews', cr_reviwes)
+
 const cr_camisa = require('./camisa')
 app.use('/camisa', cr_camisa)
+
+const cr_category = require('./categorias')
+app.category('/categorias', cr_category)
 
 app.listen(3000, () => {
     console.log('http://localhost:3000')
