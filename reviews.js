@@ -1,7 +1,5 @@
 const express = require('express')
-const app = express()
-
-app.use(express.json())
+const router = express.Router()
 
 var vreviews = []
 
@@ -29,25 +27,7 @@ function create_reviews(req, res){
         db: vreviews.filter(u => u.deleteAt == null)
     })
 }
-app.post("/reviews", create_reviews)
-
-    
-    //let id = req.params.id
-
-     /*   for( let i = 0; i < vreviews.length; i++){
-        if( vreviews[i].id == id ){
-            return res.status(200).json({
-                message: " Avaliações Encontrada",
-                db: vreviews[i]
-            })
-        }
-    }
-    
-    return res.status(200).json({
-    message: "Avaliação não encontrado",
-    db: []
-    } )
-} )    */
+router.post("/create", create_reviews)
 
     function show_reviews (req, res){
         let {id} = req.params;
@@ -68,7 +48,7 @@ app.post("/reviews", create_reviews)
     
 }
 
-app.get('/reviews/:id', show_reviews)
+router.get('/show/:id', show_reviews)
 
 
 
@@ -98,7 +78,7 @@ app.get('/reviews/:id', show_reviews)
 
 }
 
-app.put( '/reviews/:id', encontrar_reviews)
+router.put( '/update/:id', encontrar_reviews)
 
 
     function delete_reviwes(req, res){
@@ -118,9 +98,6 @@ app.put( '/reviews/:id', encontrar_reviews)
     })
 }
 
-app.delete('/reviews/:id', delete_reviwes)
+router.delete('/delete/:id', delete_reviwes)
 
-
-app.listen(3000, () => {
-    console.log('http://localhost:3000')
-})
+module.exports = router

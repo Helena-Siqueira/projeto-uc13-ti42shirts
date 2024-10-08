@@ -1,4 +1,4 @@
-POST http://localhost:3000/reviews HTTP/1.1
+POST http://localhost:3000/reviews/create HTTP/1.1
 content-type: application/json
 
 {
@@ -14,19 +14,19 @@ content-type: application/json
 
 
 ###
-GET http://localhost:3000/reviews HTTP/1.1
+GET http://localhost:3000/reviews/read HTTP/1.1
 content-type: application/json
 
 
 
 ###
-GET http://localhost:3000/reviews/3 HTTP/1.1
+GET http://localhost:3000/reviews/show HTTP/1.1
 content-type: application/json
 
 
 
 ###
-PUT http://localhost:3000/reviews/2 HTTP/1.1
+PUT http://localhost:3000/reviews/update HTTP/1.1
 content-type: application/json
 
 {
@@ -42,5 +42,5 @@ content-type: application/json
 
 
 ###
-DELETE HTTP://http://localhost:3000/reviews/1 HTTP/1.1
+DELETE HTTP://http://localhost:3000/reviews/delete HTTP/1.1
 Content-Type: application/json
