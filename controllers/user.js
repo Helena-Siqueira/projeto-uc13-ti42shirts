@@ -1,6 +1,3 @@
-const express = require('express')
-const router = express.Router()
-
 var vusers = []
 
 function create_user(req, res) {
@@ -27,36 +24,13 @@ function create_user(req, res) {
         db: ouser
     })  
 }
-router.post('/create', create_user)
 
 function all_users(req, res){
-        return res.status(200).json({
-            message: "Todos os usuários",
-            db: vusers.filter(u => u.deleteAt == null)
-        })
-    }
-router.get('/read', all_users)
-
-
-/*router.get('/user/:id', (req, res) => {
-    
-    //let id = req.params.id
-    let {id} = req.params;
-
-    for( let i = 0; i < vusers.length; i++ ){
-        if(vusers[i].id == id){
-            return res.status(200).json({
-                message: "Usuário encotrado",
-                db: vusers[i]
-            })
-        }
-    }
-
-    return res.status(404).json({
-        message: "Usário não encontrado",
-        db:[]
+    return res.status(200).json({
+        message: "Todos os usuários",
+        db: vusers.filter(u => u.deleteAt == null)
     })
-})*/
+}
 
 function id_user(req, res)  {
     
@@ -76,7 +50,6 @@ function id_user(req, res)  {
         db: vusers[idx]
     })    
 }
-router.get('/show/:id', id_user)
 
 function update_user(req, res)  {
     
@@ -108,8 +81,6 @@ function update_user(req, res)  {
     })
 }
 
-router.put('/upadte/:id', update_user)
-
 function delete_user(req, res){
     let {id} = req.params
     
@@ -127,6 +98,11 @@ function delete_user(req, res){
     })
 
 }
-router.delete('/delete/:id', delete_user)
 
-module.exports = router
+module.exports = {
+    create_user,
+    all_users,
+    id_user,
+    update_user,
+    delete_user
+}

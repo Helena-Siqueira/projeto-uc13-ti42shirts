@@ -5,7 +5,7 @@ app.use(express.json())
 const cr_pagamentos = require('./pagamento')
 app.use('/pagamento', cr_pagamentos)
 
-const cr_user = require('./user')
+const cr_user = require('./routes/user')
 app.use('/user', cr_user)
 
 const cr_reviwes = require('./reviews')
