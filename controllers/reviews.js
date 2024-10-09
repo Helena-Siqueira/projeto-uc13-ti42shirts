@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require("../routes/reviews")
 
 var vreviews = []
 
@@ -27,32 +26,27 @@ function create_reviews(req, res){
         db: vreviews.filter(u => u.deleteAt == null)
     })
 }
-router.post("/create", create_reviews)
 
-    function show_reviews (req, res){
-        let {id} = req.params;
-    
-        const idx = vreviews.findIndex(u => u.id == id)
-    
-        if(idx == -1 || vreviews[idx].deleteAt !=null){
-            return res.status(404).json({
-                message: "Não encontrado",
-                db: null
-            })
-        }
-    
-        return res.status(202).json({
-            message: "Encontrei",
-            db: vreviews[idx]
-    })
-    
+function show_reviews (req, res){
+    let {id} = req.params;
+
+    const idx = vreviews.findIndex(u => u.id == id)
+
+    if(idx == -1 || vreviews[idx].deleteAt !=null){
+        return res.status(404).json({
+            message: "Não encontrado",
+            db: null
+        })
+    }
+
+    return res.status(202).json({
+        message: "Encontrei",
+        db: vreviews[idx]
+})
+
 }
 
-router.get('/show/:id', show_reviews)
-
-
-
-    function encontrar_reviews(req, res) {
+function encontrar_reviews(req, res) {
     let {id} = req.params;
 
     const idx = vreviews.findIndex(u => u.id == id)
@@ -78,10 +72,31 @@ router.get('/show/:id', show_reviews)
 
 }
 
-router.put( '/update/:id', encontrar_reviews)
+function atualizar_reviews(req, res){
+    let {id} = req.params
 
+    const idx = vreviews.findIndex(u => u.id ==id)
 
-    function delete_reviwes(req, res){
+    if (idx ==-1 || vreviews.findIndex != null){
+        return res.status(404).json({
+            message: "Não encotrado",
+            db:[]
+        })
+    }
+
+    let {avaliação, nome, qualidade} = req.body
+
+    if(avaliação) vreviews[idx].avaliacao = avaliação
+    if(nome) vreviews[idx].nome = nome
+    if(qualidade) vreviews[idx].qualidade = qualidade
+
+    return res.status(201).json({
+        message: "Encontrado",
+        db: vreviews[idx]
+    })
+}
+
+function delete_reviwes(req, res){
     let{id} = req.params
 
     const idx = vreviews.findIndex(u => u.id == id)
@@ -98,7 +113,11 @@ router.put( '/update/:id', encontrar_reviews)
     })
 }
 
-router.delete('/delete/:id', delete_reviwes)
+module.export = {
+    create_reviews,
+    show_reviews,
+    encontrar_reviews,
+    atualizar_reviews,
+    delete_reviwes
 
-module.exports = router
-
+}
