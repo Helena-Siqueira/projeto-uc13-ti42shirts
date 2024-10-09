@@ -11,7 +11,7 @@ router.get ('/read', read_category)
 
 router.put ('/update/:id', update_category)
 
-router.delete('/delete/:id', delete_user)
+router.delete('/delete/:id', delete_category)
 
 module.exports = router 
 
