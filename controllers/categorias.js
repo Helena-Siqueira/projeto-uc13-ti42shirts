@@ -1,6 +1,3 @@
-const express = require('express')
-const router = express.Router()
-
 var vcategories =[]
 
 function create_category(req, res) {
@@ -20,7 +17,6 @@ function create_category(req, res) {
         db: vcategories.filter(u => u.deletedAt == null)
     })
 }
-router.post('/create ', create_category)
 
 function read_category(req, res) {
     return res.status(201).json({
@@ -28,7 +24,6 @@ function read_category(req, res) {
         db: vcategories
     })
 }
-router.get ('/read', read_category)
     
 function show_category(req, res){
     //let id = req.params.id
@@ -36,15 +31,13 @@ function show_category(req, res){
 
     const idx = vcategories.findIndex(u => u.id == id)
 
-
     if(idx == -1 || vcategories[idx].deletedAt != null){
         return res.status(404).json({
             message: "Toda a categoria encontrada" ,
             db: null
 
         })
-    }
-    
+    }    
         
     return res.status(201).json({
         message: "Categoria não encontrada" ,
@@ -52,8 +45,6 @@ function show_category(req, res){
     })
 
 }
-
-router.get ('/show/:id', show_category)
 
 function update_category(req, res) {
 
@@ -69,7 +60,6 @@ function update_category(req, res) {
 
         })
     }
-
     
     let {title, discription, image} = req.body
 
@@ -83,9 +73,8 @@ function update_category(req, res) {
     })
 
 }
-router.put ('/update/:id', update_category)
 
-function delete_user (req, res){
+function delete_category(req, res){
     let {id} = req;params
 
     const idx = vcategories.findIndex (u => u.id == id)
@@ -100,7 +89,11 @@ function delete_user (req, res){
         message: "Não Encontrado"
     })
 }
-router.delete('/delete/:id', delete_user)
 
-module.exports = router 
-
+module.exports = {
+    create_category,
+    show_category,
+    read_category,
+    update_category,
+    delete_category,
+}
