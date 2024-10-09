@@ -1,9 +1,4 @@
-const express = require('express')
-const router = express.router()
-
 var vcamisas = []
-
-
 
 function create_camisa(req, res){
     let {tamanho, material,cor } = req.body
@@ -24,16 +19,13 @@ function create_camisa(req, res){
 
 }
 
-router.post('/create', create_camisa)
-
 function read_vcamisas(req, res) {
-        return res.status(200).json({
-        message: "Camisas ",
-        db: vcamisas
-        
-    })
+    return res.status(200).json({
+    message: "Camisas ",
+    db: vcamisas
+    
+})
 }
-router.get( '/show',read_vcamisas )
 
 function encontrar_id(req, res){
     let {id} = req.params
@@ -54,7 +46,6 @@ function encontrar_id(req, res){
         db: vcamisas[idx]
     })
 }
-router.get( '/read/:id',encontrar_id )
 
 function atualizar_camisa(req, res){
     let {id} = req.params
@@ -82,7 +73,6 @@ function atualizar_camisa(req, res){
         db: vcamisas[idx]
     })
 }
-router.put( '/update/:id',atualizar_camisa)
 
 function delete_camisa(req, res){
     let {id} = req.params
@@ -110,7 +100,10 @@ function delete_camisa(req, res){
     })
 }
 
-router.delete('/delete/:id', delete_camisa)
-
-module.exports = router
-
+module.exports = {
+    create_camisa, 
+    read_vcamisas, 
+    encontrar_id, 
+    atualizar_camisa, 
+    delete_camisa
+}
