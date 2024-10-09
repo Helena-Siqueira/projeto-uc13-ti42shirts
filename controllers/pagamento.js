@@ -1,7 +1,3 @@
-const express = require('express')
-const router = express.Router()
-
-
 var vpagamento = []
 
 function create_pagamentos(req, res){
@@ -30,8 +26,6 @@ function create_pagamentos(req, res){
 
     })
 }
-router.post('/create', create_pagamentos)
-
 
 function read_user(req, res){
     return res.status(200).json({
@@ -39,9 +33,6 @@ function read_user(req, res){
         db: vpagamento
     })
 }
-
-router.get( '/read', read_user)
-
 
 function show_user(req,res) {
     let {id} = req.params
@@ -60,9 +51,6 @@ function show_user(req,res) {
         db:vpagamento[idx]
     })   
 }
-
-router.get( '/show/:id', show_user)
-    
 
 function upt_id(req,res) {
 
@@ -98,9 +86,6 @@ function upt_id(req,res) {
     
 }
 
-router.put( '/update/:id', upt_id)
-
-
 function delete_user(res,res){
     let {id} = req.params
 
@@ -117,6 +102,11 @@ function delete_user(res,res){
         message: "Nao encontrado"
     })
 }
-router.delete('/delete/:id', delete_user)
 
-module.exports = router
+module.exports = {
+    create_pagamentos,
+    read_user,
+    show_user,
+    upt_id,
+    delete_user
+}
