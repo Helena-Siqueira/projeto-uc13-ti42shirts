@@ -8,8 +8,8 @@ app.use('/pagamento', cr_pagamentos)
 const cr_user = require('./routes/user')
 app.use('/user', cr_user)
 
-const cr_reviwes = require('./routes/reviews')
-app.use('/reviews', cr_reviwes)
+const cr_reviews = require('./routes/reviews')
+app.use('/reviews', cr_reviews)
 
 const cr_camisa = require('./routes/camisa')
 app.use('/camisa', cr_camisa)
