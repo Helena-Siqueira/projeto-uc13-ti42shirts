@@ -22,7 +22,7 @@ function create_pagamentos(req, res){
     
     return res.status(201).json({
         message: "Pagamento Efetuado",
-        db: opagamento.filter(u => u.deletedAt == null)
+        db: vpagamento.filter(u => u.deletedAt == null)
 
     })
 }
@@ -86,10 +86,10 @@ function upt_id(req,res) {
     
 }
 
-function delete_user(res,res){
+function delete_user(req,res){
     let {id} = req.params
 
-    const idx = vuser.findIndex(u => u.id == id)
+    const idx = vpagamento.findIndex(u => u.id == id)
     if(idx != -1){
         //vpagamento.slice(idx) = "apagar o cara de verdade"
         vpagamento[idx].deletedAt = new Date ()
