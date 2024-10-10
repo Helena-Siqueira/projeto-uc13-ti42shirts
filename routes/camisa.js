@@ -1,15 +1,15 @@
 const express = require('express')
-const router = express.router()
+const router = express.Router()
 
 const ccamisas = require('../controllers/camisa')
 
 router.post('/create',  ccamisas.create_camisa)
 
 
-router.get( '/show', ccamisas.read_vcamisas )
+router.get( '/read', ccamisas.read_vcamisas )
 
 
-router.get( '/read/:id', ccamisas.encontrar_id )
+router.get( '/show/:id', ccamisas.show_id )
 
 
 router.put( '/update/:id', ccamisas.atualizar_camisa)
