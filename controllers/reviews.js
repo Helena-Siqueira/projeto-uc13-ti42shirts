@@ -94,19 +94,19 @@ function atualizar_reviews(req, res){
     })
 }
 
-function delete_reviwes(req, res){
+function delete_reviews(req, res){
     let{id} = req.params
 
     const idx = vreviews.findIndex(u => u.id == id)
     if(idx != -1){
         //vreviwes.slice(idx) - Deletar Definitivamente
-        vreviews[idx].deleteAt = new Date
-        return res.status(203).jason({
+        vreviews[idx].deleteAt = new Date()
+        return res.status(203).json({
             message: "Reviews excluido"
         })
     }
 
-    return res.status(404).jason({
+    return res.status(404).json({
         message: "Usuario nao encontrado"
     })
 }
@@ -116,6 +116,6 @@ module.exports = {
     show_reviews,
     encontrar_reviews,
     atualizar_reviews,
-    delete_reviwes
+    delete_reviews
 
 }
