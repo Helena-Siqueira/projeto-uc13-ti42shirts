@@ -1,5 +1,3 @@
-const router = require("../routes/reviews")
-
 var vreviews = []
 
 function create_reviews(req, res){

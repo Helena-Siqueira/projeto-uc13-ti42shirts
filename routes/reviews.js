@@ -3,7 +3,7 @@ const router = express.Router()
 
 var vreviews = []
 
-const creviews = require('..//controllers/reviews')
+const creviews = require('../controllers/reviews')
 
 
 router.post("/create", creviews.create_reviews)
