@@ -15,7 +15,7 @@ const cr_camisa = require('./camisa')
 app.use('/camisa', cr_camisa)
 
 const cr_category = require('./categorias')
-app.category('/categorias', cr_category)
+app.use('/categorias', cr_category)
 
 app.listen(3000, () => {
     console.log('http://localhost:3000')
