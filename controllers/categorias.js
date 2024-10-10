@@ -1,7 +1,7 @@
 var vcategories =[]
 
 function create_category(req, res) {
-    let (title,discription,image)= req.body
+    let {title,discription,image}= req.body
 
     var ocategory={
         "id":vcategories.length+1,
