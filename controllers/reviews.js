@@ -113,7 +113,7 @@ function delete_reviwes(req, res){
     })
 }
 
-module.export = {
+module.exports = {
     create_reviews,
     show_reviews,
     encontrar_reviews,
