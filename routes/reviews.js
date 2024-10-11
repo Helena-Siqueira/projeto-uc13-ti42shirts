@@ -5,9 +5,9 @@ const creviews = require('../controllers/reviews')
 
 router.post("/create", creviews.create_reviews)
 
-router.get('/show/:id', creviews.show_reviews)
+router.get('/read', creviews.read_reviews)
 
-router.get('/read', creviews.encontrar_reviews)
+router.get('/show/:id', creviews.encontrar_reviews)
 
 router.put('/update/:id', creviews.atualizar_reviews)
 
