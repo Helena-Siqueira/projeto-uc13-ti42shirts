@@ -9,16 +9,16 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/category/create HTTP/1.1
+GET http://localhost:3000/category/read HTTP/1.1
 content-type: application/json
 
 ###
 
-GET http://localhost:3000/category//read/2 HTTP/1.1
+GET http://localhost:3000/category/show/2 HTTP/1.1
 content-type: application/json
 
 ###
-PUT http://localhost:3000/category/show/2 HTTP/1.1
+PUT http://localhost:3000/category/update/2 HTTP/1.1
 content-type: application/json
 
 {

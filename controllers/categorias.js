@@ -75,7 +75,7 @@ function update_category(req, res) {
 }
 
 function delete_category(req, res){
-    let {id} = req;params
+    let {id} = req.params;
 
     const idx = vcategories.findIndex (u => u.id == id)
     if(idx != -1){
