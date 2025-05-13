@@ -20,17 +20,16 @@ model Produto {
   preco Float
   tamanho String
   @@map("produtos") // <----- Define o nome da tabela
-  vendas Venda[]
+  categorias Categoria [] @relation("produto_categoria")
+  transacoes Transacao []
 }
 
-model Transacao {
+model Categoria {
   id Int @id @default(autoincrement())
-  data DateTime
-  preco Float
-  id_usuario Int
-  vendas Venda[]
-  @@map("transacao") // <----- Define o nome da tabela
+  nome String
+  produtos Produto [] @relation("produto_categoria")
 }
+
 
 model Usuario {
   id Int @id @default(autoincrement())
@@ -42,19 +41,38 @@ model Usuario {
   cpf String
   telefone String
   cep String
+  avaliacoes Avaliacao []
+  vendas Venda []
   @@map("usuarios") // <----- Define o nome da tabela
 }
 
 model Venda {
-  transacao Transacao @relation(fields: [id_transacao], references: [id])
-  produto Produto @relation(fields: [id_produto], references: [id])
-  quantidade Int
-
-  id_transacao Int
-  id_produto Int
-
-  @@unique([id_transacao, id_produto]) // índice composta
+  id Int @id @default(autoincrement())
+  data DateTime
+  usuario_id Int
+  usuario Usuario @relation(fields: [usuario_id],references: [id])
+  transacoes Transacao []
   @@map("vendas")
   
 }
 
+model Transacao {
+  id Int @id @default(autoincrement())
+  produto_id Int
+  venda_id Int
+  quantidade Float
+
+  produtos Produto @relation(fields: [produto_id],references: [id])
+  vendas Venda @relation(fields: [venda_id],references: [id])
+  @@map("transacao") // <----- Define o nome da tabela
+}
+
+model Avaliacao {
+  id Int @id @default(autoincrement())
+  nota Int
+  comentario String 
+  id_usuario Int
+
+  usuario Usuario @relation(fields:[id_usuario], references: [id])
+  @@map("avaliacoes")
+}
