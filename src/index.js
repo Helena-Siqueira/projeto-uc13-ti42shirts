@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { PrismaClient } from "./generated/prisma/index.js"
+import cors from 'cors'; // <- Importa o CORS
+import { PrismaClient } from "./generated/prisma/index.js";
 
 const app = express();
 const port = 4000;
 const prisma = new PrismaClient();
 
+app.use(cors()); // <- Ativa o CORS para todas as rotas
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
