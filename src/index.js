@@ -79,6 +79,21 @@ app.get("/transacao/:id", async (req, res) => {
     }
 });
 
+app.get("/avaliacao", async (_req, res) => {
+    const avaliacao = await prisma.avaliacao.findMany();
+    res.json(avaliacao);
+});
+
+app.get("/avaliacao/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const avaliacao = await prisma.avaliacao.findUnique({ where: { id } });
+    if (avaliacao === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(avaliacao);
+    }
+});
+
 app.get("/usuarios", async (_req, res) => {
     const usuarios = await prisma.usuario.findMany();
     res.json(usuarios);
