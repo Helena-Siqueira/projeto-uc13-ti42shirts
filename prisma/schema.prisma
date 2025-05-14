@@ -16,7 +16,7 @@ datasource db {
 
 model Produto {
   id Int @id @default(autoincrement())
-  nome_do_produto String
+  nome String
   preco Float
   tamanho String
   @@map("produtos") // <----- Define o nome da tabela

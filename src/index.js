@@ -43,26 +43,42 @@ app.get("/produtos/:id", async (req, res) => {
 
 // Outras rotas da tela inicial
 
-app.get("/produtos/filtro/camisetas_femininas", async (_req, res) => {
-    const camisetas_femininas = await prisma.produto.findMany();
-    res.json(camisetas_femininas);
-});
+app.get("/produtos/filtro", async (req, res) => {
+    const { tipo } = req.query;
+  
+    const tiposValidos = [
+      "feminina",
+      "masculina",
+      "unisex",
+      "lançamento"
+    ];
+  
+    if (!tiposValidos.includes(tipo)) {
+      return res.status(400).json({ erro: "Tipo de filtro inválido." });
+    }
+   
 
-app.get("/produtos/filtro/camisetas_masculinas", async (_req, res) => {
-    const camisetas_masculinas = await prisma.produto.findMany();
-    res.json(camisetas_masculinas);
-});
-
-app.get("/produtos/filtro/camisetas_unisex", async (_req, res) => {
-    const camisetas_unisex = await prisma.produto.findMany();
-    res.json(camisetas_unisex);
-});
-
-app.get("/produtos/filtro/lancamentos", async (_req, res) => {
-    const camisetas_lancamentos = await prisma.produto.findMany();
-    res.json(camisetas_lancamentos);
-});
-
+    try {
+      const produtosFiltrados = await prisma.produto.findMany({
+        where: {
+          categorias: {
+            some: {
+              nome: tipo
+            }
+          }
+        },
+        include: {
+          categorias: true
+        }
+      });
+  
+      res.json(produtosFiltrados);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ erro: "Erro ao buscar produtos." });
+    }
+  });
+  
 
 app.get("/transacao", async (_req, res) => {
     const transacao = await prisma.transacao.findMany();
