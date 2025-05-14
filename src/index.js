@@ -45,41 +45,97 @@ app.get("/produtos/:id", async (req, res) => {
 
 // Outras rotas da tela inicial
 
-app.get("/produtos/filtro/camisetas_femininas", async (_req, res) => {
-    const camisetas_femininas = await prisma.produto.findMany();
-    res.json(camisetas_femininas);
+app.get("/produtos/filtro", async (req, res) => {
+    const { tipo } = req.query;
+  
+    const tiposValidos = [
+      "feminina",
+      "masculina",
+      "unisex",
+      "lançamento"
+    ];
+  
+    if (!tiposValidos.includes(tipo)) {
+      return res.status(400).json({ erro: "Tipo de filtro inválido." });
+    }
+   
+
+//Rotas do BigLu abaixo:
+app.post("/transacao", async (_req, res) => {
+
+    if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade))  {
+       
+        res.status(400).send("Campos obrigatorios faltantes");
+
+    } else {
+
+      const novaTransacao = await prisma.transacao.create({ data: {
+        produto_id: req.body.produto_id,
+        venda_id: req.body.venda_id,
+        quantidade: req.body.quantidade
+      }});
+
+      res.status(201).location(`/venda/${venda_id}`).send();
+    }
+    try {
+      const produtosFiltrados = await prisma.produto.findMany({
+        where: {
+          categorias: {
+            some: {
+              nome: tipo
+            }
+          }
+        },
+        include: {
+          categorias: true
+        }
+      });
+  
+      res.json(produtosFiltrados);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ erro: "Erro ao buscar produtos." });
+    }
+  });
+  
+
 });
 
-app.get("/produtos/filtro/camisetas_masculinas", async (_req, res) => {
-    const camisetas_masculinas = await prisma.produto.findMany();
-    res.json(camisetas_masculinas);
-});
-
-app.get("/produtos/filtro/camisetas_unisex", async (_req, res) => {
-    const camisetas_unisex = await prisma.produto.findMany();
-    res.json(camisetas_unisex);
-});
-
-app.get("/produtos/filtro/lancamentos", async (_req, res) => {
-    const camisetas_lancamentos = await prisma.produto.findMany();
-    res.json(camisetas_lancamentos);
-});
-
-
-app.get("/transacao", async (_req, res) => {
-    const transacao = await prisma.transacao.findMany();
-    res.json(transacao);
-});
-
-app.get("/transacao/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
-    const transacao = await prisma.transacao.findUnique({ where: { id }, include: {vendas: true} });
-    if (transacao === null) {
+app.get("/vendas/:id_usuario", async (req, res) => {
+    const usuario_id = parseInt(req.params.id);
+    const vendas = await prisma.venda.findUnique({ where: { usuario_id } });
+    if (vendas === null) {
         res.status(404).send("Produto não encontrado");
     } else {
-        res.json(transacao);
+        res.json(vendas);
     }
 });
+
+app.get("/avaliacao", async (_req, res) => {
+    const avaliacao = await prisma.avaliacao.findMany();
+    res.json(avaliacao);
+});
+
+app.get("/avaliacao/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const avaliacao = await prisma.avaliacao.findUnique({ where: { id } });
+    if (avaliacao === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(avaliacao);
+    }
+});
+app.get("/venda/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const venda = await prisma.venda.findUnique({ where: { id }, include: {transacao: true} });
+    if (venda === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(venda);
+    }
+});
+//Aqui se encerra as rotas feitas pelo biglu 
+
 
 app.get("/usuarios", async (_req, res) => {
     const usuarios = await prisma.usuario.findMany();
