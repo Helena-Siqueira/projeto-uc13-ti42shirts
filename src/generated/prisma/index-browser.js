@@ -122,16 +122,14 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.ProdutoScalarFieldEnum = {
   id: 'id',
-  nome_do_produto: 'nome_do_produto',
+  nome: 'nome',
   preco: 'preco',
   tamanho: 'tamanho'
 };
 
-exports.Prisma.TransacaoScalarFieldEnum = {
+exports.Prisma.CategoriaScalarFieldEnum = {
   id: 'id',
-  data: 'data',
-  preco: 'preco',
-  id_usuario: 'id_usuario'
+  nome: 'nome'
 };
 
 exports.Prisma.UsuarioScalarFieldEnum = {
@@ -147,9 +145,23 @@ exports.Prisma.UsuarioScalarFieldEnum = {
 };
 
 exports.Prisma.VendaScalarFieldEnum = {
-  quantidade: 'quantidade',
-  id_transacao: 'id_transacao',
-  id_produto: 'id_produto'
+  id: 'id',
+  data: 'data',
+  usuario_id: 'usuario_id'
+};
+
+exports.Prisma.TransacaoScalarFieldEnum = {
+  id: 'id',
+  produto_id: 'produto_id',
+  venda_id: 'venda_id',
+  quantidade: 'quantidade'
+};
+
+exports.Prisma.AvaliacaoScalarFieldEnum = {
+  id: 'id',
+  nota: 'nota',
+  comentario: 'comentario',
+  usuario_id: 'usuario_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -158,8 +170,12 @@ exports.Prisma.SortOrder = {
 };
 
 exports.Prisma.ProdutoOrderByRelevanceFieldEnum = {
-  nome_do_produto: 'nome_do_produto',
+  nome: 'nome',
   tamanho: 'tamanho'
+};
+
+exports.Prisma.CategoriaOrderByRelevanceFieldEnum = {
+  nome: 'nome'
 };
 
 exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
@@ -172,12 +188,18 @@ exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
   cep: 'cep'
 };
 
+exports.Prisma.AvaliacaoOrderByRelevanceFieldEnum = {
+  comentario: 'comentario'
+};
+
 
 exports.Prisma.ModelName = {
   Produto: 'Produto',
-  Transacao: 'Transacao',
+  Categoria: 'Categoria',
   Usuario: 'Usuario',
-  Venda: 'Venda'
+  Venda: 'Venda',
+  Transacao: 'Transacao',
+  Avaliacao: 'Avaliacao'
 };
 
 /**

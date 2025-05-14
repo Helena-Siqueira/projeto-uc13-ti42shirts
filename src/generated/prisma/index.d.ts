@@ -19,10 +19,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Produto = $Result.DefaultSelection<Prisma.$ProdutoPayload>
 /**
- * Model Transacao
+ * Model Categoria
  * 
  */
-export type Transacao = $Result.DefaultSelection<Prisma.$TransacaoPayload>
+export type Categoria = $Result.DefaultSelection<Prisma.$CategoriaPayload>
 /**
  * Model Usuario
  * 
@@ -33,6 +33,16 @@ export type Usuario = $Result.DefaultSelection<Prisma.$UsuarioPayload>
  * 
  */
 export type Venda = $Result.DefaultSelection<Prisma.$VendaPayload>
+/**
+ * Model Transacao
+ * 
+ */
+export type Transacao = $Result.DefaultSelection<Prisma.$TransacaoPayload>
+/**
+ * Model Avaliacao
+ * 
+ */
+export type Avaliacao = $Result.DefaultSelection<Prisma.$AvaliacaoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -170,14 +180,14 @@ export class PrismaClient<
   get produto(): Prisma.ProdutoDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.transacao`: Exposes CRUD operations for the **Transacao** model.
+   * `prisma.categoria`: Exposes CRUD operations for the **Categoria** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Transacaos
-    * const transacaos = await prisma.transacao.findMany()
+    * // Fetch zero or more Categorias
+    * const categorias = await prisma.categoria.findMany()
     * ```
     */
-  get transacao(): Prisma.TransacaoDelegate<ExtArgs, ClientOptions>;
+  get categoria(): Prisma.CategoriaDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.usuario`: Exposes CRUD operations for the **Usuario** model.
@@ -198,6 +208,26 @@ export class PrismaClient<
     * ```
     */
   get venda(): Prisma.VendaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transacao`: Exposes CRUD operations for the **Transacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transacaos
+    * const transacaos = await prisma.transacao.findMany()
+    * ```
+    */
+  get transacao(): Prisma.TransacaoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avaliacao`: Exposes CRUD operations for the **Avaliacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Avaliacaos
+    * const avaliacaos = await prisma.avaliacao.findMany()
+    * ```
+    */
+  get avaliacao(): Prisma.AvaliacaoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -639,9 +669,11 @@ export namespace Prisma {
 
   export const ModelName: {
     Produto: 'Produto',
-    Transacao: 'Transacao',
+    Categoria: 'Categoria',
     Usuario: 'Usuario',
-    Venda: 'Venda'
+    Venda: 'Venda',
+    Transacao: 'Transacao',
+    Avaliacao: 'Avaliacao'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "produto" | "transacao" | "usuario" | "venda"
+      modelProps: "produto" | "categoria" | "usuario" | "venda" | "transacao" | "avaliacao"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -730,69 +762,69 @@ export namespace Prisma {
           }
         }
       }
-      Transacao: {
-        payload: Prisma.$TransacaoPayload<ExtArgs>
-        fields: Prisma.TransacaoFieldRefs
+      Categoria: {
+        payload: Prisma.$CategoriaPayload<ExtArgs>
+        fields: Prisma.CategoriaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TransacaoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+            args: Prisma.CategoriaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TransacaoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           findFirst: {
-            args: Prisma.TransacaoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+            args: Prisma.CategoriaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TransacaoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           findMany: {
-            args: Prisma.TransacaoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>[]
+            args: Prisma.CategoriaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>[]
           }
           create: {
-            args: Prisma.TransacaoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           createMany: {
-            args: Prisma.TransacaoCreateManyArgs<ExtArgs>
+            args: Prisma.CategoriaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.TransacaoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           update: {
-            args: Prisma.TransacaoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           deleteMany: {
-            args: Prisma.TransacaoDeleteManyArgs<ExtArgs>
+            args: Prisma.CategoriaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TransacaoUpdateManyArgs<ExtArgs>
+            args: Prisma.CategoriaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.TransacaoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+            args: Prisma.CategoriaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoriaPayload>
           }
           aggregate: {
-            args: Prisma.TransacaoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTransacao>
+            args: Prisma.CategoriaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategoria>
           }
           groupBy: {
-            args: Prisma.TransacaoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TransacaoGroupByOutputType>[]
+            args: Prisma.CategoriaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoriaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TransacaoCountArgs<ExtArgs>
-            result: $Utils.Optional<TransacaoCountAggregateOutputType> | number
+            args: Prisma.CategoriaCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoriaCountAggregateOutputType> | number
           }
         }
       }
@@ -928,6 +960,138 @@ export namespace Prisma {
           }
         }
       }
+      Transacao: {
+        payload: Prisma.$TransacaoPayload<ExtArgs>
+        fields: Prisma.TransacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.TransacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          findMany: {
+            args: Prisma.TransacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>[]
+          }
+          create: {
+            args: Prisma.TransacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          createMany: {
+            args: Prisma.TransacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TransacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          update: {
+            args: Prisma.TransacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TransacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.TransacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransacao>
+          }
+          groupBy: {
+            args: Prisma.TransacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<TransacaoCountAggregateOutputType> | number
+          }
+        }
+      }
+      Avaliacao: {
+        payload: Prisma.$AvaliacaoPayload<ExtArgs>
+        fields: Prisma.AvaliacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvaliacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvaliacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.AvaliacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvaliacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findMany: {
+            args: Prisma.AvaliacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          create: {
+            args: Prisma.AvaliacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          createMany: {
+            args: Prisma.AvaliacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AvaliacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          update: {
+            args: Prisma.AvaliacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvaliacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvaliacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AvaliacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.AvaliacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvaliacao>
+          }
+          groupBy: {
+            args: Prisma.AvaliacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvaliacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1013,9 +1177,11 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     produto?: ProdutoOmit
-    transacao?: TransacaoOmit
+    categoria?: CategoriaOmit
     usuario?: UsuarioOmit
     venda?: VendaOmit
+    transacao?: TransacaoOmit
+    avaliacao?: AvaliacaoOmit
   }
 
   /* Types for Logging */
@@ -1110,11 +1276,13 @@ export namespace Prisma {
    */
 
   export type ProdutoCountOutputType = {
-    vendas: number
+    categorias: number
+    transacoes: number
   }
 
   export type ProdutoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vendas?: boolean | ProdutoCountOutputTypeCountVendasArgs
+    categorias?: boolean | ProdutoCountOutputTypeCountCategoriasArgs
+    transacoes?: boolean | ProdutoCountOutputTypeCountTransacoesArgs
   }
 
   // Custom InputTypes
@@ -1131,39 +1299,117 @@ export namespace Prisma {
   /**
    * ProdutoCountOutputType without action
    */
-  export type ProdutoCountOutputTypeCountVendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VendaWhereInput
+  export type ProdutoCountOutputTypeCountCategoriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoriaWhereInput
+  }
+
+  /**
+   * ProdutoCountOutputType without action
+   */
+  export type ProdutoCountOutputTypeCountTransacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransacaoWhereInput
   }
 
 
   /**
-   * Count Type TransacaoCountOutputType
+   * Count Type CategoriaCountOutputType
    */
 
-  export type TransacaoCountOutputType = {
-    vendas: number
+  export type CategoriaCountOutputType = {
+    produtos: number
   }
 
-  export type TransacaoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vendas?: boolean | TransacaoCountOutputTypeCountVendasArgs
+  export type CategoriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produtos?: boolean | CategoriaCountOutputTypeCountProdutosArgs
   }
 
   // Custom InputTypes
   /**
-   * TransacaoCountOutputType without action
+   * CategoriaCountOutputType without action
    */
-  export type TransacaoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TransacaoCountOutputType
+     * Select specific fields to fetch from the CategoriaCountOutputType
      */
-    select?: TransacaoCountOutputTypeSelect<ExtArgs> | null
+    select?: CategoriaCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * TransacaoCountOutputType without action
+   * CategoriaCountOutputType without action
    */
-  export type TransacaoCountOutputTypeCountVendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaCountOutputTypeCountProdutosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProdutoWhereInput
+  }
+
+
+  /**
+   * Count Type UsuarioCountOutputType
+   */
+
+  export type UsuarioCountOutputType = {
+    avaliacoes: number
+    vendas: number
+  }
+
+  export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacoes?: boolean | UsuarioCountOutputTypeCountAvaliacoesArgs
+    vendas?: boolean | UsuarioCountOutputTypeCountVendasArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsuarioCountOutputType
+     */
+    select?: UsuarioCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountAvaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountVendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: VendaWhereInput
+  }
+
+
+  /**
+   * Count Type VendaCountOutputType
+   */
+
+  export type VendaCountOutputType = {
+    transacoes: number
+  }
+
+  export type VendaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transacoes?: boolean | VendaCountOutputTypeCountTransacoesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VendaCountOutputType without action
+   */
+  export type VendaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VendaCountOutputType
+     */
+    select?: VendaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VendaCountOutputType without action
+   */
+  export type VendaCountOutputTypeCountTransacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransacaoWhereInput
   }
 
 
@@ -1195,21 +1441,21 @@ export namespace Prisma {
 
   export type ProdutoMinAggregateOutputType = {
     id: number | null
-    nome_do_produto: string | null
+    nome: string | null
     preco: number | null
     tamanho: string | null
   }
 
   export type ProdutoMaxAggregateOutputType = {
     id: number | null
-    nome_do_produto: string | null
+    nome: string | null
     preco: number | null
     tamanho: string | null
   }
 
   export type ProdutoCountAggregateOutputType = {
     id: number
-    nome_do_produto: number
+    nome: number
     preco: number
     tamanho: number
     _all: number
@@ -1228,21 +1474,21 @@ export namespace Prisma {
 
   export type ProdutoMinAggregateInputType = {
     id?: true
-    nome_do_produto?: true
+    nome?: true
     preco?: true
     tamanho?: true
   }
 
   export type ProdutoMaxAggregateInputType = {
     id?: true
-    nome_do_produto?: true
+    nome?: true
     preco?: true
     tamanho?: true
   }
 
   export type ProdutoCountAggregateInputType = {
     id?: true
-    nome_do_produto?: true
+    nome?: true
     preco?: true
     tamanho?: true
     _all?: true
@@ -1336,7 +1582,7 @@ export namespace Prisma {
 
   export type ProdutoGroupByOutputType = {
     id: number
-    nome_do_produto: string
+    nome: string
     preco: number
     tamanho: string
     _count: ProdutoCountAggregateOutputType | null
@@ -1362,10 +1608,11 @@ export namespace Prisma {
 
   export type ProdutoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    nome_do_produto?: boolean
+    nome?: boolean
     preco?: boolean
     tamanho?: boolean
-    vendas?: boolean | Produto$vendasArgs<ExtArgs>
+    categorias?: boolean | Produto$categoriasArgs<ExtArgs>
+    transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
     _count?: boolean | ProdutoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produto"]>
 
@@ -1373,25 +1620,27 @@ export namespace Prisma {
 
   export type ProdutoSelectScalar = {
     id?: boolean
-    nome_do_produto?: boolean
+    nome?: boolean
     preco?: boolean
     tamanho?: boolean
   }
 
-  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome_do_produto" | "preco" | "tamanho", ExtArgs["result"]["produto"]>
+  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "tamanho", ExtArgs["result"]["produto"]>
   export type ProdutoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vendas?: boolean | Produto$vendasArgs<ExtArgs>
+    categorias?: boolean | Produto$categoriasArgs<ExtArgs>
+    transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
     _count?: boolean | ProdutoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $ProdutoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Produto"
     objects: {
-      vendas: Prisma.$VendaPayload<ExtArgs>[]
+      categorias: Prisma.$CategoriaPayload<ExtArgs>[]
+      transacoes: Prisma.$TransacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      nome_do_produto: string
+      nome: string
       preco: number
       tamanho: string
     }, ExtArgs["result"]["produto"]>
@@ -1734,7 +1983,8 @@ export namespace Prisma {
    */
   export interface Prisma__ProdutoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vendas<T extends Produto$vendasArgs<ExtArgs> = {}>(args?: Subset<T, Produto$vendasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categorias<T extends Produto$categoriasArgs<ExtArgs> = {}>(args?: Subset<T, Produto$categoriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transacoes<T extends Produto$transacoesArgs<ExtArgs> = {}>(args?: Subset<T, Produto$transacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1765,7 +2015,7 @@ export namespace Prisma {
    */
   interface ProdutoFieldRefs {
     readonly id: FieldRef<"Produto", 'Int'>
-    readonly nome_do_produto: FieldRef<"Produto", 'String'>
+    readonly nome: FieldRef<"Produto", 'String'>
     readonly preco: FieldRef<"Produto", 'Float'>
     readonly tamanho: FieldRef<"Produto", 'String'>
   }
@@ -2111,27 +2361,51 @@ export namespace Prisma {
   }
 
   /**
-   * Produto.vendas
+   * Produto.categorias
    */
-  export type Produto$vendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Produto$categoriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Venda
+     * Select specific fields to fetch from the Categoria
      */
-    select?: VendaSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Venda
+     * Omit specific fields from the Categoria
      */
-    omit?: VendaOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VendaInclude<ExtArgs> | null
-    where?: VendaWhereInput
-    orderBy?: VendaOrderByWithRelationInput | VendaOrderByWithRelationInput[]
-    cursor?: VendaWhereUniqueInput
+    include?: CategoriaInclude<ExtArgs> | null
+    where?: CategoriaWhereInput
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
+    cursor?: CategoriaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: VendaScalarFieldEnum | VendaScalarFieldEnum[]
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
+  }
+
+  /**
+   * Produto.transacoes
+   */
+  export type Produto$transacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    where?: TransacaoWhereInput
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    cursor?: TransacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
   }
 
   /**
@@ -2154,369 +2428,341 @@ export namespace Prisma {
 
 
   /**
-   * Model Transacao
+   * Model Categoria
    */
 
-  export type AggregateTransacao = {
-    _count: TransacaoCountAggregateOutputType | null
-    _avg: TransacaoAvgAggregateOutputType | null
-    _sum: TransacaoSumAggregateOutputType | null
-    _min: TransacaoMinAggregateOutputType | null
-    _max: TransacaoMaxAggregateOutputType | null
+  export type AggregateCategoria = {
+    _count: CategoriaCountAggregateOutputType | null
+    _avg: CategoriaAvgAggregateOutputType | null
+    _sum: CategoriaSumAggregateOutputType | null
+    _min: CategoriaMinAggregateOutputType | null
+    _max: CategoriaMaxAggregateOutputType | null
   }
 
-  export type TransacaoAvgAggregateOutputType = {
+  export type CategoriaAvgAggregateOutputType = {
     id: number | null
-    preco: number | null
-    id_usuario: number | null
   }
 
-  export type TransacaoSumAggregateOutputType = {
+  export type CategoriaSumAggregateOutputType = {
     id: number | null
-    preco: number | null
-    id_usuario: number | null
   }
 
-  export type TransacaoMinAggregateOutputType = {
+  export type CategoriaMinAggregateOutputType = {
     id: number | null
-    data: Date | null
-    preco: number | null
-    id_usuario: number | null
+    nome: string | null
   }
 
-  export type TransacaoMaxAggregateOutputType = {
+  export type CategoriaMaxAggregateOutputType = {
     id: number | null
-    data: Date | null
-    preco: number | null
-    id_usuario: number | null
+    nome: string | null
   }
 
-  export type TransacaoCountAggregateOutputType = {
+  export type CategoriaCountAggregateOutputType = {
     id: number
-    data: number
-    preco: number
-    id_usuario: number
+    nome: number
     _all: number
   }
 
 
-  export type TransacaoAvgAggregateInputType = {
+  export type CategoriaAvgAggregateInputType = {
     id?: true
-    preco?: true
-    id_usuario?: true
   }
 
-  export type TransacaoSumAggregateInputType = {
+  export type CategoriaSumAggregateInputType = {
     id?: true
-    preco?: true
-    id_usuario?: true
   }
 
-  export type TransacaoMinAggregateInputType = {
+  export type CategoriaMinAggregateInputType = {
     id?: true
-    data?: true
-    preco?: true
-    id_usuario?: true
+    nome?: true
   }
 
-  export type TransacaoMaxAggregateInputType = {
+  export type CategoriaMaxAggregateInputType = {
     id?: true
-    data?: true
-    preco?: true
-    id_usuario?: true
+    nome?: true
   }
 
-  export type TransacaoCountAggregateInputType = {
+  export type CategoriaCountAggregateInputType = {
     id?: true
-    data?: true
-    preco?: true
-    id_usuario?: true
+    nome?: true
     _all?: true
   }
 
-  export type TransacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Transacao to aggregate.
+     * Filter which Categoria to aggregate.
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Transacaos to fetch.
+     * Determine the order of Categorias to fetch.
      */
-    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TransacaoWhereUniqueInput
+    cursor?: CategoriaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Transacaos from the position of the cursor.
+     * Take `±n` Categorias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Transacaos.
+     * Skip the first `n` Categorias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Transacaos
+     * Count returned Categorias
     **/
-    _count?: true | TransacaoCountAggregateInputType
+    _count?: true | CategoriaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: TransacaoAvgAggregateInputType
+    _avg?: CategoriaAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: TransacaoSumAggregateInputType
+    _sum?: CategoriaSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TransacaoMinAggregateInputType
+    _min?: CategoriaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TransacaoMaxAggregateInputType
+    _max?: CategoriaMaxAggregateInputType
   }
 
-  export type GetTransacaoAggregateType<T extends TransacaoAggregateArgs> = {
-        [P in keyof T & keyof AggregateTransacao]: P extends '_count' | 'count'
+  export type GetCategoriaAggregateType<T extends CategoriaAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategoria]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTransacao[P]>
-      : GetScalarType<T[P], AggregateTransacao[P]>
+        : GetScalarType<T[P], AggregateCategoria[P]>
+      : GetScalarType<T[P], AggregateCategoria[P]>
   }
 
 
 
 
-  export type TransacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TransacaoWhereInput
-    orderBy?: TransacaoOrderByWithAggregationInput | TransacaoOrderByWithAggregationInput[]
-    by: TransacaoScalarFieldEnum[] | TransacaoScalarFieldEnum
-    having?: TransacaoScalarWhereWithAggregatesInput
+  export type CategoriaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoriaWhereInput
+    orderBy?: CategoriaOrderByWithAggregationInput | CategoriaOrderByWithAggregationInput[]
+    by: CategoriaScalarFieldEnum[] | CategoriaScalarFieldEnum
+    having?: CategoriaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TransacaoCountAggregateInputType | true
-    _avg?: TransacaoAvgAggregateInputType
-    _sum?: TransacaoSumAggregateInputType
-    _min?: TransacaoMinAggregateInputType
-    _max?: TransacaoMaxAggregateInputType
+    _count?: CategoriaCountAggregateInputType | true
+    _avg?: CategoriaAvgAggregateInputType
+    _sum?: CategoriaSumAggregateInputType
+    _min?: CategoriaMinAggregateInputType
+    _max?: CategoriaMaxAggregateInputType
   }
 
-  export type TransacaoGroupByOutputType = {
+  export type CategoriaGroupByOutputType = {
     id: number
-    data: Date
-    preco: number
-    id_usuario: number
-    _count: TransacaoCountAggregateOutputType | null
-    _avg: TransacaoAvgAggregateOutputType | null
-    _sum: TransacaoSumAggregateOutputType | null
-    _min: TransacaoMinAggregateOutputType | null
-    _max: TransacaoMaxAggregateOutputType | null
+    nome: string
+    _count: CategoriaCountAggregateOutputType | null
+    _avg: CategoriaAvgAggregateOutputType | null
+    _sum: CategoriaSumAggregateOutputType | null
+    _min: CategoriaMinAggregateOutputType | null
+    _max: CategoriaMaxAggregateOutputType | null
   }
 
-  type GetTransacaoGroupByPayload<T extends TransacaoGroupByArgs> = Prisma.PrismaPromise<
+  type GetCategoriaGroupByPayload<T extends CategoriaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TransacaoGroupByOutputType, T['by']> &
+      PickEnumerable<CategoriaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TransacaoGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CategoriaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TransacaoGroupByOutputType[P]>
-            : GetScalarType<T[P], TransacaoGroupByOutputType[P]>
+              : GetScalarType<T[P], CategoriaGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoriaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TransacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CategoriaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    data?: boolean
-    preco?: boolean
-    id_usuario?: boolean
-    vendas?: boolean | Transacao$vendasArgs<ExtArgs>
-    _count?: boolean | TransacaoCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["transacao"]>
+    nome?: boolean
+    produtos?: boolean | Categoria$produtosArgs<ExtArgs>
+    _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoria"]>
 
 
 
-  export type TransacaoSelectScalar = {
+  export type CategoriaSelectScalar = {
     id?: boolean
-    data?: boolean
-    preco?: boolean
-    id_usuario?: boolean
+    nome?: boolean
   }
 
-  export type TransacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "data" | "preco" | "id_usuario", ExtArgs["result"]["transacao"]>
-  export type TransacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vendas?: boolean | Transacao$vendasArgs<ExtArgs>
-    _count?: boolean | TransacaoCountOutputTypeDefaultArgs<ExtArgs>
+  export type CategoriaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome", ExtArgs["result"]["categoria"]>
+  export type CategoriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produtos?: boolean | Categoria$produtosArgs<ExtArgs>
+    _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $TransacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Transacao"
+  export type $CategoriaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Categoria"
     objects: {
-      vendas: Prisma.$VendaPayload<ExtArgs>[]
+      produtos: Prisma.$ProdutoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      data: Date
-      preco: number
-      id_usuario: number
-    }, ExtArgs["result"]["transacao"]>
+      nome: string
+    }, ExtArgs["result"]["categoria"]>
     composites: {}
   }
 
-  type TransacaoGetPayload<S extends boolean | null | undefined | TransacaoDefaultArgs> = $Result.GetResult<Prisma.$TransacaoPayload, S>
+  type CategoriaGetPayload<S extends boolean | null | undefined | CategoriaDefaultArgs> = $Result.GetResult<Prisma.$CategoriaPayload, S>
 
-  type TransacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TransacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TransacaoCountAggregateInputType | true
+  type CategoriaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoriaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoriaCountAggregateInputType | true
     }
 
-  export interface TransacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transacao'], meta: { name: 'Transacao' } }
+  export interface CategoriaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Categoria'], meta: { name: 'Categoria' } }
     /**
-     * Find zero or one Transacao that matches the filter.
-     * @param {TransacaoFindUniqueArgs} args - Arguments to find a Transacao
+     * Find zero or one Categoria that matches the filter.
+     * @param {CategoriaFindUniqueArgs} args - Arguments to find a Categoria
      * @example
-     * // Get one Transacao
-     * const transacao = await prisma.transacao.findUnique({
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TransacaoFindUniqueArgs>(args: SelectSubset<T, TransacaoFindUniqueArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CategoriaFindUniqueArgs>(args: SelectSubset<T, CategoriaFindUniqueArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Transacao that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Categoria that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TransacaoFindUniqueOrThrowArgs} args - Arguments to find a Transacao
+     * @param {CategoriaFindUniqueOrThrowArgs} args - Arguments to find a Categoria
      * @example
-     * // Get one Transacao
-     * const transacao = await prisma.transacao.findUniqueOrThrow({
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TransacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, TransacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CategoriaFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoriaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Transacao that matches the filter.
+     * Find the first Categoria that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoFindFirstArgs} args - Arguments to find a Transacao
+     * @param {CategoriaFindFirstArgs} args - Arguments to find a Categoria
      * @example
-     * // Get one Transacao
-     * const transacao = await prisma.transacao.findFirst({
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TransacaoFindFirstArgs>(args?: SelectSubset<T, TransacaoFindFirstArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CategoriaFindFirstArgs>(args?: SelectSubset<T, CategoriaFindFirstArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Transacao that matches the filter or
+     * Find the first Categoria that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoFindFirstOrThrowArgs} args - Arguments to find a Transacao
+     * @param {CategoriaFindFirstOrThrowArgs} args - Arguments to find a Categoria
      * @example
-     * // Get one Transacao
-     * const transacao = await prisma.transacao.findFirstOrThrow({
+     * // Get one Categoria
+     * const categoria = await prisma.categoria.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TransacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, TransacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CategoriaFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoriaFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Transacaos that matches the filter.
+     * Find zero or more Categorias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CategoriaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Transacaos
-     * const transacaos = await prisma.transacao.findMany()
+     * // Get all Categorias
+     * const categorias = await prisma.categoria.findMany()
      * 
-     * // Get first 10 Transacaos
-     * const transacaos = await prisma.transacao.findMany({ take: 10 })
+     * // Get first 10 Categorias
+     * const categorias = await prisma.categoria.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const transacaoWithIdOnly = await prisma.transacao.findMany({ select: { id: true } })
+     * const categoriaWithIdOnly = await prisma.categoria.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TransacaoFindManyArgs>(args?: SelectSubset<T, TransacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CategoriaFindManyArgs>(args?: SelectSubset<T, CategoriaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Transacao.
-     * @param {TransacaoCreateArgs} args - Arguments to create a Transacao.
+     * Create a Categoria.
+     * @param {CategoriaCreateArgs} args - Arguments to create a Categoria.
      * @example
-     * // Create one Transacao
-     * const Transacao = await prisma.transacao.create({
+     * // Create one Categoria
+     * const Categoria = await prisma.categoria.create({
      *   data: {
-     *     // ... data to create a Transacao
+     *     // ... data to create a Categoria
      *   }
      * })
      * 
      */
-    create<T extends TransacaoCreateArgs>(args: SelectSubset<T, TransacaoCreateArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CategoriaCreateArgs>(args: SelectSubset<T, CategoriaCreateArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Transacaos.
-     * @param {TransacaoCreateManyArgs} args - Arguments to create many Transacaos.
+     * Create many Categorias.
+     * @param {CategoriaCreateManyArgs} args - Arguments to create many Categorias.
      * @example
-     * // Create many Transacaos
-     * const transacao = await prisma.transacao.createMany({
+     * // Create many Categorias
+     * const categoria = await prisma.categoria.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TransacaoCreateManyArgs>(args?: SelectSubset<T, TransacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CategoriaCreateManyArgs>(args?: SelectSubset<T, CategoriaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Transacao.
-     * @param {TransacaoDeleteArgs} args - Arguments to delete one Transacao.
+     * Delete a Categoria.
+     * @param {CategoriaDeleteArgs} args - Arguments to delete one Categoria.
      * @example
-     * // Delete one Transacao
-     * const Transacao = await prisma.transacao.delete({
+     * // Delete one Categoria
+     * const Categoria = await prisma.categoria.delete({
      *   where: {
-     *     // ... filter to delete one Transacao
+     *     // ... filter to delete one Categoria
      *   }
      * })
      * 
      */
-    delete<T extends TransacaoDeleteArgs>(args: SelectSubset<T, TransacaoDeleteArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CategoriaDeleteArgs>(args: SelectSubset<T, CategoriaDeleteArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Transacao.
-     * @param {TransacaoUpdateArgs} args - Arguments to update one Transacao.
+     * Update one Categoria.
+     * @param {CategoriaUpdateArgs} args - Arguments to update one Categoria.
      * @example
-     * // Update one Transacao
-     * const transacao = await prisma.transacao.update({
+     * // Update one Categoria
+     * const categoria = await prisma.categoria.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2526,30 +2772,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TransacaoUpdateArgs>(args: SelectSubset<T, TransacaoUpdateArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CategoriaUpdateArgs>(args: SelectSubset<T, CategoriaUpdateArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Transacaos.
-     * @param {TransacaoDeleteManyArgs} args - Arguments to filter Transacaos to delete.
+     * Delete zero or more Categorias.
+     * @param {CategoriaDeleteManyArgs} args - Arguments to filter Categorias to delete.
      * @example
-     * // Delete a few Transacaos
-     * const { count } = await prisma.transacao.deleteMany({
+     * // Delete a few Categorias
+     * const { count } = await prisma.categoria.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TransacaoDeleteManyArgs>(args?: SelectSubset<T, TransacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CategoriaDeleteManyArgs>(args?: SelectSubset<T, CategoriaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Transacaos.
+     * Update zero or more Categorias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CategoriaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Transacaos
-     * const transacao = await prisma.transacao.updateMany({
+     * // Update many Categorias
+     * const categoria = await prisma.categoria.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2559,56 +2805,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TransacaoUpdateManyArgs>(args: SelectSubset<T, TransacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CategoriaUpdateManyArgs>(args: SelectSubset<T, CategoriaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Transacao.
-     * @param {TransacaoUpsertArgs} args - Arguments to update or create a Transacao.
+     * Create or update one Categoria.
+     * @param {CategoriaUpsertArgs} args - Arguments to update or create a Categoria.
      * @example
-     * // Update or create a Transacao
-     * const transacao = await prisma.transacao.upsert({
+     * // Update or create a Categoria
+     * const categoria = await prisma.categoria.upsert({
      *   create: {
-     *     // ... data to create a Transacao
+     *     // ... data to create a Categoria
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Transacao we want to update
+     *     // ... the filter for the Categoria we want to update
      *   }
      * })
      */
-    upsert<T extends TransacaoUpsertArgs>(args: SelectSubset<T, TransacaoUpsertArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CategoriaUpsertArgs>(args: SelectSubset<T, CategoriaUpsertArgs<ExtArgs>>): Prisma__CategoriaClient<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Transacaos.
+     * Count the number of Categorias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoCountArgs} args - Arguments to filter Transacaos to count.
+     * @param {CategoriaCountArgs} args - Arguments to filter Categorias to count.
      * @example
-     * // Count the number of Transacaos
-     * const count = await prisma.transacao.count({
+     * // Count the number of Categorias
+     * const count = await prisma.categoria.count({
      *   where: {
-     *     // ... the filter for the Transacaos we want to count
+     *     // ... the filter for the Categorias we want to count
      *   }
      * })
     **/
-    count<T extends TransacaoCountArgs>(
-      args?: Subset<T, TransacaoCountArgs>,
+    count<T extends CategoriaCountArgs>(
+      args?: Subset<T, CategoriaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TransacaoCountAggregateOutputType>
+          : GetScalarType<T['select'], CategoriaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Transacao.
+     * Allows you to perform aggregations operations on a Categoria.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CategoriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2628,13 +2874,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TransacaoAggregateArgs>(args: Subset<T, TransacaoAggregateArgs>): Prisma.PrismaPromise<GetTransacaoAggregateType<T>>
+    aggregate<T extends CategoriaAggregateArgs>(args: Subset<T, CategoriaAggregateArgs>): Prisma.PrismaPromise<GetCategoriaAggregateType<T>>
 
     /**
-     * Group by Transacao.
+     * Group by Categoria.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransacaoGroupByArgs} args - Group by arguments.
+     * @param {CategoriaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2649,14 +2895,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TransacaoGroupByArgs,
+      T extends CategoriaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TransacaoGroupByArgs['orderBy'] }
-        : { orderBy?: TransacaoGroupByArgs['orderBy'] },
+        ? { orderBy: CategoriaGroupByArgs['orderBy'] }
+        : { orderBy?: CategoriaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2705,22 +2951,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TransacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CategoriaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Transacao model
+   * Fields of the Categoria model
    */
-  readonly fields: TransacaoFieldRefs;
+  readonly fields: CategoriaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Transacao.
+   * The delegate class that acts as a "Promise-like" for Categoria.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TransacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CategoriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vendas<T extends Transacao$vendasArgs<ExtArgs> = {}>(args?: Subset<T, Transacao$vendasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    produtos<T extends Categoria$produtosArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$produtosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2747,395 +2993,393 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Transacao model
+   * Fields of the Categoria model
    */
-  interface TransacaoFieldRefs {
-    readonly id: FieldRef<"Transacao", 'Int'>
-    readonly data: FieldRef<"Transacao", 'DateTime'>
-    readonly preco: FieldRef<"Transacao", 'Float'>
-    readonly id_usuario: FieldRef<"Transacao", 'Int'>
+  interface CategoriaFieldRefs {
+    readonly id: FieldRef<"Categoria", 'Int'>
+    readonly nome: FieldRef<"Categoria", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Transacao findUnique
+   * Categoria findUnique
    */
-  export type TransacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter, which Transacao to fetch.
+     * Filter, which Categoria to fetch.
      */
-    where: TransacaoWhereUniqueInput
+    where: CategoriaWhereUniqueInput
   }
 
   /**
-   * Transacao findUniqueOrThrow
+   * Categoria findUniqueOrThrow
    */
-  export type TransacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter, which Transacao to fetch.
+     * Filter, which Categoria to fetch.
      */
-    where: TransacaoWhereUniqueInput
+    where: CategoriaWhereUniqueInput
   }
 
   /**
-   * Transacao findFirst
+   * Categoria findFirst
    */
-  export type TransacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter, which Transacao to fetch.
+     * Filter, which Categoria to fetch.
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Transacaos to fetch.
+     * Determine the order of Categorias to fetch.
      */
-    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Transacaos.
+     * Sets the position for searching for Categorias.
      */
-    cursor?: TransacaoWhereUniqueInput
+    cursor?: CategoriaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Transacaos from the position of the cursor.
+     * Take `±n` Categorias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Transacaos.
+     * Skip the first `n` Categorias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Transacaos.
+     * Filter by unique combinations of Categorias.
      */
-    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
   }
 
   /**
-   * Transacao findFirstOrThrow
+   * Categoria findFirstOrThrow
    */
-  export type TransacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter, which Transacao to fetch.
+     * Filter, which Categoria to fetch.
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Transacaos to fetch.
+     * Determine the order of Categorias to fetch.
      */
-    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Transacaos.
+     * Sets the position for searching for Categorias.
      */
-    cursor?: TransacaoWhereUniqueInput
+    cursor?: CategoriaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Transacaos from the position of the cursor.
+     * Take `±n` Categorias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Transacaos.
+     * Skip the first `n` Categorias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Transacaos.
+     * Filter by unique combinations of Categorias.
      */
-    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
   }
 
   /**
-   * Transacao findMany
+   * Categoria findMany
    */
-  export type TransacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter, which Transacaos to fetch.
+     * Filter, which Categorias to fetch.
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Transacaos to fetch.
+     * Determine the order of Categorias to fetch.
      */
-    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Transacaos.
+     * Sets the position for listing Categorias.
      */
-    cursor?: TransacaoWhereUniqueInput
+    cursor?: CategoriaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Transacaos from the position of the cursor.
+     * Take `±n` Categorias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Transacaos.
+     * Skip the first `n` Categorias.
      */
     skip?: number
-    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
   }
 
   /**
-   * Transacao create
+   * Categoria create
    */
-  export type TransacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * The data needed to create a Transacao.
+     * The data needed to create a Categoria.
      */
-    data: XOR<TransacaoCreateInput, TransacaoUncheckedCreateInput>
+    data: XOR<CategoriaCreateInput, CategoriaUncheckedCreateInput>
   }
 
   /**
-   * Transacao createMany
+   * Categoria createMany
    */
-  export type TransacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Transacaos.
+     * The data used to create many Categorias.
      */
-    data: TransacaoCreateManyInput | TransacaoCreateManyInput[]
+    data: CategoriaCreateManyInput | CategoriaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Transacao update
+   * Categoria update
    */
-  export type TransacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * The data needed to update a Transacao.
+     * The data needed to update a Categoria.
      */
-    data: XOR<TransacaoUpdateInput, TransacaoUncheckedUpdateInput>
+    data: XOR<CategoriaUpdateInput, CategoriaUncheckedUpdateInput>
     /**
-     * Choose, which Transacao to update.
+     * Choose, which Categoria to update.
      */
-    where: TransacaoWhereUniqueInput
+    where: CategoriaWhereUniqueInput
   }
 
   /**
-   * Transacao updateMany
+   * Categoria updateMany
    */
-  export type TransacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Transacaos.
+     * The data used to update Categorias.
      */
-    data: XOR<TransacaoUpdateManyMutationInput, TransacaoUncheckedUpdateManyInput>
+    data: XOR<CategoriaUpdateManyMutationInput, CategoriaUncheckedUpdateManyInput>
     /**
-     * Filter which Transacaos to update
+     * Filter which Categorias to update
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
-     * Limit how many Transacaos to update.
+     * Limit how many Categorias to update.
      */
     limit?: number
   }
 
   /**
-   * Transacao upsert
+   * Categoria upsert
    */
-  export type TransacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * The filter to search for the Transacao to update in case it exists.
+     * The filter to search for the Categoria to update in case it exists.
      */
-    where: TransacaoWhereUniqueInput
+    where: CategoriaWhereUniqueInput
     /**
-     * In case the Transacao found by the `where` argument doesn't exist, create a new Transacao with this data.
+     * In case the Categoria found by the `where` argument doesn't exist, create a new Categoria with this data.
      */
-    create: XOR<TransacaoCreateInput, TransacaoUncheckedCreateInput>
+    create: XOR<CategoriaCreateInput, CategoriaUncheckedCreateInput>
     /**
-     * In case the Transacao was found with the provided `where` argument, update it with this data.
+     * In case the Categoria was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TransacaoUpdateInput, TransacaoUncheckedUpdateInput>
+    update: XOR<CategoriaUpdateInput, CategoriaUncheckedUpdateInput>
   }
 
   /**
-   * Transacao delete
+   * Categoria delete
    */
-  export type TransacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
     /**
-     * Filter which Transacao to delete.
+     * Filter which Categoria to delete.
      */
-    where: TransacaoWhereUniqueInput
+    where: CategoriaWhereUniqueInput
   }
 
   /**
-   * Transacao deleteMany
+   * Categoria deleteMany
    */
-  export type TransacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Transacaos to delete
+     * Filter which Categorias to delete
      */
-    where?: TransacaoWhereInput
+    where?: CategoriaWhereInput
     /**
-     * Limit how many Transacaos to delete.
+     * Limit how many Categorias to delete.
      */
     limit?: number
   }
 
   /**
-   * Transacao.vendas
+   * Categoria.produtos
    */
-  export type Transacao$vendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Categoria$produtosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Venda
+     * Select specific fields to fetch from the Produto
      */
-    select?: VendaSelect<ExtArgs> | null
+    select?: ProdutoSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Venda
+     * Omit specific fields from the Produto
      */
-    omit?: VendaOmit<ExtArgs> | null
+    omit?: ProdutoOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VendaInclude<ExtArgs> | null
-    where?: VendaWhereInput
-    orderBy?: VendaOrderByWithRelationInput | VendaOrderByWithRelationInput[]
-    cursor?: VendaWhereUniqueInput
+    include?: ProdutoInclude<ExtArgs> | null
+    where?: ProdutoWhereInput
+    orderBy?: ProdutoOrderByWithRelationInput | ProdutoOrderByWithRelationInput[]
+    cursor?: ProdutoWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: VendaScalarFieldEnum | VendaScalarFieldEnum[]
+    distinct?: ProdutoScalarFieldEnum | ProdutoScalarFieldEnum[]
   }
 
   /**
-   * Transacao without action
+   * Categoria without action
    */
-  export type TransacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoriaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transacao
+     * Select specific fields to fetch from the Categoria
      */
-    select?: TransacaoSelect<ExtArgs> | null
+    select?: CategoriaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transacao
+     * Omit specific fields from the Categoria
      */
-    omit?: TransacaoOmit<ExtArgs> | null
+    omit?: CategoriaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransacaoInclude<ExtArgs> | null
+    include?: CategoriaInclude<ExtArgs> | null
   }
 
 
@@ -3373,6 +3617,9 @@ export namespace Prisma {
     cpf?: boolean
     telefone?: boolean
     cep?: boolean
+    avaliacoes?: boolean | Usuario$avaliacoesArgs<ExtArgs>
+    vendas?: boolean | Usuario$vendasArgs<ExtArgs>
+    _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
 
@@ -3390,10 +3637,18 @@ export namespace Prisma {
   }
 
   export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "data_nascimento" | "sexo" | "email" | "senha" | "cpf" | "telefone" | "cep", ExtArgs["result"]["usuario"]>
+  export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    avaliacoes?: boolean | Usuario$avaliacoesArgs<ExtArgs>
+    vendas?: boolean | Usuario$vendasArgs<ExtArgs>
+    _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Usuario"
-    objects: {}
+    objects: {
+      avaliacoes: Prisma.$AvaliacaoPayload<ExtArgs>[]
+      vendas: Prisma.$VendaPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nome: string
@@ -3744,6 +3999,8 @@ export namespace Prisma {
    */
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    avaliacoes<T extends Usuario$avaliacoesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$avaliacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vendas<T extends Usuario$vendasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$vendasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3799,6 +4056,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * Filter, which Usuario to fetch.
      */
     where: UsuarioWhereUniqueInput
@@ -3817,6 +4078,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * Filter, which Usuario to fetch.
      */
     where: UsuarioWhereUniqueInput
@@ -3834,6 +4099,10 @@ export namespace Prisma {
      * Omit specific fields from the Usuario
      */
     omit?: UsuarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
     /**
      * Filter, which Usuario to fetch.
      */
@@ -3883,6 +4152,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * Filter, which Usuario to fetch.
      */
     where?: UsuarioWhereInput
@@ -3931,6 +4204,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * Filter, which Usuarios to fetch.
      */
     where?: UsuarioWhereInput
@@ -3974,6 +4251,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * The data needed to create a Usuario.
      */
     data: XOR<UsuarioCreateInput, UsuarioUncheckedCreateInput>
@@ -4002,6 +4283,10 @@ export namespace Prisma {
      * Omit specific fields from the Usuario
      */
     omit?: UsuarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
     /**
      * The data needed to update a Usuario.
      */
@@ -4043,6 +4328,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * The filter to search for the Usuario to update in case it exists.
      */
     where: UsuarioWhereUniqueInput
@@ -4069,6 +4358,10 @@ export namespace Prisma {
      */
     omit?: UsuarioOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
+    /**
      * Filter which Usuario to delete.
      */
     where: UsuarioWhereUniqueInput
@@ -4089,6 +4382,54 @@ export namespace Prisma {
   }
 
   /**
+   * Usuario.avaliacoes
+   */
+  export type Usuario$avaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario.vendas
+   */
+  export type Usuario$vendasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Venda
+     */
+    select?: VendaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Venda
+     */
+    omit?: VendaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VendaInclude<ExtArgs> | null
+    where?: VendaWhereInput
+    orderBy?: VendaOrderByWithRelationInput | VendaOrderByWithRelationInput[]
+    cursor?: VendaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VendaScalarFieldEnum | VendaScalarFieldEnum[]
+  }
+
+  /**
    * Usuario without action
    */
   export type UsuarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4100,6 +4441,10 @@ export namespace Prisma {
      * Omit specific fields from the Usuario
      */
     omit?: UsuarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsuarioInclude<ExtArgs> | null
   }
 
 
@@ -4116,65 +4461,61 @@ export namespace Prisma {
   }
 
   export type VendaAvgAggregateOutputType = {
-    quantidade: number | null
-    id_transacao: number | null
-    id_produto: number | null
+    id: number | null
+    usuario_id: number | null
   }
 
   export type VendaSumAggregateOutputType = {
-    quantidade: number | null
-    id_transacao: number | null
-    id_produto: number | null
+    id: number | null
+    usuario_id: number | null
   }
 
   export type VendaMinAggregateOutputType = {
-    quantidade: number | null
-    id_transacao: number | null
-    id_produto: number | null
+    id: number | null
+    data: Date | null
+    usuario_id: number | null
   }
 
   export type VendaMaxAggregateOutputType = {
-    quantidade: number | null
-    id_transacao: number | null
-    id_produto: number | null
+    id: number | null
+    data: Date | null
+    usuario_id: number | null
   }
 
   export type VendaCountAggregateOutputType = {
-    quantidade: number
-    id_transacao: number
-    id_produto: number
+    id: number
+    data: number
+    usuario_id: number
     _all: number
   }
 
 
   export type VendaAvgAggregateInputType = {
-    quantidade?: true
-    id_transacao?: true
-    id_produto?: true
+    id?: true
+    usuario_id?: true
   }
 
   export type VendaSumAggregateInputType = {
-    quantidade?: true
-    id_transacao?: true
-    id_produto?: true
+    id?: true
+    usuario_id?: true
   }
 
   export type VendaMinAggregateInputType = {
-    quantidade?: true
-    id_transacao?: true
-    id_produto?: true
+    id?: true
+    data?: true
+    usuario_id?: true
   }
 
   export type VendaMaxAggregateInputType = {
-    quantidade?: true
-    id_transacao?: true
-    id_produto?: true
+    id?: true
+    data?: true
+    usuario_id?: true
   }
 
   export type VendaCountAggregateInputType = {
-    quantidade?: true
-    id_transacao?: true
-    id_produto?: true
+    id?: true
+    data?: true
+    usuario_id?: true
     _all?: true
   }
 
@@ -4265,9 +4606,9 @@ export namespace Prisma {
   }
 
   export type VendaGroupByOutputType = {
-    quantidade: number
-    id_transacao: number
-    id_produto: number
+    id: number
+    data: Date
+    usuario_id: number
     _count: VendaCountAggregateOutputType | null
     _avg: VendaAvgAggregateOutputType | null
     _sum: VendaSumAggregateOutputType | null
@@ -4290,37 +4631,39 @@ export namespace Prisma {
 
 
   export type VendaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    quantidade?: boolean
-    id_transacao?: boolean
-    id_produto?: boolean
-    transacao?: boolean | TransacaoDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoDefaultArgs<ExtArgs>
+    id?: boolean
+    data?: boolean
+    usuario_id?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    transacoes?: boolean | Venda$transacoesArgs<ExtArgs>
+    _count?: boolean | VendaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["venda"]>
 
 
 
   export type VendaSelectScalar = {
-    quantidade?: boolean
-    id_transacao?: boolean
-    id_produto?: boolean
+    id?: boolean
+    data?: boolean
+    usuario_id?: boolean
   }
 
-  export type VendaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"quantidade" | "id_transacao" | "id_produto", ExtArgs["result"]["venda"]>
+  export type VendaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "data" | "usuario_id", ExtArgs["result"]["venda"]>
   export type VendaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transacao?: boolean | TransacaoDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    transacoes?: boolean | Venda$transacoesArgs<ExtArgs>
+    _count?: boolean | VendaCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $VendaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Venda"
     objects: {
-      transacao: Prisma.$TransacaoPayload<ExtArgs>
-      produto: Prisma.$ProdutoPayload<ExtArgs>
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      transacoes: Prisma.$TransacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      quantidade: number
-      id_transacao: number
-      id_produto: number
+      id: number
+      data: Date
+      usuario_id: number
     }, ExtArgs["result"]["venda"]>
     composites: {}
   }
@@ -4404,8 +4747,8 @@ export namespace Prisma {
      * // Get first 10 Vendas
      * const vendas = await prisma.venda.findMany({ take: 10 })
      * 
-     * // Only select the `quantidade`
-     * const vendaWithQuantidadeOnly = await prisma.venda.findMany({ select: { quantidade: true } })
+     * // Only select the `id`
+     * const vendaWithIdOnly = await prisma.venda.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends VendaFindManyArgs>(args?: SelectSubset<T, VendaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -4661,8 +5004,8 @@ export namespace Prisma {
    */
   export interface Prisma__VendaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    transacao<T extends TransacaoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransacaoDefaultArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    produto<T extends ProdutoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoDefaultArgs<ExtArgs>>): Prisma__ProdutoClient<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transacoes<T extends Venda$transacoesArgs<ExtArgs> = {}>(args?: Subset<T, Venda$transacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4692,9 +5035,9 @@ export namespace Prisma {
    * Fields of the Venda model
    */
   interface VendaFieldRefs {
-    readonly quantidade: FieldRef<"Venda", 'Int'>
-    readonly id_transacao: FieldRef<"Venda", 'Int'>
-    readonly id_produto: FieldRef<"Venda", 'Int'>
+    readonly id: FieldRef<"Venda", 'Int'>
+    readonly data: FieldRef<"Venda", 'DateTime'>
+    readonly usuario_id: FieldRef<"Venda", 'Int'>
   }
     
 
@@ -5038,6 +5381,30 @@ export namespace Prisma {
   }
 
   /**
+   * Venda.transacoes
+   */
+  export type Venda$transacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    where?: TransacaoWhereInput
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    cursor?: TransacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+  }
+
+  /**
    * Venda without action
    */
   export type VendaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5057,6 +5424,1934 @@ export namespace Prisma {
 
 
   /**
+   * Model Transacao
+   */
+
+  export type AggregateTransacao = {
+    _count: TransacaoCountAggregateOutputType | null
+    _avg: TransacaoAvgAggregateOutputType | null
+    _sum: TransacaoSumAggregateOutputType | null
+    _min: TransacaoMinAggregateOutputType | null
+    _max: TransacaoMaxAggregateOutputType | null
+  }
+
+  export type TransacaoAvgAggregateOutputType = {
+    id: number | null
+    produto_id: number | null
+    venda_id: number | null
+    quantidade: number | null
+  }
+
+  export type TransacaoSumAggregateOutputType = {
+    id: number | null
+    produto_id: number | null
+    venda_id: number | null
+    quantidade: number | null
+  }
+
+  export type TransacaoMinAggregateOutputType = {
+    id: number | null
+    produto_id: number | null
+    venda_id: number | null
+    quantidade: number | null
+  }
+
+  export type TransacaoMaxAggregateOutputType = {
+    id: number | null
+    produto_id: number | null
+    venda_id: number | null
+    quantidade: number | null
+  }
+
+  export type TransacaoCountAggregateOutputType = {
+    id: number
+    produto_id: number
+    venda_id: number
+    quantidade: number
+    _all: number
+  }
+
+
+  export type TransacaoAvgAggregateInputType = {
+    id?: true
+    produto_id?: true
+    venda_id?: true
+    quantidade?: true
+  }
+
+  export type TransacaoSumAggregateInputType = {
+    id?: true
+    produto_id?: true
+    venda_id?: true
+    quantidade?: true
+  }
+
+  export type TransacaoMinAggregateInputType = {
+    id?: true
+    produto_id?: true
+    venda_id?: true
+    quantidade?: true
+  }
+
+  export type TransacaoMaxAggregateInputType = {
+    id?: true
+    produto_id?: true
+    venda_id?: true
+    quantidade?: true
+  }
+
+  export type TransacaoCountAggregateInputType = {
+    id?: true
+    produto_id?: true
+    venda_id?: true
+    quantidade?: true
+    _all?: true
+  }
+
+  export type TransacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transacao to aggregate.
+     */
+    where?: TransacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transacaos to fetch.
+     */
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Transacaos
+    **/
+    _count?: true | TransacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransacaoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransacaoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransacaoMaxAggregateInputType
+  }
+
+  export type GetTransacaoAggregateType<T extends TransacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransacao[P]>
+      : GetScalarType<T[P], AggregateTransacao[P]>
+  }
+
+
+
+
+  export type TransacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransacaoWhereInput
+    orderBy?: TransacaoOrderByWithAggregationInput | TransacaoOrderByWithAggregationInput[]
+    by: TransacaoScalarFieldEnum[] | TransacaoScalarFieldEnum
+    having?: TransacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransacaoCountAggregateInputType | true
+    _avg?: TransacaoAvgAggregateInputType
+    _sum?: TransacaoSumAggregateInputType
+    _min?: TransacaoMinAggregateInputType
+    _max?: TransacaoMaxAggregateInputType
+  }
+
+  export type TransacaoGroupByOutputType = {
+    id: number
+    produto_id: number
+    venda_id: number
+    quantidade: number
+    _count: TransacaoCountAggregateOutputType | null
+    _avg: TransacaoAvgAggregateOutputType | null
+    _sum: TransacaoSumAggregateOutputType | null
+    _min: TransacaoMinAggregateOutputType | null
+    _max: TransacaoMaxAggregateOutputType | null
+  }
+
+  type GetTransacaoGroupByPayload<T extends TransacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], TransacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    produto_id?: boolean
+    venda_id?: boolean
+    quantidade?: boolean
+    produtos?: boolean | ProdutoDefaultArgs<ExtArgs>
+    vendas?: boolean | VendaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transacao"]>
+
+
+
+  export type TransacaoSelectScalar = {
+    id?: boolean
+    produto_id?: boolean
+    venda_id?: boolean
+    quantidade?: boolean
+  }
+
+  export type TransacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "produto_id" | "venda_id" | "quantidade", ExtArgs["result"]["transacao"]>
+  export type TransacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produtos?: boolean | ProdutoDefaultArgs<ExtArgs>
+    vendas?: boolean | VendaDefaultArgs<ExtArgs>
+  }
+
+  export type $TransacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Transacao"
+    objects: {
+      produtos: Prisma.$ProdutoPayload<ExtArgs>
+      vendas: Prisma.$VendaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      produto_id: number
+      venda_id: number
+      quantidade: number
+    }, ExtArgs["result"]["transacao"]>
+    composites: {}
+  }
+
+  type TransacaoGetPayload<S extends boolean | null | undefined | TransacaoDefaultArgs> = $Result.GetResult<Prisma.$TransacaoPayload, S>
+
+  type TransacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransacaoCountAggregateInputType | true
+    }
+
+  export interface TransacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transacao'], meta: { name: 'Transacao' } }
+    /**
+     * Find zero or one Transacao that matches the filter.
+     * @param {TransacaoFindUniqueArgs} args - Arguments to find a Transacao
+     * @example
+     * // Get one Transacao
+     * const transacao = await prisma.transacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransacaoFindUniqueArgs>(args: SelectSubset<T, TransacaoFindUniqueArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransacaoFindUniqueOrThrowArgs} args - Arguments to find a Transacao
+     * @example
+     * // Get one Transacao
+     * const transacao = await prisma.transacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, TransacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoFindFirstArgs} args - Arguments to find a Transacao
+     * @example
+     * // Get one Transacao
+     * const transacao = await prisma.transacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransacaoFindFirstArgs>(args?: SelectSubset<T, TransacaoFindFirstArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoFindFirstOrThrowArgs} args - Arguments to find a Transacao
+     * @example
+     * // Get one Transacao
+     * const transacao = await prisma.transacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, TransacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transacaos
+     * const transacaos = await prisma.transacao.findMany()
+     * 
+     * // Get first 10 Transacaos
+     * const transacaos = await prisma.transacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transacaoWithIdOnly = await prisma.transacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransacaoFindManyArgs>(args?: SelectSubset<T, TransacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transacao.
+     * @param {TransacaoCreateArgs} args - Arguments to create a Transacao.
+     * @example
+     * // Create one Transacao
+     * const Transacao = await prisma.transacao.create({
+     *   data: {
+     *     // ... data to create a Transacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransacaoCreateArgs>(args: SelectSubset<T, TransacaoCreateArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transacaos.
+     * @param {TransacaoCreateManyArgs} args - Arguments to create many Transacaos.
+     * @example
+     * // Create many Transacaos
+     * const transacao = await prisma.transacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransacaoCreateManyArgs>(args?: SelectSubset<T, TransacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Transacao.
+     * @param {TransacaoDeleteArgs} args - Arguments to delete one Transacao.
+     * @example
+     * // Delete one Transacao
+     * const Transacao = await prisma.transacao.delete({
+     *   where: {
+     *     // ... filter to delete one Transacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransacaoDeleteArgs>(args: SelectSubset<T, TransacaoDeleteArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transacao.
+     * @param {TransacaoUpdateArgs} args - Arguments to update one Transacao.
+     * @example
+     * // Update one Transacao
+     * const transacao = await prisma.transacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransacaoUpdateArgs>(args: SelectSubset<T, TransacaoUpdateArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transacaos.
+     * @param {TransacaoDeleteManyArgs} args - Arguments to filter Transacaos to delete.
+     * @example
+     * // Delete a few Transacaos
+     * const { count } = await prisma.transacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransacaoDeleteManyArgs>(args?: SelectSubset<T, TransacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transacaos
+     * const transacao = await prisma.transacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransacaoUpdateManyArgs>(args: SelectSubset<T, TransacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Transacao.
+     * @param {TransacaoUpsertArgs} args - Arguments to update or create a Transacao.
+     * @example
+     * // Update or create a Transacao
+     * const transacao = await prisma.transacao.upsert({
+     *   create: {
+     *     // ... data to create a Transacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransacaoUpsertArgs>(args: SelectSubset<T, TransacaoUpsertArgs<ExtArgs>>): Prisma__TransacaoClient<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoCountArgs} args - Arguments to filter Transacaos to count.
+     * @example
+     * // Count the number of Transacaos
+     * const count = await prisma.transacao.count({
+     *   where: {
+     *     // ... the filter for the Transacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransacaoCountArgs>(
+      args?: Subset<T, TransacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransacaoAggregateArgs>(args: Subset<T, TransacaoAggregateArgs>): Prisma.PrismaPromise<GetTransacaoAggregateType<T>>
+
+    /**
+     * Group by Transacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransacaoGroupByArgs['orderBy'] }
+        : { orderBy?: TransacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Transacao model
+   */
+  readonly fields: TransacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Transacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    produtos<T extends ProdutoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoDefaultArgs<ExtArgs>>): Prisma__ProdutoClient<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vendas<T extends VendaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VendaDefaultArgs<ExtArgs>>): Prisma__VendaClient<$Result.GetResult<Prisma.$VendaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Transacao model
+   */
+  interface TransacaoFieldRefs {
+    readonly id: FieldRef<"Transacao", 'Int'>
+    readonly produto_id: FieldRef<"Transacao", 'Int'>
+    readonly venda_id: FieldRef<"Transacao", 'Int'>
+    readonly quantidade: FieldRef<"Transacao", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Transacao findUnique
+   */
+  export type TransacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Transacao to fetch.
+     */
+    where: TransacaoWhereUniqueInput
+  }
+
+  /**
+   * Transacao findUniqueOrThrow
+   */
+  export type TransacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Transacao to fetch.
+     */
+    where: TransacaoWhereUniqueInput
+  }
+
+  /**
+   * Transacao findFirst
+   */
+  export type TransacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Transacao to fetch.
+     */
+    where?: TransacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transacaos to fetch.
+     */
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transacaos.
+     */
+    cursor?: TransacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transacaos.
+     */
+    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Transacao findFirstOrThrow
+   */
+  export type TransacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Transacao to fetch.
+     */
+    where?: TransacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transacaos to fetch.
+     */
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transacaos.
+     */
+    cursor?: TransacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transacaos.
+     */
+    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Transacao findMany
+   */
+  export type TransacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Transacaos to fetch.
+     */
+    where?: TransacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transacaos to fetch.
+     */
+    orderBy?: TransacaoOrderByWithRelationInput | TransacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Transacaos.
+     */
+    cursor?: TransacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transacaos.
+     */
+    skip?: number
+    distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Transacao create
+   */
+  export type TransacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Transacao.
+     */
+    data: XOR<TransacaoCreateInput, TransacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Transacao createMany
+   */
+  export type TransacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Transacaos.
+     */
+    data: TransacaoCreateManyInput | TransacaoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Transacao update
+   */
+  export type TransacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Transacao.
+     */
+    data: XOR<TransacaoUpdateInput, TransacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Transacao to update.
+     */
+    where: TransacaoWhereUniqueInput
+  }
+
+  /**
+   * Transacao updateMany
+   */
+  export type TransacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Transacaos.
+     */
+    data: XOR<TransacaoUpdateManyMutationInput, TransacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Transacaos to update
+     */
+    where?: TransacaoWhereInput
+    /**
+     * Limit how many Transacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transacao upsert
+   */
+  export type TransacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Transacao to update in case it exists.
+     */
+    where: TransacaoWhereUniqueInput
+    /**
+     * In case the Transacao found by the `where` argument doesn't exist, create a new Transacao with this data.
+     */
+    create: XOR<TransacaoCreateInput, TransacaoUncheckedCreateInput>
+    /**
+     * In case the Transacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransacaoUpdateInput, TransacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Transacao delete
+   */
+  export type TransacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Transacao to delete.
+     */
+    where: TransacaoWhereUniqueInput
+  }
+
+  /**
+   * Transacao deleteMany
+   */
+  export type TransacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transacaos to delete
+     */
+    where?: TransacaoWhereInput
+    /**
+     * Limit how many Transacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transacao without action
+   */
+  export type TransacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transacao
+     */
+    select?: TransacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transacao
+     */
+    omit?: TransacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransacaoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Avaliacao
+   */
+
+  export type AggregateAvaliacao = {
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  export type AvaliacaoAvgAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    usuario_id: number | null
+  }
+
+  export type AvaliacaoSumAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    usuario_id: number | null
+  }
+
+  export type AvaliacaoMinAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    comentario: string | null
+    usuario_id: number | null
+  }
+
+  export type AvaliacaoMaxAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    comentario: string | null
+    usuario_id: number | null
+  }
+
+  export type AvaliacaoCountAggregateOutputType = {
+    id: number
+    nota: number
+    comentario: number
+    usuario_id: number
+    _all: number
+  }
+
+
+  export type AvaliacaoAvgAggregateInputType = {
+    id?: true
+    nota?: true
+    usuario_id?: true
+  }
+
+  export type AvaliacaoSumAggregateInputType = {
+    id?: true
+    nota?: true
+    usuario_id?: true
+  }
+
+  export type AvaliacaoMinAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    usuario_id?: true
+  }
+
+  export type AvaliacaoMaxAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    usuario_id?: true
+  }
+
+  export type AvaliacaoCountAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    usuario_id?: true
+    _all?: true
+  }
+
+  export type AvaliacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacao to aggregate.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Avaliacaos
+    **/
+    _count?: true | AvaliacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AvaliacaoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AvaliacaoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvaliacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type GetAvaliacaoAggregateType<T extends AvaliacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvaliacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvaliacao[P]>
+      : GetScalarType<T[P], AggregateAvaliacao[P]>
+  }
+
+
+
+
+  export type AvaliacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithAggregationInput | AvaliacaoOrderByWithAggregationInput[]
+    by: AvaliacaoScalarFieldEnum[] | AvaliacaoScalarFieldEnum
+    having?: AvaliacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvaliacaoCountAggregateInputType | true
+    _avg?: AvaliacaoAvgAggregateInputType
+    _sum?: AvaliacaoSumAggregateInputType
+    _min?: AvaliacaoMinAggregateInputType
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type AvaliacaoGroupByOutputType = {
+    id: number
+    nota: number
+    comentario: string
+    usuario_id: number
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  type GetAvaliacaoGroupByPayload<T extends AvaliacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvaliacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvaliacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvaliacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nota?: boolean
+    comentario?: boolean
+    usuario_id?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+
+
+  export type AvaliacaoSelectScalar = {
+    id?: boolean
+    nota?: boolean
+    comentario?: boolean
+    usuario_id?: boolean
+  }
+
+  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nota" | "comentario" | "usuario_id", ExtArgs["result"]["avaliacao"]>
+  export type AvaliacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+  }
+
+  export type $AvaliacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Avaliacao"
+    objects: {
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nota: number
+      comentario: string
+      usuario_id: number
+    }, ExtArgs["result"]["avaliacao"]>
+    composites: {}
+  }
+
+  type AvaliacaoGetPayload<S extends boolean | null | undefined | AvaliacaoDefaultArgs> = $Result.GetResult<Prisma.$AvaliacaoPayload, S>
+
+  type AvaliacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvaliacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvaliacaoCountAggregateInputType | true
+    }
+
+  export interface AvaliacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Avaliacao'], meta: { name: 'Avaliacao' } }
+    /**
+     * Find zero or one Avaliacao that matches the filter.
+     * @param {AvaliacaoFindUniqueArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvaliacaoFindUniqueArgs>(args: SelectSubset<T, AvaliacaoFindUniqueArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Avaliacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvaliacaoFindUniqueOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvaliacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, AvaliacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvaliacaoFindFirstArgs>(args?: SelectSubset<T, AvaliacaoFindFirstArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvaliacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, AvaliacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Avaliacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany()
+     * 
+     * // Get first 10 Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvaliacaoFindManyArgs>(args?: SelectSubset<T, AvaliacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Avaliacao.
+     * @param {AvaliacaoCreateArgs} args - Arguments to create a Avaliacao.
+     * @example
+     * // Create one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.create({
+     *   data: {
+     *     // ... data to create a Avaliacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvaliacaoCreateArgs>(args: SelectSubset<T, AvaliacaoCreateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Avaliacaos.
+     * @param {AvaliacaoCreateManyArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvaliacaoCreateManyArgs>(args?: SelectSubset<T, AvaliacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Avaliacao.
+     * @param {AvaliacaoDeleteArgs} args - Arguments to delete one Avaliacao.
+     * @example
+     * // Delete one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.delete({
+     *   where: {
+     *     // ... filter to delete one Avaliacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvaliacaoDeleteArgs>(args: SelectSubset<T, AvaliacaoDeleteArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Avaliacao.
+     * @param {AvaliacaoUpdateArgs} args - Arguments to update one Avaliacao.
+     * @example
+     * // Update one Avaliacao
+     * const avaliacao = await prisma.avaliacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvaliacaoUpdateArgs>(args: SelectSubset<T, AvaliacaoUpdateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Avaliacaos.
+     * @param {AvaliacaoDeleteManyArgs} args - Arguments to filter Avaliacaos to delete.
+     * @example
+     * // Delete a few Avaliacaos
+     * const { count } = await prisma.avaliacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvaliacaoDeleteManyArgs>(args?: SelectSubset<T, AvaliacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvaliacaoUpdateManyArgs>(args: SelectSubset<T, AvaliacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Avaliacao.
+     * @param {AvaliacaoUpsertArgs} args - Arguments to update or create a Avaliacao.
+     * @example
+     * // Update or create a Avaliacao
+     * const avaliacao = await prisma.avaliacao.upsert({
+     *   create: {
+     *     // ... data to create a Avaliacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Avaliacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvaliacaoUpsertArgs>(args: SelectSubset<T, AvaliacaoUpsertArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoCountArgs} args - Arguments to filter Avaliacaos to count.
+     * @example
+     * // Count the number of Avaliacaos
+     * const count = await prisma.avaliacao.count({
+     *   where: {
+     *     // ... the filter for the Avaliacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvaliacaoCountArgs>(
+      args?: Subset<T, AvaliacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvaliacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvaliacaoAggregateArgs>(args: Subset<T, AvaliacaoAggregateArgs>): Prisma.PrismaPromise<GetAvaliacaoAggregateType<T>>
+
+    /**
+     * Group by Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvaliacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvaliacaoGroupByArgs['orderBy'] }
+        : { orderBy?: AvaliacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvaliacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvaliacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Avaliacao model
+   */
+  readonly fields: AvaliacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Avaliacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Avaliacao model
+   */
+  interface AvaliacaoFieldRefs {
+    readonly id: FieldRef<"Avaliacao", 'Int'>
+    readonly nota: FieldRef<"Avaliacao", 'Int'>
+    readonly comentario: FieldRef<"Avaliacao", 'String'>
+    readonly usuario_id: FieldRef<"Avaliacao", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Avaliacao findUnique
+   */
+  export type AvaliacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findUniqueOrThrow
+   */
+  export type AvaliacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findFirst
+   */
+  export type AvaliacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findFirstOrThrow
+   */
+  export type AvaliacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findMany
+   */
+  export type AvaliacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacaos to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao create
+   */
+  export type AvaliacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Avaliacao.
+     */
+    data: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Avaliacao createMany
+   */
+  export type AvaliacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Avaliacao update
+   */
+  export type AvaliacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Avaliacao.
+     */
+    data: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Avaliacao to update.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao updateMany
+   */
+  export type AvaliacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao upsert
+   */
+  export type AvaliacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Avaliacao to update in case it exists.
+     */
+    where: AvaliacaoWhereUniqueInput
+    /**
+     * In case the Avaliacao found by the `where` argument doesn't exist, create a new Avaliacao with this data.
+     */
+    create: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+    /**
+     * In case the Avaliacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Avaliacao delete
+   */
+  export type AvaliacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Avaliacao to delete.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao deleteMany
+   */
+  export type AvaliacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacaos to delete
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao without action
+   */
+  export type AvaliacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5072,7 +7367,7 @@ export namespace Prisma {
 
   export const ProdutoScalarFieldEnum: {
     id: 'id',
-    nome_do_produto: 'nome_do_produto',
+    nome: 'nome',
     preco: 'preco',
     tamanho: 'tamanho'
   };
@@ -5080,14 +7375,12 @@ export namespace Prisma {
   export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
 
 
-  export const TransacaoScalarFieldEnum: {
+  export const CategoriaScalarFieldEnum: {
     id: 'id',
-    data: 'data',
-    preco: 'preco',
-    id_usuario: 'id_usuario'
+    nome: 'nome'
   };
 
-  export type TransacaoScalarFieldEnum = (typeof TransacaoScalarFieldEnum)[keyof typeof TransacaoScalarFieldEnum]
+  export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
 
 
   export const UsuarioScalarFieldEnum: {
@@ -5106,12 +7399,32 @@ export namespace Prisma {
 
 
   export const VendaScalarFieldEnum: {
-    quantidade: 'quantidade',
-    id_transacao: 'id_transacao',
-    id_produto: 'id_produto'
+    id: 'id',
+    data: 'data',
+    usuario_id: 'usuario_id'
   };
 
   export type VendaScalarFieldEnum = (typeof VendaScalarFieldEnum)[keyof typeof VendaScalarFieldEnum]
+
+
+  export const TransacaoScalarFieldEnum: {
+    id: 'id',
+    produto_id: 'produto_id',
+    venda_id: 'venda_id',
+    quantidade: 'quantidade'
+  };
+
+  export type TransacaoScalarFieldEnum = (typeof TransacaoScalarFieldEnum)[keyof typeof TransacaoScalarFieldEnum]
+
+
+  export const AvaliacaoScalarFieldEnum: {
+    id: 'id',
+    nota: 'nota',
+    comentario: 'comentario',
+    usuario_id: 'usuario_id'
+  };
+
+  export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5123,11 +7436,18 @@ export namespace Prisma {
 
 
   export const ProdutoOrderByRelevanceFieldEnum: {
-    nome_do_produto: 'nome_do_produto',
+    nome: 'nome',
     tamanho: 'tamanho'
   };
 
   export type ProdutoOrderByRelevanceFieldEnum = (typeof ProdutoOrderByRelevanceFieldEnum)[keyof typeof ProdutoOrderByRelevanceFieldEnum]
+
+
+  export const CategoriaOrderByRelevanceFieldEnum: {
+    nome: 'nome'
+  };
+
+  export type CategoriaOrderByRelevanceFieldEnum = (typeof CategoriaOrderByRelevanceFieldEnum)[keyof typeof CategoriaOrderByRelevanceFieldEnum]
 
 
   export const UsuarioOrderByRelevanceFieldEnum: {
@@ -5141,6 +7461,13 @@ export namespace Prisma {
   };
 
   export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
+
+
+  export const AvaliacaoOrderByRelevanceFieldEnum: {
+    comentario: 'comentario'
+  };
+
+  export type AvaliacaoOrderByRelevanceFieldEnum = (typeof AvaliacaoOrderByRelevanceFieldEnum)[keyof typeof AvaliacaoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5184,18 +7511,20 @@ export namespace Prisma {
     OR?: ProdutoWhereInput[]
     NOT?: ProdutoWhereInput | ProdutoWhereInput[]
     id?: IntFilter<"Produto"> | number
-    nome_do_produto?: StringFilter<"Produto"> | string
+    nome?: StringFilter<"Produto"> | string
     preco?: FloatFilter<"Produto"> | number
     tamanho?: StringFilter<"Produto"> | string
-    vendas?: VendaListRelationFilter
+    categorias?: CategoriaListRelationFilter
+    transacoes?: TransacaoListRelationFilter
   }
 
   export type ProdutoOrderByWithRelationInput = {
     id?: SortOrder
-    nome_do_produto?: SortOrder
+    nome?: SortOrder
     preco?: SortOrder
     tamanho?: SortOrder
-    vendas?: VendaOrderByRelationAggregateInput
+    categorias?: CategoriaOrderByRelationAggregateInput
+    transacoes?: TransacaoOrderByRelationAggregateInput
     _relevance?: ProdutoOrderByRelevanceInput
   }
 
@@ -5204,15 +7533,16 @@ export namespace Prisma {
     AND?: ProdutoWhereInput | ProdutoWhereInput[]
     OR?: ProdutoWhereInput[]
     NOT?: ProdutoWhereInput | ProdutoWhereInput[]
-    nome_do_produto?: StringFilter<"Produto"> | string
+    nome?: StringFilter<"Produto"> | string
     preco?: FloatFilter<"Produto"> | number
     tamanho?: StringFilter<"Produto"> | string
-    vendas?: VendaListRelationFilter
+    categorias?: CategoriaListRelationFilter
+    transacoes?: TransacaoListRelationFilter
   }, "id">
 
   export type ProdutoOrderByWithAggregationInput = {
     id?: SortOrder
-    nome_do_produto?: SortOrder
+    nome?: SortOrder
     preco?: SortOrder
     tamanho?: SortOrder
     _count?: ProdutoCountOrderByAggregateInput
@@ -5227,61 +7557,52 @@ export namespace Prisma {
     OR?: ProdutoScalarWhereWithAggregatesInput[]
     NOT?: ProdutoScalarWhereWithAggregatesInput | ProdutoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Produto"> | number
-    nome_do_produto?: StringWithAggregatesFilter<"Produto"> | string
+    nome?: StringWithAggregatesFilter<"Produto"> | string
     preco?: FloatWithAggregatesFilter<"Produto"> | number
     tamanho?: StringWithAggregatesFilter<"Produto"> | string
   }
 
-  export type TransacaoWhereInput = {
-    AND?: TransacaoWhereInput | TransacaoWhereInput[]
-    OR?: TransacaoWhereInput[]
-    NOT?: TransacaoWhereInput | TransacaoWhereInput[]
-    id?: IntFilter<"Transacao"> | number
-    data?: DateTimeFilter<"Transacao"> | Date | string
-    preco?: FloatFilter<"Transacao"> | number
-    id_usuario?: IntFilter<"Transacao"> | number
-    vendas?: VendaListRelationFilter
+  export type CategoriaWhereInput = {
+    AND?: CategoriaWhereInput | CategoriaWhereInput[]
+    OR?: CategoriaWhereInput[]
+    NOT?: CategoriaWhereInput | CategoriaWhereInput[]
+    id?: IntFilter<"Categoria"> | number
+    nome?: StringFilter<"Categoria"> | string
+    produtos?: ProdutoListRelationFilter
   }
 
-  export type TransacaoOrderByWithRelationInput = {
+  export type CategoriaOrderByWithRelationInput = {
     id?: SortOrder
-    data?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
-    vendas?: VendaOrderByRelationAggregateInput
+    nome?: SortOrder
+    produtos?: ProdutoOrderByRelationAggregateInput
+    _relevance?: CategoriaOrderByRelevanceInput
   }
 
-  export type TransacaoWhereUniqueInput = Prisma.AtLeast<{
+  export type CategoriaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: TransacaoWhereInput | TransacaoWhereInput[]
-    OR?: TransacaoWhereInput[]
-    NOT?: TransacaoWhereInput | TransacaoWhereInput[]
-    data?: DateTimeFilter<"Transacao"> | Date | string
-    preco?: FloatFilter<"Transacao"> | number
-    id_usuario?: IntFilter<"Transacao"> | number
-    vendas?: VendaListRelationFilter
+    AND?: CategoriaWhereInput | CategoriaWhereInput[]
+    OR?: CategoriaWhereInput[]
+    NOT?: CategoriaWhereInput | CategoriaWhereInput[]
+    nome?: StringFilter<"Categoria"> | string
+    produtos?: ProdutoListRelationFilter
   }, "id">
 
-  export type TransacaoOrderByWithAggregationInput = {
+  export type CategoriaOrderByWithAggregationInput = {
     id?: SortOrder
-    data?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
-    _count?: TransacaoCountOrderByAggregateInput
-    _avg?: TransacaoAvgOrderByAggregateInput
-    _max?: TransacaoMaxOrderByAggregateInput
-    _min?: TransacaoMinOrderByAggregateInput
-    _sum?: TransacaoSumOrderByAggregateInput
+    nome?: SortOrder
+    _count?: CategoriaCountOrderByAggregateInput
+    _avg?: CategoriaAvgOrderByAggregateInput
+    _max?: CategoriaMaxOrderByAggregateInput
+    _min?: CategoriaMinOrderByAggregateInput
+    _sum?: CategoriaSumOrderByAggregateInput
   }
 
-  export type TransacaoScalarWhereWithAggregatesInput = {
-    AND?: TransacaoScalarWhereWithAggregatesInput | TransacaoScalarWhereWithAggregatesInput[]
-    OR?: TransacaoScalarWhereWithAggregatesInput[]
-    NOT?: TransacaoScalarWhereWithAggregatesInput | TransacaoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Transacao"> | number
-    data?: DateTimeWithAggregatesFilter<"Transacao"> | Date | string
-    preco?: FloatWithAggregatesFilter<"Transacao"> | number
-    id_usuario?: IntWithAggregatesFilter<"Transacao"> | number
+  export type CategoriaScalarWhereWithAggregatesInput = {
+    AND?: CategoriaScalarWhereWithAggregatesInput | CategoriaScalarWhereWithAggregatesInput[]
+    OR?: CategoriaScalarWhereWithAggregatesInput[]
+    NOT?: CategoriaScalarWhereWithAggregatesInput | CategoriaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Categoria"> | number
+    nome?: StringWithAggregatesFilter<"Categoria"> | string
   }
 
   export type UsuarioWhereInput = {
@@ -5297,6 +7618,8 @@ export namespace Prisma {
     cpf?: StringFilter<"Usuario"> | string
     telefone?: StringFilter<"Usuario"> | string
     cep?: StringFilter<"Usuario"> | string
+    avaliacoes?: AvaliacaoListRelationFilter
+    vendas?: VendaListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
@@ -5309,6 +7632,8 @@ export namespace Prisma {
     cpf?: SortOrder
     telefone?: SortOrder
     cep?: SortOrder
+    avaliacoes?: AvaliacaoOrderByRelationAggregateInput
+    vendas?: VendaOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
 
@@ -5325,6 +7650,8 @@ export namespace Prisma {
     cpf?: StringFilter<"Usuario"> | string
     telefone?: StringFilter<"Usuario"> | string
     cep?: StringFilter<"Usuario"> | string
+    avaliacoes?: AvaliacaoListRelationFilter
+    vendas?: VendaListRelationFilter
   }, "id">
 
   export type UsuarioOrderByWithAggregationInput = {
@@ -5363,37 +7690,36 @@ export namespace Prisma {
     AND?: VendaWhereInput | VendaWhereInput[]
     OR?: VendaWhereInput[]
     NOT?: VendaWhereInput | VendaWhereInput[]
-    quantidade?: IntFilter<"Venda"> | number
-    id_transacao?: IntFilter<"Venda"> | number
-    id_produto?: IntFilter<"Venda"> | number
-    transacao?: XOR<TransacaoScalarRelationFilter, TransacaoWhereInput>
-    produto?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
+    id?: IntFilter<"Venda"> | number
+    data?: DateTimeFilter<"Venda"> | Date | string
+    usuario_id?: IntFilter<"Venda"> | number
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    transacoes?: TransacaoListRelationFilter
   }
 
   export type VendaOrderByWithRelationInput = {
-    quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
-    transacao?: TransacaoOrderByWithRelationInput
-    produto?: ProdutoOrderByWithRelationInput
+    id?: SortOrder
+    data?: SortOrder
+    usuario_id?: SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
+    transacoes?: TransacaoOrderByRelationAggregateInput
   }
 
   export type VendaWhereUniqueInput = Prisma.AtLeast<{
-    id_transacao_id_produto?: VendaId_transacaoId_produtoCompoundUniqueInput
+    id?: number
     AND?: VendaWhereInput | VendaWhereInput[]
     OR?: VendaWhereInput[]
     NOT?: VendaWhereInput | VendaWhereInput[]
-    quantidade?: IntFilter<"Venda"> | number
-    id_transacao?: IntFilter<"Venda"> | number
-    id_produto?: IntFilter<"Venda"> | number
-    transacao?: XOR<TransacaoScalarRelationFilter, TransacaoWhereInput>
-    produto?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
-  }, "id_transacao_id_produto">
+    data?: DateTimeFilter<"Venda"> | Date | string
+    usuario_id?: IntFilter<"Venda"> | number
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    transacoes?: TransacaoListRelationFilter
+  }, "id">
 
   export type VendaOrderByWithAggregationInput = {
-    quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
+    id?: SortOrder
+    data?: SortOrder
+    usuario_id?: SortOrder
     _count?: VendaCountOrderByAggregateInput
     _avg?: VendaAvgOrderByAggregateInput
     _max?: VendaMaxOrderByAggregateInput
@@ -5405,109 +7731,207 @@ export namespace Prisma {
     AND?: VendaScalarWhereWithAggregatesInput | VendaScalarWhereWithAggregatesInput[]
     OR?: VendaScalarWhereWithAggregatesInput[]
     NOT?: VendaScalarWhereWithAggregatesInput | VendaScalarWhereWithAggregatesInput[]
-    quantidade?: IntWithAggregatesFilter<"Venda"> | number
-    id_transacao?: IntWithAggregatesFilter<"Venda"> | number
-    id_produto?: IntWithAggregatesFilter<"Venda"> | number
+    id?: IntWithAggregatesFilter<"Venda"> | number
+    data?: DateTimeWithAggregatesFilter<"Venda"> | Date | string
+    usuario_id?: IntWithAggregatesFilter<"Venda"> | number
+  }
+
+  export type TransacaoWhereInput = {
+    AND?: TransacaoWhereInput | TransacaoWhereInput[]
+    OR?: TransacaoWhereInput[]
+    NOT?: TransacaoWhereInput | TransacaoWhereInput[]
+    id?: IntFilter<"Transacao"> | number
+    produto_id?: IntFilter<"Transacao"> | number
+    venda_id?: IntFilter<"Transacao"> | number
+    quantidade?: FloatFilter<"Transacao"> | number
+    produtos?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
+    vendas?: XOR<VendaScalarRelationFilter, VendaWhereInput>
+  }
+
+  export type TransacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
+    quantidade?: SortOrder
+    produtos?: ProdutoOrderByWithRelationInput
+    vendas?: VendaOrderByWithRelationInput
+  }
+
+  export type TransacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TransacaoWhereInput | TransacaoWhereInput[]
+    OR?: TransacaoWhereInput[]
+    NOT?: TransacaoWhereInput | TransacaoWhereInput[]
+    produto_id?: IntFilter<"Transacao"> | number
+    venda_id?: IntFilter<"Transacao"> | number
+    quantidade?: FloatFilter<"Transacao"> | number
+    produtos?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
+    vendas?: XOR<VendaScalarRelationFilter, VendaWhereInput>
+  }, "id">
+
+  export type TransacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
+    quantidade?: SortOrder
+    _count?: TransacaoCountOrderByAggregateInput
+    _avg?: TransacaoAvgOrderByAggregateInput
+    _max?: TransacaoMaxOrderByAggregateInput
+    _min?: TransacaoMinOrderByAggregateInput
+    _sum?: TransacaoSumOrderByAggregateInput
+  }
+
+  export type TransacaoScalarWhereWithAggregatesInput = {
+    AND?: TransacaoScalarWhereWithAggregatesInput | TransacaoScalarWhereWithAggregatesInput[]
+    OR?: TransacaoScalarWhereWithAggregatesInput[]
+    NOT?: TransacaoScalarWhereWithAggregatesInput | TransacaoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Transacao"> | number
+    produto_id?: IntWithAggregatesFilter<"Transacao"> | number
+    venda_id?: IntWithAggregatesFilter<"Transacao"> | number
+    quantidade?: FloatWithAggregatesFilter<"Transacao"> | number
+  }
+
+  export type AvaliacaoWhereInput = {
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    id?: IntFilter<"Avaliacao"> | number
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    usuario_id?: IntFilter<"Avaliacao"> | number
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+  }
+
+  export type AvaliacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    usuario_id?: SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
+    _relevance?: AvaliacaoOrderByRelevanceInput
+  }
+
+  export type AvaliacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    usuario_id?: IntFilter<"Avaliacao"> | number
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+  }, "id">
+
+  export type AvaliacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    usuario_id?: SortOrder
+    _count?: AvaliacaoCountOrderByAggregateInput
+    _avg?: AvaliacaoAvgOrderByAggregateInput
+    _max?: AvaliacaoMaxOrderByAggregateInput
+    _min?: AvaliacaoMinOrderByAggregateInput
+    _sum?: AvaliacaoSumOrderByAggregateInput
+  }
+
+  export type AvaliacaoScalarWhereWithAggregatesInput = {
+    AND?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    OR?: AvaliacaoScalarWhereWithAggregatesInput[]
+    NOT?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Avaliacao"> | number
+    nota?: IntWithAggregatesFilter<"Avaliacao"> | number
+    comentario?: StringWithAggregatesFilter<"Avaliacao"> | string
+    usuario_id?: IntWithAggregatesFilter<"Avaliacao"> | number
   }
 
   export type ProdutoCreateInput = {
-    nome_do_produto: string
+    nome: string
     preco: number
     tamanho: string
-    vendas?: VendaCreateNestedManyWithoutProdutoInput
+    categorias?: CategoriaCreateNestedManyWithoutProdutosInput
+    transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
   }
 
   export type ProdutoUncheckedCreateInput = {
     id?: number
-    nome_do_produto: string
+    nome: string
     preco: number
     tamanho: string
-    vendas?: VendaUncheckedCreateNestedManyWithoutProdutoInput
+    categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
+    transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
   }
 
   export type ProdutoUpdateInput = {
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     tamanho?: StringFieldUpdateOperationsInput | string
-    vendas?: VendaUpdateManyWithoutProdutoNestedInput
+    categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
+    transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
   }
 
   export type ProdutoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     tamanho?: StringFieldUpdateOperationsInput | string
-    vendas?: VendaUncheckedUpdateManyWithoutProdutoNestedInput
+    categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
+    transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
   }
 
   export type ProdutoCreateManyInput = {
     id?: number
-    nome_do_produto: string
+    nome: string
     preco: number
     tamanho: string
   }
 
   export type ProdutoUpdateManyMutationInput = {
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     tamanho?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProdutoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     tamanho?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TransacaoCreateInput = {
-    data: Date | string
-    preco: number
-    id_usuario: number
-    vendas?: VendaCreateNestedManyWithoutTransacaoInput
+  export type CategoriaCreateInput = {
+    nome: string
+    produtos?: ProdutoCreateNestedManyWithoutCategoriasInput
   }
 
-  export type TransacaoUncheckedCreateInput = {
+  export type CategoriaUncheckedCreateInput = {
     id?: number
-    data: Date | string
-    preco: number
-    id_usuario: number
-    vendas?: VendaUncheckedCreateNestedManyWithoutTransacaoInput
+    nome: string
+    produtos?: ProdutoUncheckedCreateNestedManyWithoutCategoriasInput
   }
 
-  export type TransacaoUpdateInput = {
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    vendas?: VendaUpdateManyWithoutTransacaoNestedInput
+  export type CategoriaUpdateInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    produtos?: ProdutoUpdateManyWithoutCategoriasNestedInput
   }
 
-  export type TransacaoUncheckedUpdateInput = {
+  export type CategoriaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    vendas?: VendaUncheckedUpdateManyWithoutTransacaoNestedInput
+    nome?: StringFieldUpdateOperationsInput | string
+    produtos?: ProdutoUncheckedUpdateManyWithoutCategoriasNestedInput
   }
 
-  export type TransacaoCreateManyInput = {
+  export type CategoriaCreateManyInput = {
     id?: number
-    data: Date | string
-    preco: number
-    id_usuario: number
+    nome: string
   }
 
-  export type TransacaoUpdateManyMutationInput = {
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
+  export type CategoriaUpdateManyMutationInput = {
+    nome?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TransacaoUncheckedUpdateManyInput = {
+  export type CategoriaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
   }
 
   export type UsuarioCreateInput = {
@@ -5519,6 +7943,8 @@ export namespace Prisma {
     cpf: string
     telefone: string
     cep: string
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutUsuarioInput
+    vendas?: VendaCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
@@ -5531,6 +7957,8 @@ export namespace Prisma {
     cpf: string
     telefone: string
     cep: string
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput
+    vendas?: VendaUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
@@ -5542,6 +7970,8 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     cep?: StringFieldUpdateOperationsInput | string
+    avaliacoes?: AvaliacaoUpdateManyWithoutUsuarioNestedInput
+    vendas?: VendaUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
@@ -5554,6 +7984,8 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     cep?: StringFieldUpdateOperationsInput | string
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+    vendas?: VendaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
@@ -5592,43 +8024,134 @@ export namespace Prisma {
   }
 
   export type VendaCreateInput = {
-    quantidade: number
-    transacao: TransacaoCreateNestedOneWithoutVendasInput
-    produto: ProdutoCreateNestedOneWithoutVendasInput
+    data: Date | string
+    usuario: UsuarioCreateNestedOneWithoutVendasInput
+    transacoes?: TransacaoCreateNestedManyWithoutVendasInput
   }
 
   export type VendaUncheckedCreateInput = {
-    quantidade: number
-    id_transacao: number
-    id_produto: number
+    id?: number
+    data: Date | string
+    usuario_id: number
+    transacoes?: TransacaoUncheckedCreateNestedManyWithoutVendasInput
   }
 
   export type VendaUpdateInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    transacao?: TransacaoUpdateOneRequiredWithoutVendasNestedInput
-    produto?: ProdutoUpdateOneRequiredWithoutVendasNestedInput
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutVendasNestedInput
+    transacoes?: TransacaoUpdateManyWithoutVendasNestedInput
   }
 
   export type VendaUncheckedUpdateInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_transacao?: IntFieldUpdateOperationsInput | number
-    id_produto?: IntFieldUpdateOperationsInput | number
+    id?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+    transacoes?: TransacaoUncheckedUpdateManyWithoutVendasNestedInput
   }
 
   export type VendaCreateManyInput = {
-    quantidade: number
-    id_transacao: number
-    id_produto: number
+    id?: number
+    data: Date | string
+    usuario_id: number
   }
 
   export type VendaUpdateManyMutationInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VendaUncheckedUpdateManyInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_transacao?: IntFieldUpdateOperationsInput | number
-    id_produto?: IntFieldUpdateOperationsInput | number
+    id?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TransacaoCreateInput = {
+    quantidade: number
+    produtos: ProdutoCreateNestedOneWithoutTransacoesInput
+    vendas: VendaCreateNestedOneWithoutTransacoesInput
+  }
+
+  export type TransacaoUncheckedCreateInput = {
+    id?: number
+    produto_id: number
+    venda_id: number
+    quantidade: number
+  }
+
+  export type TransacaoUpdateInput = {
+    quantidade?: FloatFieldUpdateOperationsInput | number
+    produtos?: ProdutoUpdateOneRequiredWithoutTransacoesNestedInput
+    vendas?: VendaUpdateOneRequiredWithoutTransacoesNestedInput
+  }
+
+  export type TransacaoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
+    venda_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type TransacaoCreateManyInput = {
+    id?: number
+    produto_id: number
+    venda_id: number
+    quantidade: number
+  }
+
+  export type TransacaoUpdateManyMutationInput = {
+    quantidade?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type TransacaoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
+    venda_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AvaliacaoCreateInput = {
+    nota: number
+    comentario: string
+    usuario: UsuarioCreateNestedOneWithoutAvaliacoesInput
+  }
+
+  export type AvaliacaoUncheckedCreateInput = {
+    id?: number
+    nota: number
+    comentario: string
+    usuario_id: number
+  }
+
+  export type AvaliacaoUpdateInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario?: UsuarioUpdateOneRequiredWithoutAvaliacoesNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AvaliacaoCreateManyInput = {
+    id?: number
+    nota: number
+    comentario: string
+    usuario_id: number
+  }
+
+  export type AvaliacaoUpdateManyMutationInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5668,13 +8191,23 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type VendaListRelationFilter = {
-    every?: VendaWhereInput
-    some?: VendaWhereInput
-    none?: VendaWhereInput
+  export type CategoriaListRelationFilter = {
+    every?: CategoriaWhereInput
+    some?: CategoriaWhereInput
+    none?: CategoriaWhereInput
   }
 
-  export type VendaOrderByRelationAggregateInput = {
+  export type TransacaoListRelationFilter = {
+    every?: TransacaoWhereInput
+    some?: TransacaoWhereInput
+    none?: TransacaoWhereInput
+  }
+
+  export type CategoriaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TransacaoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5686,7 +8219,7 @@ export namespace Prisma {
 
   export type ProdutoCountOrderByAggregateInput = {
     id?: SortOrder
-    nome_do_produto?: SortOrder
+    nome?: SortOrder
     preco?: SortOrder
     tamanho?: SortOrder
   }
@@ -5698,14 +8231,14 @@ export namespace Prisma {
 
   export type ProdutoMaxOrderByAggregateInput = {
     id?: SortOrder
-    nome_do_produto?: SortOrder
+    nome?: SortOrder
     preco?: SortOrder
     tamanho?: SortOrder
   }
 
   export type ProdutoMinOrderByAggregateInput = {
     id?: SortOrder
-    nome_do_produto?: SortOrder
+    nome?: SortOrder
     preco?: SortOrder
     tamanho?: SortOrder
   }
@@ -5765,62 +8298,63 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type ProdutoListRelationFilter = {
+    every?: ProdutoWhereInput
+    some?: ProdutoWhereInput
+    none?: ProdutoWhereInput
   }
 
-  export type TransacaoCountOrderByAggregateInput = {
+  export type ProdutoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategoriaOrderByRelevanceInput = {
+    fields: CategoriaOrderByRelevanceFieldEnum | CategoriaOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CategoriaCountOrderByAggregateInput = {
     id?: SortOrder
-    data?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
+    nome?: SortOrder
   }
 
-  export type TransacaoAvgOrderByAggregateInput = {
+  export type CategoriaAvgOrderByAggregateInput = {
     id?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
   }
 
-  export type TransacaoMaxOrderByAggregateInput = {
+  export type CategoriaMaxOrderByAggregateInput = {
     id?: SortOrder
-    data?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
+    nome?: SortOrder
   }
 
-  export type TransacaoMinOrderByAggregateInput = {
+  export type CategoriaMinOrderByAggregateInput = {
     id?: SortOrder
-    data?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
+    nome?: SortOrder
   }
 
-  export type TransacaoSumOrderByAggregateInput = {
+  export type CategoriaSumOrderByAggregateInput = {
     id?: SortOrder
-    preco?: SortOrder
-    id_usuario?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type AvaliacaoListRelationFilter = {
+    every?: AvaliacaoWhereInput
+    some?: AvaliacaoWhereInput
+    none?: AvaliacaoWhereInput
+  }
+
+  export type VendaListRelationFilter = {
+    every?: VendaWhereInput
+    some?: VendaWhereInput
+    none?: VendaWhereInput
+  }
+
+  export type AvaliacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VendaOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UsuarioOrderByRelevanceInput = {
@@ -5875,9 +8409,62 @@ export namespace Prisma {
     sexo?: SortOrder
   }
 
-  export type TransacaoScalarRelationFilter = {
-    is?: TransacaoWhereInput
-    isNot?: TransacaoWhereInput
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type UsuarioScalarRelationFilter = {
+    is?: UsuarioWhereInput
+    isNot?: UsuarioWhereInput
+  }
+
+  export type VendaCountOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type VendaAvgOrderByAggregateInput = {
+    id?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type VendaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type VendaMinOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type VendaSumOrderByAggregateInput = {
+    id?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type ProdutoScalarRelationFilter = {
@@ -5885,53 +8472,109 @@ export namespace Prisma {
     isNot?: ProdutoWhereInput
   }
 
-  export type VendaId_transacaoId_produtoCompoundUniqueInput = {
-    id_transacao: number
-    id_produto: number
+  export type VendaScalarRelationFilter = {
+    is?: VendaWhereInput
+    isNot?: VendaWhereInput
   }
 
-  export type VendaCountOrderByAggregateInput = {
+  export type TransacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
     quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
   }
 
-  export type VendaAvgOrderByAggregateInput = {
+  export type TransacaoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
     quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
   }
 
-  export type VendaMaxOrderByAggregateInput = {
+  export type TransacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
     quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
   }
 
-  export type VendaMinOrderByAggregateInput = {
+  export type TransacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
     quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
   }
 
-  export type VendaSumOrderByAggregateInput = {
+  export type TransacaoSumOrderByAggregateInput = {
+    id?: SortOrder
+    produto_id?: SortOrder
+    venda_id?: SortOrder
     quantidade?: SortOrder
-    id_transacao?: SortOrder
-    id_produto?: SortOrder
   }
 
-  export type VendaCreateNestedManyWithoutProdutoInput = {
-    create?: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput> | VendaCreateWithoutProdutoInput[] | VendaUncheckedCreateWithoutProdutoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutProdutoInput | VendaCreateOrConnectWithoutProdutoInput[]
-    createMany?: VendaCreateManyProdutoInputEnvelope
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+  export type AvaliacaoOrderByRelevanceInput = {
+    fields: AvaliacaoOrderByRelevanceFieldEnum | AvaliacaoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
-  export type VendaUncheckedCreateNestedManyWithoutProdutoInput = {
-    create?: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput> | VendaCreateWithoutProdutoInput[] | VendaUncheckedCreateWithoutProdutoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutProdutoInput | VendaCreateOrConnectWithoutProdutoInput[]
-    createMany?: VendaCreateManyProdutoInputEnvelope
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+  export type AvaliacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type AvaliacaoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type AvaliacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type AvaliacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type AvaliacaoSumOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    usuario_id?: SortOrder
+  }
+
+  export type CategoriaCreateNestedManyWithoutProdutosInput = {
+    create?: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput> | CategoriaCreateWithoutProdutosInput[] | CategoriaUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: CategoriaCreateOrConnectWithoutProdutosInput | CategoriaCreateOrConnectWithoutProdutosInput[]
+    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+  }
+
+  export type TransacaoCreateNestedManyWithoutProdutosInput = {
+    create?: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput> | TransacaoCreateWithoutProdutosInput[] | TransacaoUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutProdutosInput | TransacaoCreateOrConnectWithoutProdutosInput[]
+    createMany?: TransacaoCreateManyProdutosInputEnvelope
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+  }
+
+  export type CategoriaUncheckedCreateNestedManyWithoutProdutosInput = {
+    create?: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput> | CategoriaCreateWithoutProdutosInput[] | CategoriaUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: CategoriaCreateOrConnectWithoutProdutosInput | CategoriaCreateOrConnectWithoutProdutosInput[]
+    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+  }
+
+  export type TransacaoUncheckedCreateNestedManyWithoutProdutosInput = {
+    create?: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput> | TransacaoCreateWithoutProdutosInput[] | TransacaoUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutProdutosInput | TransacaoCreateOrConnectWithoutProdutosInput[]
+    createMany?: TransacaoCreateManyProdutosInputEnvelope
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5946,18 +8589,31 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type VendaUpdateManyWithoutProdutoNestedInput = {
-    create?: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput> | VendaCreateWithoutProdutoInput[] | VendaUncheckedCreateWithoutProdutoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutProdutoInput | VendaCreateOrConnectWithoutProdutoInput[]
-    upsert?: VendaUpsertWithWhereUniqueWithoutProdutoInput | VendaUpsertWithWhereUniqueWithoutProdutoInput[]
-    createMany?: VendaCreateManyProdutoInputEnvelope
-    set?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    disconnect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    delete?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    update?: VendaUpdateWithWhereUniqueWithoutProdutoInput | VendaUpdateWithWhereUniqueWithoutProdutoInput[]
-    updateMany?: VendaUpdateManyWithWhereWithoutProdutoInput | VendaUpdateManyWithWhereWithoutProdutoInput[]
-    deleteMany?: VendaScalarWhereInput | VendaScalarWhereInput[]
+  export type CategoriaUpdateManyWithoutProdutosNestedInput = {
+    create?: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput> | CategoriaCreateWithoutProdutosInput[] | CategoriaUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: CategoriaCreateOrConnectWithoutProdutosInput | CategoriaCreateOrConnectWithoutProdutosInput[]
+    upsert?: CategoriaUpsertWithWhereUniqueWithoutProdutosInput | CategoriaUpsertWithWhereUniqueWithoutProdutosInput[]
+    set?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    disconnect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    delete?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    update?: CategoriaUpdateWithWhereUniqueWithoutProdutosInput | CategoriaUpdateWithWhereUniqueWithoutProdutosInput[]
+    updateMany?: CategoriaUpdateManyWithWhereWithoutProdutosInput | CategoriaUpdateManyWithWhereWithoutProdutosInput[]
+    deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
+  }
+
+  export type TransacaoUpdateManyWithoutProdutosNestedInput = {
+    create?: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput> | TransacaoCreateWithoutProdutosInput[] | TransacaoUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutProdutosInput | TransacaoCreateOrConnectWithoutProdutosInput[]
+    upsert?: TransacaoUpsertWithWhereUniqueWithoutProdutosInput | TransacaoUpsertWithWhereUniqueWithoutProdutosInput[]
+    createMany?: TransacaoCreateManyProdutosInputEnvelope
+    set?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    disconnect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    delete?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    update?: TransacaoUpdateWithWhereUniqueWithoutProdutosInput | TransacaoUpdateWithWhereUniqueWithoutProdutosInput[]
+    updateMany?: TransacaoUpdateManyWithWhereWithoutProdutosInput | TransacaoUpdateManyWithWhereWithoutProdutosInput[]
+    deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -5968,92 +8624,255 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type VendaUncheckedUpdateManyWithoutProdutoNestedInput = {
-    create?: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput> | VendaCreateWithoutProdutoInput[] | VendaUncheckedCreateWithoutProdutoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutProdutoInput | VendaCreateOrConnectWithoutProdutoInput[]
-    upsert?: VendaUpsertWithWhereUniqueWithoutProdutoInput | VendaUpsertWithWhereUniqueWithoutProdutoInput[]
-    createMany?: VendaCreateManyProdutoInputEnvelope
+  export type CategoriaUncheckedUpdateManyWithoutProdutosNestedInput = {
+    create?: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput> | CategoriaCreateWithoutProdutosInput[] | CategoriaUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: CategoriaCreateOrConnectWithoutProdutosInput | CategoriaCreateOrConnectWithoutProdutosInput[]
+    upsert?: CategoriaUpsertWithWhereUniqueWithoutProdutosInput | CategoriaUpsertWithWhereUniqueWithoutProdutosInput[]
+    set?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    disconnect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    delete?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+    update?: CategoriaUpdateWithWhereUniqueWithoutProdutosInput | CategoriaUpdateWithWhereUniqueWithoutProdutosInput[]
+    updateMany?: CategoriaUpdateManyWithWhereWithoutProdutosInput | CategoriaUpdateManyWithWhereWithoutProdutosInput[]
+    deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
+  }
+
+  export type TransacaoUncheckedUpdateManyWithoutProdutosNestedInput = {
+    create?: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput> | TransacaoCreateWithoutProdutosInput[] | TransacaoUncheckedCreateWithoutProdutosInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutProdutosInput | TransacaoCreateOrConnectWithoutProdutosInput[]
+    upsert?: TransacaoUpsertWithWhereUniqueWithoutProdutosInput | TransacaoUpsertWithWhereUniqueWithoutProdutosInput[]
+    createMany?: TransacaoCreateManyProdutosInputEnvelope
+    set?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    disconnect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    delete?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    update?: TransacaoUpdateWithWhereUniqueWithoutProdutosInput | TransacaoUpdateWithWhereUniqueWithoutProdutosInput[]
+    updateMany?: TransacaoUpdateManyWithWhereWithoutProdutosInput | TransacaoUpdateManyWithWhereWithoutProdutosInput[]
+    deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
+  }
+
+  export type ProdutoCreateNestedManyWithoutCategoriasInput = {
+    create?: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput> | ProdutoCreateWithoutCategoriasInput[] | ProdutoUncheckedCreateWithoutCategoriasInput[]
+    connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriasInput | ProdutoCreateOrConnectWithoutCategoriasInput[]
+    connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+  }
+
+  export type ProdutoUncheckedCreateNestedManyWithoutCategoriasInput = {
+    create?: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput> | ProdutoCreateWithoutCategoriasInput[] | ProdutoUncheckedCreateWithoutCategoriasInput[]
+    connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriasInput | ProdutoCreateOrConnectWithoutCategoriasInput[]
+    connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+  }
+
+  export type ProdutoUpdateManyWithoutCategoriasNestedInput = {
+    create?: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput> | ProdutoCreateWithoutCategoriasInput[] | ProdutoUncheckedCreateWithoutCategoriasInput[]
+    connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriasInput | ProdutoCreateOrConnectWithoutCategoriasInput[]
+    upsert?: ProdutoUpsertWithWhereUniqueWithoutCategoriasInput | ProdutoUpsertWithWhereUniqueWithoutCategoriasInput[]
+    set?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    disconnect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    delete?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    update?: ProdutoUpdateWithWhereUniqueWithoutCategoriasInput | ProdutoUpdateWithWhereUniqueWithoutCategoriasInput[]
+    updateMany?: ProdutoUpdateManyWithWhereWithoutCategoriasInput | ProdutoUpdateManyWithWhereWithoutCategoriasInput[]
+    deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
+  }
+
+  export type ProdutoUncheckedUpdateManyWithoutCategoriasNestedInput = {
+    create?: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput> | ProdutoCreateWithoutCategoriasInput[] | ProdutoUncheckedCreateWithoutCategoriasInput[]
+    connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriasInput | ProdutoCreateOrConnectWithoutCategoriasInput[]
+    upsert?: ProdutoUpsertWithWhereUniqueWithoutCategoriasInput | ProdutoUpsertWithWhereUniqueWithoutCategoriasInput[]
+    set?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    disconnect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    delete?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
+    update?: ProdutoUpdateWithWhereUniqueWithoutCategoriasInput | ProdutoUpdateWithWhereUniqueWithoutCategoriasInput[]
+    updateMany?: ProdutoUpdateManyWithWhereWithoutCategoriasInput | ProdutoUpdateManyWithWhereWithoutCategoriasInput[]
+    deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
+  }
+
+  export type AvaliacaoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
+  export type VendaCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput> | VendaCreateWithoutUsuarioInput[] | VendaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: VendaCreateOrConnectWithoutUsuarioInput | VendaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: VendaCreateManyUsuarioInputEnvelope
+    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
+  export type VendaUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput> | VendaCreateWithoutUsuarioInput[] | VendaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: VendaCreateOrConnectWithoutUsuarioInput | VendaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: VendaCreateManyUsuarioInputEnvelope
+    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutUsuarioInput | AvaliacaoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
+  export type VendaUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput> | VendaCreateWithoutUsuarioInput[] | VendaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: VendaCreateOrConnectWithoutUsuarioInput | VendaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: VendaUpsertWithWhereUniqueWithoutUsuarioInput | VendaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: VendaCreateManyUsuarioInputEnvelope
     set?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
     disconnect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
     delete?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
     connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    update?: VendaUpdateWithWhereUniqueWithoutProdutoInput | VendaUpdateWithWhereUniqueWithoutProdutoInput[]
-    updateMany?: VendaUpdateManyWithWhereWithoutProdutoInput | VendaUpdateManyWithWhereWithoutProdutoInput[]
+    update?: VendaUpdateWithWhereUniqueWithoutUsuarioInput | VendaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: VendaUpdateManyWithWhereWithoutUsuarioInput | VendaUpdateManyWithWhereWithoutUsuarioInput[]
     deleteMany?: VendaScalarWhereInput | VendaScalarWhereInput[]
   }
 
-  export type VendaCreateNestedManyWithoutTransacaoInput = {
-    create?: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput> | VendaCreateWithoutTransacaoInput[] | VendaUncheckedCreateWithoutTransacaoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutTransacaoInput | VendaCreateOrConnectWithoutTransacaoInput[]
-    createMany?: VendaCreateManyTransacaoInputEnvelope
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+  export type AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutUsuarioInput | AvaliacaoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
   }
 
-  export type VendaUncheckedCreateNestedManyWithoutTransacaoInput = {
-    create?: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput> | VendaCreateWithoutTransacaoInput[] | VendaUncheckedCreateWithoutTransacaoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutTransacaoInput | VendaCreateOrConnectWithoutTransacaoInput[]
-    createMany?: VendaCreateManyTransacaoInputEnvelope
+  export type VendaUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput> | VendaCreateWithoutUsuarioInput[] | VendaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: VendaCreateOrConnectWithoutUsuarioInput | VendaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: VendaUpsertWithWhereUniqueWithoutUsuarioInput | VendaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: VendaCreateManyUsuarioInputEnvelope
+    set?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+    disconnect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+    delete?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
     connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
+    update?: VendaUpdateWithWhereUniqueWithoutUsuarioInput | VendaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: VendaUpdateManyWithWhereWithoutUsuarioInput | VendaUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: VendaScalarWhereInput | VendaScalarWhereInput[]
+  }
+
+  export type UsuarioCreateNestedOneWithoutVendasInput = {
+    create?: XOR<UsuarioCreateWithoutVendasInput, UsuarioUncheckedCreateWithoutVendasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutVendasInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type TransacaoCreateNestedManyWithoutVendasInput = {
+    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput> | TransacaoCreateWithoutVendasInput[] | TransacaoUncheckedCreateWithoutVendasInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput | TransacaoCreateOrConnectWithoutVendasInput[]
+    createMany?: TransacaoCreateManyVendasInputEnvelope
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+  }
+
+  export type TransacaoUncheckedCreateNestedManyWithoutVendasInput = {
+    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput> | TransacaoCreateWithoutVendasInput[] | TransacaoUncheckedCreateWithoutVendasInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput | TransacaoCreateOrConnectWithoutVendasInput[]
+    createMany?: TransacaoCreateManyVendasInputEnvelope
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type VendaUpdateManyWithoutTransacaoNestedInput = {
-    create?: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput> | VendaCreateWithoutTransacaoInput[] | VendaUncheckedCreateWithoutTransacaoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutTransacaoInput | VendaCreateOrConnectWithoutTransacaoInput[]
-    upsert?: VendaUpsertWithWhereUniqueWithoutTransacaoInput | VendaUpsertWithWhereUniqueWithoutTransacaoInput[]
-    createMany?: VendaCreateManyTransacaoInputEnvelope
-    set?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    disconnect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    delete?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    update?: VendaUpdateWithWhereUniqueWithoutTransacaoInput | VendaUpdateWithWhereUniqueWithoutTransacaoInput[]
-    updateMany?: VendaUpdateManyWithWhereWithoutTransacaoInput | VendaUpdateManyWithWhereWithoutTransacaoInput[]
-    deleteMany?: VendaScalarWhereInput | VendaScalarWhereInput[]
+  export type UsuarioUpdateOneRequiredWithoutVendasNestedInput = {
+    create?: XOR<UsuarioCreateWithoutVendasInput, UsuarioUncheckedCreateWithoutVendasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutVendasInput
+    upsert?: UsuarioUpsertWithoutVendasInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutVendasInput, UsuarioUpdateWithoutVendasInput>, UsuarioUncheckedUpdateWithoutVendasInput>
   }
 
-  export type VendaUncheckedUpdateManyWithoutTransacaoNestedInput = {
-    create?: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput> | VendaCreateWithoutTransacaoInput[] | VendaUncheckedCreateWithoutTransacaoInput[]
-    connectOrCreate?: VendaCreateOrConnectWithoutTransacaoInput | VendaCreateOrConnectWithoutTransacaoInput[]
-    upsert?: VendaUpsertWithWhereUniqueWithoutTransacaoInput | VendaUpsertWithWhereUniqueWithoutTransacaoInput[]
-    createMany?: VendaCreateManyTransacaoInputEnvelope
-    set?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    disconnect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    delete?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    connect?: VendaWhereUniqueInput | VendaWhereUniqueInput[]
-    update?: VendaUpdateWithWhereUniqueWithoutTransacaoInput | VendaUpdateWithWhereUniqueWithoutTransacaoInput[]
-    updateMany?: VendaUpdateManyWithWhereWithoutTransacaoInput | VendaUpdateManyWithWhereWithoutTransacaoInput[]
-    deleteMany?: VendaScalarWhereInput | VendaScalarWhereInput[]
+  export type TransacaoUpdateManyWithoutVendasNestedInput = {
+    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput> | TransacaoCreateWithoutVendasInput[] | TransacaoUncheckedCreateWithoutVendasInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput | TransacaoCreateOrConnectWithoutVendasInput[]
+    upsert?: TransacaoUpsertWithWhereUniqueWithoutVendasInput | TransacaoUpsertWithWhereUniqueWithoutVendasInput[]
+    createMany?: TransacaoCreateManyVendasInputEnvelope
+    set?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    disconnect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    delete?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    update?: TransacaoUpdateWithWhereUniqueWithoutVendasInput | TransacaoUpdateWithWhereUniqueWithoutVendasInput[]
+    updateMany?: TransacaoUpdateManyWithWhereWithoutVendasInput | TransacaoUpdateManyWithWhereWithoutVendasInput[]
+    deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
   }
 
-  export type TransacaoCreateNestedOneWithoutVendasInput = {
-    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput>
-    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput
-    connect?: TransacaoWhereUniqueInput
+  export type TransacaoUncheckedUpdateManyWithoutVendasNestedInput = {
+    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput> | TransacaoCreateWithoutVendasInput[] | TransacaoUncheckedCreateWithoutVendasInput[]
+    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput | TransacaoCreateOrConnectWithoutVendasInput[]
+    upsert?: TransacaoUpsertWithWhereUniqueWithoutVendasInput | TransacaoUpsertWithWhereUniqueWithoutVendasInput[]
+    createMany?: TransacaoCreateManyVendasInputEnvelope
+    set?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    disconnect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    delete?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+    update?: TransacaoUpdateWithWhereUniqueWithoutVendasInput | TransacaoUpdateWithWhereUniqueWithoutVendasInput[]
+    updateMany?: TransacaoUpdateManyWithWhereWithoutVendasInput | TransacaoUpdateManyWithWhereWithoutVendasInput[]
+    deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
   }
 
-  export type ProdutoCreateNestedOneWithoutVendasInput = {
-    create?: XOR<ProdutoCreateWithoutVendasInput, ProdutoUncheckedCreateWithoutVendasInput>
-    connectOrCreate?: ProdutoCreateOrConnectWithoutVendasInput
+  export type ProdutoCreateNestedOneWithoutTransacoesInput = {
+    create?: XOR<ProdutoCreateWithoutTransacoesInput, ProdutoUncheckedCreateWithoutTransacoesInput>
+    connectOrCreate?: ProdutoCreateOrConnectWithoutTransacoesInput
     connect?: ProdutoWhereUniqueInput
   }
 
-  export type TransacaoUpdateOneRequiredWithoutVendasNestedInput = {
-    create?: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput>
-    connectOrCreate?: TransacaoCreateOrConnectWithoutVendasInput
-    upsert?: TransacaoUpsertWithoutVendasInput
-    connect?: TransacaoWhereUniqueInput
-    update?: XOR<XOR<TransacaoUpdateToOneWithWhereWithoutVendasInput, TransacaoUpdateWithoutVendasInput>, TransacaoUncheckedUpdateWithoutVendasInput>
+  export type VendaCreateNestedOneWithoutTransacoesInput = {
+    create?: XOR<VendaCreateWithoutTransacoesInput, VendaUncheckedCreateWithoutTransacoesInput>
+    connectOrCreate?: VendaCreateOrConnectWithoutTransacoesInput
+    connect?: VendaWhereUniqueInput
   }
 
-  export type ProdutoUpdateOneRequiredWithoutVendasNestedInput = {
-    create?: XOR<ProdutoCreateWithoutVendasInput, ProdutoUncheckedCreateWithoutVendasInput>
-    connectOrCreate?: ProdutoCreateOrConnectWithoutVendasInput
-    upsert?: ProdutoUpsertWithoutVendasInput
+  export type ProdutoUpdateOneRequiredWithoutTransacoesNestedInput = {
+    create?: XOR<ProdutoCreateWithoutTransacoesInput, ProdutoUncheckedCreateWithoutTransacoesInput>
+    connectOrCreate?: ProdutoCreateOrConnectWithoutTransacoesInput
+    upsert?: ProdutoUpsertWithoutTransacoesInput
     connect?: ProdutoWhereUniqueInput
-    update?: XOR<XOR<ProdutoUpdateToOneWithWhereWithoutVendasInput, ProdutoUpdateWithoutVendasInput>, ProdutoUncheckedUpdateWithoutVendasInput>
+    update?: XOR<XOR<ProdutoUpdateToOneWithWhereWithoutTransacoesInput, ProdutoUpdateWithoutTransacoesInput>, ProdutoUncheckedUpdateWithoutTransacoesInput>
+  }
+
+  export type VendaUpdateOneRequiredWithoutTransacoesNestedInput = {
+    create?: XOR<VendaCreateWithoutTransacoesInput, VendaUncheckedCreateWithoutTransacoesInput>
+    connectOrCreate?: VendaCreateOrConnectWithoutTransacoesInput
+    upsert?: VendaUpsertWithoutTransacoesInput
+    connect?: VendaWhereUniqueInput
+    update?: XOR<XOR<VendaUpdateToOneWithWhereWithoutTransacoesInput, VendaUpdateWithoutTransacoesInput>, VendaUncheckedUpdateWithoutTransacoesInput>
+  }
+
+  export type UsuarioCreateNestedOneWithoutAvaliacoesInput = {
+    create?: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAvaliacoesInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutAvaliacoesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAvaliacoesInput
+    upsert?: UsuarioUpsertWithoutAvaliacoesInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAvaliacoesInput, UsuarioUpdateWithoutAvaliacoesInput>, UsuarioUncheckedUpdateWithoutAvaliacoesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6168,98 +8987,269 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type VendaCreateWithoutProdutoInput = {
+  export type CategoriaCreateWithoutProdutosInput = {
+    nome: string
+  }
+
+  export type CategoriaUncheckedCreateWithoutProdutosInput = {
+    id?: number
+    nome: string
+  }
+
+  export type CategoriaCreateOrConnectWithoutProdutosInput = {
+    where: CategoriaWhereUniqueInput
+    create: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput>
+  }
+
+  export type TransacaoCreateWithoutProdutosInput = {
     quantidade: number
-    transacao: TransacaoCreateNestedOneWithoutVendasInput
+    vendas: VendaCreateNestedOneWithoutTransacoesInput
   }
 
-  export type VendaUncheckedCreateWithoutProdutoInput = {
+  export type TransacaoUncheckedCreateWithoutProdutosInput = {
+    id?: number
+    venda_id: number
     quantidade: number
-    id_transacao: number
   }
 
-  export type VendaCreateOrConnectWithoutProdutoInput = {
-    where: VendaWhereUniqueInput
-    create: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput>
+  export type TransacaoCreateOrConnectWithoutProdutosInput = {
+    where: TransacaoWhereUniqueInput
+    create: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput>
   }
 
-  export type VendaCreateManyProdutoInputEnvelope = {
-    data: VendaCreateManyProdutoInput | VendaCreateManyProdutoInput[]
+  export type TransacaoCreateManyProdutosInputEnvelope = {
+    data: TransacaoCreateManyProdutosInput | TransacaoCreateManyProdutosInput[]
     skipDuplicates?: boolean
   }
 
-  export type VendaUpsertWithWhereUniqueWithoutProdutoInput = {
-    where: VendaWhereUniqueInput
-    update: XOR<VendaUpdateWithoutProdutoInput, VendaUncheckedUpdateWithoutProdutoInput>
-    create: XOR<VendaCreateWithoutProdutoInput, VendaUncheckedCreateWithoutProdutoInput>
+  export type CategoriaUpsertWithWhereUniqueWithoutProdutosInput = {
+    where: CategoriaWhereUniqueInput
+    update: XOR<CategoriaUpdateWithoutProdutosInput, CategoriaUncheckedUpdateWithoutProdutosInput>
+    create: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput>
   }
 
-  export type VendaUpdateWithWhereUniqueWithoutProdutoInput = {
-    where: VendaWhereUniqueInput
-    data: XOR<VendaUpdateWithoutProdutoInput, VendaUncheckedUpdateWithoutProdutoInput>
+  export type CategoriaUpdateWithWhereUniqueWithoutProdutosInput = {
+    where: CategoriaWhereUniqueInput
+    data: XOR<CategoriaUpdateWithoutProdutosInput, CategoriaUncheckedUpdateWithoutProdutosInput>
   }
 
-  export type VendaUpdateManyWithWhereWithoutProdutoInput = {
+  export type CategoriaUpdateManyWithWhereWithoutProdutosInput = {
+    where: CategoriaScalarWhereInput
+    data: XOR<CategoriaUpdateManyMutationInput, CategoriaUncheckedUpdateManyWithoutProdutosInput>
+  }
+
+  export type CategoriaScalarWhereInput = {
+    AND?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
+    OR?: CategoriaScalarWhereInput[]
+    NOT?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
+    id?: IntFilter<"Categoria"> | number
+    nome?: StringFilter<"Categoria"> | string
+  }
+
+  export type TransacaoUpsertWithWhereUniqueWithoutProdutosInput = {
+    where: TransacaoWhereUniqueInput
+    update: XOR<TransacaoUpdateWithoutProdutosInput, TransacaoUncheckedUpdateWithoutProdutosInput>
+    create: XOR<TransacaoCreateWithoutProdutosInput, TransacaoUncheckedCreateWithoutProdutosInput>
+  }
+
+  export type TransacaoUpdateWithWhereUniqueWithoutProdutosInput = {
+    where: TransacaoWhereUniqueInput
+    data: XOR<TransacaoUpdateWithoutProdutosInput, TransacaoUncheckedUpdateWithoutProdutosInput>
+  }
+
+  export type TransacaoUpdateManyWithWhereWithoutProdutosInput = {
+    where: TransacaoScalarWhereInput
+    data: XOR<TransacaoUpdateManyMutationInput, TransacaoUncheckedUpdateManyWithoutProdutosInput>
+  }
+
+  export type TransacaoScalarWhereInput = {
+    AND?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
+    OR?: TransacaoScalarWhereInput[]
+    NOT?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
+    id?: IntFilter<"Transacao"> | number
+    produto_id?: IntFilter<"Transacao"> | number
+    venda_id?: IntFilter<"Transacao"> | number
+    quantidade?: FloatFilter<"Transacao"> | number
+  }
+
+  export type ProdutoCreateWithoutCategoriasInput = {
+    nome: string
+    preco: number
+    tamanho: string
+    transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoUncheckedCreateWithoutCategoriasInput = {
+    id?: number
+    nome: string
+    preco: number
+    tamanho: string
+    transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoCreateOrConnectWithoutCategoriasInput = {
+    where: ProdutoWhereUniqueInput
+    create: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput>
+  }
+
+  export type ProdutoUpsertWithWhereUniqueWithoutCategoriasInput = {
+    where: ProdutoWhereUniqueInput
+    update: XOR<ProdutoUpdateWithoutCategoriasInput, ProdutoUncheckedUpdateWithoutCategoriasInput>
+    create: XOR<ProdutoCreateWithoutCategoriasInput, ProdutoUncheckedCreateWithoutCategoriasInput>
+  }
+
+  export type ProdutoUpdateWithWhereUniqueWithoutCategoriasInput = {
+    where: ProdutoWhereUniqueInput
+    data: XOR<ProdutoUpdateWithoutCategoriasInput, ProdutoUncheckedUpdateWithoutCategoriasInput>
+  }
+
+  export type ProdutoUpdateManyWithWhereWithoutCategoriasInput = {
+    where: ProdutoScalarWhereInput
+    data: XOR<ProdutoUpdateManyMutationInput, ProdutoUncheckedUpdateManyWithoutCategoriasInput>
+  }
+
+  export type ProdutoScalarWhereInput = {
+    AND?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
+    OR?: ProdutoScalarWhereInput[]
+    NOT?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
+    id?: IntFilter<"Produto"> | number
+    nome?: StringFilter<"Produto"> | string
+    preco?: FloatFilter<"Produto"> | number
+    tamanho?: StringFilter<"Produto"> | string
+  }
+
+  export type AvaliacaoCreateWithoutUsuarioInput = {
+    nota: number
+    comentario: string
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutUsuarioInput = {
+    id?: number
+    nota: number
+    comentario: string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoCreateManyUsuarioInputEnvelope = {
+    data: AvaliacaoCreateManyUsuarioInput | AvaliacaoCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VendaCreateWithoutUsuarioInput = {
+    data: Date | string
+    transacoes?: TransacaoCreateNestedManyWithoutVendasInput
+  }
+
+  export type VendaUncheckedCreateWithoutUsuarioInput = {
+    id?: number
+    data: Date | string
+    transacoes?: TransacaoUncheckedCreateNestedManyWithoutVendasInput
+  }
+
+  export type VendaCreateOrConnectWithoutUsuarioInput = {
+    where: VendaWhereUniqueInput
+    create: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type VendaCreateManyUsuarioInputEnvelope = {
+    data: VendaCreateManyUsuarioInput | VendaCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutUsuarioInput, AvaliacaoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutUsuarioInput, AvaliacaoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoScalarWhereInput = {
+    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    OR?: AvaliacaoScalarWhereInput[]
+    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    id?: IntFilter<"Avaliacao"> | number
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    usuario_id?: IntFilter<"Avaliacao"> | number
+  }
+
+  export type VendaUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: VendaWhereUniqueInput
+    update: XOR<VendaUpdateWithoutUsuarioInput, VendaUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<VendaCreateWithoutUsuarioInput, VendaUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type VendaUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: VendaWhereUniqueInput
+    data: XOR<VendaUpdateWithoutUsuarioInput, VendaUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type VendaUpdateManyWithWhereWithoutUsuarioInput = {
     where: VendaScalarWhereInput
-    data: XOR<VendaUpdateManyMutationInput, VendaUncheckedUpdateManyWithoutProdutoInput>
+    data: XOR<VendaUpdateManyMutationInput, VendaUncheckedUpdateManyWithoutUsuarioInput>
   }
 
   export type VendaScalarWhereInput = {
     AND?: VendaScalarWhereInput | VendaScalarWhereInput[]
     OR?: VendaScalarWhereInput[]
     NOT?: VendaScalarWhereInput | VendaScalarWhereInput[]
-    quantidade?: IntFilter<"Venda"> | number
-    id_transacao?: IntFilter<"Venda"> | number
-    id_produto?: IntFilter<"Venda"> | number
+    id?: IntFilter<"Venda"> | number
+    data?: DateTimeFilter<"Venda"> | Date | string
+    usuario_id?: IntFilter<"Venda"> | number
   }
 
-  export type VendaCreateWithoutTransacaoInput = {
-    quantidade: number
-    produto: ProdutoCreateNestedOneWithoutVendasInput
+  export type UsuarioCreateWithoutVendasInput = {
+    nome: string
+    data_nascimento: string
+    sexo: number
+    email: string
+    senha: string
+    cpf: string
+    telefone: string
+    cep: string
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutUsuarioInput
   }
 
-  export type VendaUncheckedCreateWithoutTransacaoInput = {
-    quantidade: number
-    id_produto: number
+  export type UsuarioUncheckedCreateWithoutVendasInput = {
+    id?: number
+    nome: string
+    data_nascimento: string
+    sexo: number
+    email: string
+    senha: string
+    cpf: string
+    telefone: string
+    cep: string
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
-  export type VendaCreateOrConnectWithoutTransacaoInput = {
-    where: VendaWhereUniqueInput
-    create: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput>
-  }
-
-  export type VendaCreateManyTransacaoInputEnvelope = {
-    data: VendaCreateManyTransacaoInput | VendaCreateManyTransacaoInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VendaUpsertWithWhereUniqueWithoutTransacaoInput = {
-    where: VendaWhereUniqueInput
-    update: XOR<VendaUpdateWithoutTransacaoInput, VendaUncheckedUpdateWithoutTransacaoInput>
-    create: XOR<VendaCreateWithoutTransacaoInput, VendaUncheckedCreateWithoutTransacaoInput>
-  }
-
-  export type VendaUpdateWithWhereUniqueWithoutTransacaoInput = {
-    where: VendaWhereUniqueInput
-    data: XOR<VendaUpdateWithoutTransacaoInput, VendaUncheckedUpdateWithoutTransacaoInput>
-  }
-
-  export type VendaUpdateManyWithWhereWithoutTransacaoInput = {
-    where: VendaScalarWhereInput
-    data: XOR<VendaUpdateManyMutationInput, VendaUncheckedUpdateManyWithoutTransacaoInput>
+  export type UsuarioCreateOrConnectWithoutVendasInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutVendasInput, UsuarioUncheckedCreateWithoutVendasInput>
   }
 
   export type TransacaoCreateWithoutVendasInput = {
-    data: Date | string
-    preco: number
-    id_usuario: number
+    quantidade: number
+    produtos: ProdutoCreateNestedOneWithoutTransacoesInput
   }
 
   export type TransacaoUncheckedCreateWithoutVendasInput = {
     id?: number
-    data: Date | string
-    preco: number
-    id_usuario: number
+    produto_id: number
+    quantidade: number
   }
 
   export type TransacaoCreateOrConnectWithoutVendasInput = {
@@ -6267,110 +9257,337 @@ export namespace Prisma {
     create: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput>
   }
 
-  export type ProdutoCreateWithoutVendasInput = {
-    nome_do_produto: string
-    preco: number
-    tamanho: string
+  export type TransacaoCreateManyVendasInputEnvelope = {
+    data: TransacaoCreateManyVendasInput | TransacaoCreateManyVendasInput[]
+    skipDuplicates?: boolean
   }
 
-  export type ProdutoUncheckedCreateWithoutVendasInput = {
-    id?: number
-    nome_do_produto: string
-    preco: number
-    tamanho: string
+  export type UsuarioUpsertWithoutVendasInput = {
+    update: XOR<UsuarioUpdateWithoutVendasInput, UsuarioUncheckedUpdateWithoutVendasInput>
+    create: XOR<UsuarioCreateWithoutVendasInput, UsuarioUncheckedCreateWithoutVendasInput>
+    where?: UsuarioWhereInput
   }
 
-  export type ProdutoCreateOrConnectWithoutVendasInput = {
-    where: ProdutoWhereUniqueInput
-    create: XOR<ProdutoCreateWithoutVendasInput, ProdutoUncheckedCreateWithoutVendasInput>
+  export type UsuarioUpdateToOneWithWhereWithoutVendasInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutVendasInput, UsuarioUncheckedUpdateWithoutVendasInput>
   }
 
-  export type TransacaoUpsertWithoutVendasInput = {
+  export type UsuarioUpdateWithoutVendasInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    data_nascimento?: StringFieldUpdateOperationsInput | string
+    sexo?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    avaliacoes?: AvaliacaoUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutVendasInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    data_nascimento?: StringFieldUpdateOperationsInput | string
+    sexo?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type TransacaoUpsertWithWhereUniqueWithoutVendasInput = {
+    where: TransacaoWhereUniqueInput
     update: XOR<TransacaoUpdateWithoutVendasInput, TransacaoUncheckedUpdateWithoutVendasInput>
     create: XOR<TransacaoCreateWithoutVendasInput, TransacaoUncheckedCreateWithoutVendasInput>
-    where?: TransacaoWhereInput
   }
 
-  export type TransacaoUpdateToOneWithWhereWithoutVendasInput = {
-    where?: TransacaoWhereInput
+  export type TransacaoUpdateWithWhereUniqueWithoutVendasInput = {
+    where: TransacaoWhereUniqueInput
     data: XOR<TransacaoUpdateWithoutVendasInput, TransacaoUncheckedUpdateWithoutVendasInput>
   }
 
-  export type TransacaoUpdateWithoutVendasInput = {
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TransacaoUpdateManyWithWhereWithoutVendasInput = {
+    where: TransacaoScalarWhereInput
+    data: XOR<TransacaoUpdateManyMutationInput, TransacaoUncheckedUpdateManyWithoutVendasInput>
+  }
+
+  export type ProdutoCreateWithoutTransacoesInput = {
+    nome: string
+    preco: number
+    tamanho: string
+    categorias?: CategoriaCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoUncheckedCreateWithoutTransacoesInput = {
+    id?: number
+    nome: string
+    preco: number
+    tamanho: string
+    categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoCreateOrConnectWithoutTransacoesInput = {
+    where: ProdutoWhereUniqueInput
+    create: XOR<ProdutoCreateWithoutTransacoesInput, ProdutoUncheckedCreateWithoutTransacoesInput>
+  }
+
+  export type VendaCreateWithoutTransacoesInput = {
+    data: Date | string
+    usuario: UsuarioCreateNestedOneWithoutVendasInput
+  }
+
+  export type VendaUncheckedCreateWithoutTransacoesInput = {
+    id?: number
+    data: Date | string
+    usuario_id: number
+  }
+
+  export type VendaCreateOrConnectWithoutTransacoesInput = {
+    where: VendaWhereUniqueInput
+    create: XOR<VendaCreateWithoutTransacoesInput, VendaUncheckedCreateWithoutTransacoesInput>
+  }
+
+  export type ProdutoUpsertWithoutTransacoesInput = {
+    update: XOR<ProdutoUpdateWithoutTransacoesInput, ProdutoUncheckedUpdateWithoutTransacoesInput>
+    create: XOR<ProdutoCreateWithoutTransacoesInput, ProdutoUncheckedCreateWithoutTransacoesInput>
+    where?: ProdutoWhereInput
+  }
+
+  export type ProdutoUpdateToOneWithWhereWithoutTransacoesInput = {
+    where?: ProdutoWhereInput
+    data: XOR<ProdutoUpdateWithoutTransacoesInput, ProdutoUncheckedUpdateWithoutTransacoesInput>
+  }
+
+  export type ProdutoUpdateWithoutTransacoesInput = {
+    nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
+    tamanho?: StringFieldUpdateOperationsInput | string
+    categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
+  }
+
+  export type ProdutoUncheckedUpdateWithoutTransacoesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    tamanho?: StringFieldUpdateOperationsInput | string
+    categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
+  }
+
+  export type VendaUpsertWithoutTransacoesInput = {
+    update: XOR<VendaUpdateWithoutTransacoesInput, VendaUncheckedUpdateWithoutTransacoesInput>
+    create: XOR<VendaCreateWithoutTransacoesInput, VendaUncheckedCreateWithoutTransacoesInput>
+    where?: VendaWhereInput
+  }
+
+  export type VendaUpdateToOneWithWhereWithoutTransacoesInput = {
+    where?: VendaWhereInput
+    data: XOR<VendaUpdateWithoutTransacoesInput, VendaUncheckedUpdateWithoutTransacoesInput>
+  }
+
+  export type VendaUpdateWithoutTransacoesInput = {
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutVendasNestedInput
+  }
+
+  export type VendaUncheckedUpdateWithoutTransacoesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UsuarioCreateWithoutAvaliacoesInput = {
+    nome: string
+    data_nascimento: string
+    sexo: number
+    email: string
+    senha: string
+    cpf: string
+    telefone: string
+    cep: string
+    vendas?: VendaCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutAvaliacoesInput = {
+    id?: number
+    nome: string
+    data_nascimento: string
+    sexo: number
+    email: string
+    senha: string
+    cpf: string
+    telefone: string
+    cep: string
+    vendas?: VendaUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutAvaliacoesInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
+  }
+
+  export type UsuarioUpsertWithoutAvaliacoesInput = {
+    update: XOR<UsuarioUpdateWithoutAvaliacoesInput, UsuarioUncheckedUpdateWithoutAvaliacoesInput>
+    create: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutAvaliacoesInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutAvaliacoesInput, UsuarioUncheckedUpdateWithoutAvaliacoesInput>
+  }
+
+  export type UsuarioUpdateWithoutAvaliacoesInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    data_nascimento?: StringFieldUpdateOperationsInput | string
+    sexo?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    vendas?: VendaUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutAvaliacoesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    data_nascimento?: StringFieldUpdateOperationsInput | string
+    sexo?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    vendas?: VendaUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type TransacaoCreateManyProdutosInput = {
+    id?: number
+    venda_id: number
+    quantidade: number
+  }
+
+  export type CategoriaUpdateWithoutProdutosInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUncheckedUpdateWithoutProdutosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoriaUncheckedUpdateManyWithoutProdutosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TransacaoUpdateWithoutProdutosInput = {
+    quantidade?: FloatFieldUpdateOperationsInput | number
+    vendas?: VendaUpdateOneRequiredWithoutTransacoesNestedInput
+  }
+
+  export type TransacaoUncheckedUpdateWithoutProdutosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    venda_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type TransacaoUncheckedUpdateManyWithoutProdutosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    venda_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ProdutoUpdateWithoutCategoriasInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    tamanho?: StringFieldUpdateOperationsInput | string
+    transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
+  }
+
+  export type ProdutoUncheckedUpdateWithoutCategoriasInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    tamanho?: StringFieldUpdateOperationsInput | string
+    transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
+  }
+
+  export type ProdutoUncheckedUpdateManyWithoutCategoriasInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    tamanho?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoCreateManyUsuarioInput = {
+    id?: number
+    nota: number
+    comentario: string
+  }
+
+  export type VendaCreateManyUsuarioInput = {
+    id?: number
+    data: Date | string
+  }
+
+  export type AvaliacaoUpdateWithoutUsuarioInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VendaUpdateWithoutUsuarioInput = {
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    transacoes?: TransacaoUpdateManyWithoutVendasNestedInput
+  }
+
+  export type VendaUncheckedUpdateWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    transacoes?: TransacaoUncheckedUpdateManyWithoutVendasNestedInput
+  }
+
+  export type VendaUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransacaoCreateManyVendasInput = {
+    id?: number
+    produto_id: number
+    quantidade: number
+  }
+
+  export type TransacaoUpdateWithoutVendasInput = {
+    quantidade?: FloatFieldUpdateOperationsInput | number
+    produtos?: ProdutoUpdateOneRequiredWithoutTransacoesNestedInput
   }
 
   export type TransacaoUncheckedUpdateWithoutVendasInput = {
     id?: IntFieldUpdateOperationsInput | number
-    data?: DateTimeFieldUpdateOperationsInput | Date | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type ProdutoUpsertWithoutVendasInput = {
-    update: XOR<ProdutoUpdateWithoutVendasInput, ProdutoUncheckedUpdateWithoutVendasInput>
-    create: XOR<ProdutoCreateWithoutVendasInput, ProdutoUncheckedCreateWithoutVendasInput>
-    where?: ProdutoWhereInput
-  }
-
-  export type ProdutoUpdateToOneWithWhereWithoutVendasInput = {
-    where?: ProdutoWhereInput
-    data: XOR<ProdutoUpdateWithoutVendasInput, ProdutoUncheckedUpdateWithoutVendasInput>
-  }
-
-  export type ProdutoUpdateWithoutVendasInput = {
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    tamanho?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProdutoUncheckedUpdateWithoutVendasInput = {
+  export type TransacaoUncheckedUpdateManyWithoutVendasInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_do_produto?: StringFieldUpdateOperationsInput | string
-    preco?: FloatFieldUpdateOperationsInput | number
-    tamanho?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type VendaCreateManyProdutoInput = {
-    quantidade: number
-    id_transacao: number
-  }
-
-  export type VendaUpdateWithoutProdutoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    transacao?: TransacaoUpdateOneRequiredWithoutVendasNestedInput
-  }
-
-  export type VendaUncheckedUpdateWithoutProdutoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_transacao?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type VendaUncheckedUpdateManyWithoutProdutoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_transacao?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type VendaCreateManyTransacaoInput = {
-    quantidade: number
-    id_produto: number
-  }
-
-  export type VendaUpdateWithoutTransacaoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    produto?: ProdutoUpdateOneRequiredWithoutVendasNestedInput
-  }
-
-  export type VendaUncheckedUpdateWithoutTransacaoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_produto?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type VendaUncheckedUpdateManyWithoutTransacaoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    id_produto?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
+    quantidade?: FloatFieldUpdateOperationsInput | number
   }
 
 
