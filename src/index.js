@@ -43,39 +43,69 @@ app.get("/produtos/:id", async (req, res) => {
 
 // Outras rotas da tela inicial
 
-app.get("/produtos/filtro/camisetas_femininas", async (_req, res) => {
-    const camisetas_femininas = await prisma.produto.findMany();
-    res.json(camisetas_femininas);
+app.get("/produtos/filtro", async (req, res) => {
+    const { tipo } = req.query;
+  
+    const tiposValidos = [
+      "feminina",
+      "masculina",
+      "unisex",
+      "lançamento"
+    ];
+  
+    if (!tiposValidos.includes(tipo)) {
+      return res.status(400).json({ erro: "Tipo de filtro inválido." });
+    }
+   
+
+//Rotas do BigLu abaixo:
+app.post("/transacao", async (_req, res) => {
+
+    if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade))  {
+       
+        res.status(400).send("Campos obrigatorios faltantes");
+
+    } else {
+
+      const novaTransacao = await prisma.transacao.create({ data: {
+        produto_id: req.body.produto_id,
+        venda_id: req.body.venda_id,
+        quantidade: req.body.quantidade
+      }});
+
+      res.status(201).location(`/venda/${venda_id}`).send();
+    }
+    try {
+      const produtosFiltrados = await prisma.produto.findMany({
+        where: {
+          categorias: {
+            some: {
+              nome: tipo
+            }
+          }
+        },
+        include: {
+          categorias: true
+        }
+      });
+  
+      res.json(produtosFiltrados);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ erro: "Erro ao buscar produtos." });
+    }
+  });
+  
+
 });
 
-app.get("/produtos/filtro/camisetas_masculinas", async (_req, res) => {
-    const camisetas_masculinas = await prisma.produto.findMany();
-    res.json(camisetas_masculinas);
-});
-
-app.get("/produtos/filtro/camisetas_unisex", async (_req, res) => {
-    const camisetas_unisex = await prisma.produto.findMany();
-    res.json(camisetas_unisex);
-});
-
-app.get("/produtos/filtro/lancamentos", async (_req, res) => {
-    const camisetas_lancamentos = await prisma.produto.findMany();
-    res.json(camisetas_lancamentos);
-});
-
-
-app.get("/transacao", async (_req, res) => {
-    const transacao = await prisma.transacao.findMany();
-    res.json(transacao);
-});
-
-app.get("/transacao/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
-    const transacao = await prisma.transacao.findUnique({ where: { id }, include: {vendas: true} });
-    if (transacao === null) {
+app.get("/vendas/:id_usuario", async (req, res) => {
+    const usuario_id = parseInt(req.params.id);
+    const vendas = await prisma.venda.findUnique({ where: { usuario_id } });
+    if (vendas === null) {
         res.status(404).send("Produto não encontrado");
     } else {
-        res.json(transacao);
+        res.json(vendas);
     }
 });
 
@@ -93,6 +123,17 @@ app.get("/avaliacao/:id", async (req, res) => {
         res.json(avaliacao);
     }
 });
+app.get("/venda/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const venda = await prisma.venda.findUnique({ where: { id }, include: {transacao: true} });
+    if (venda === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(venda);
+    }
+});
+//Aqui se encerra as rotas feitas pelo biglu 
+
 
 app.get("/usuarios", async (_req, res) => {
     const usuarios = await prisma.usuario.findMany();
@@ -108,6 +149,55 @@ app.get("/usuarios/:id", async (req, res) => {
         res.json(usuarios);
     }
 });
+
+app.post("/usuarios", (req, res) => {
+    const { nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas } = req.body;
+    const id = usuarios.length + 1;
+    usuarios.push({ nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas });
+    res.status(201).location(`/usuarios/${id}`).send();
+});
+
+app.put("/usuarios/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const usuario = usuarios.find(u => u.id === id);
+    if (usuario) {
+        const { nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas } = req.body;
+        usuario.nome = nome;
+        usuario.data_nascimento = data_nascimento;
+        usuario.sexo = sexo;
+        usuario.email = email;
+        usuario.senha = senha;
+        usuario.cpf = cpf;
+        usuario.telefone = telefone; 
+        usuario.cep = cep;
+        usuario.avaliacoes = avaliacoes;
+        usuario.vendas = vendas;
+        res.status(200).send();
+    } else {
+        res.status(404).send();
+    }
+});
+
+app.patch("/usuarios/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const usuario = usuarios.find(u => u.id === id);
+    if (!usuario) return res.status(404).send();
+ 
+    const { nome, email, senha } = req.body;
+    if (nome) usuario.nome = nome;
+    if (data_nascimento) usuario.data_nascimento = data_nascimento;
+    if (sexo) usuario.sexo = sexo;
+    if (email) usuario.email = email;
+    if (senha) usuario.senha = senha;
+    if (cpf) usuario.cpf = cpf;
+    if (telefone) usuario.telefone = telefone;
+    if (cep) usuario.cep = cep;
+    if (avaliacoes) usuario.avaliacoes = avaliacoes;
+    if (vendas) usuario.vendas = vendas; 
+ 
+    res.status(200).json(usuario);
+});
+
 
 app.get("/vendas", async (_req, res) => {
     const vendas = await prisma.venda.findMany();
@@ -129,141 +219,7 @@ app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
 
-// PESQUISA NO BANCO NOVO!!!
 
-
-
-// Rotas de produtos da atividade Eldes
-
-// app.get("/produtos/:id", async (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const produto = await prisma.produto.findUnique({ where: { id } });
-//     if (produto === null) {
-//         res.json(produto);
-//     } else {
-//         res.status(404).send("Produto não encontrado");
-//     }
-// });
-
-// app.post("/produtos", async (req, res) => {
-//     if ((req.body.nome === undefined) || (req.body.preco === undefined)){
-//         res.status(400).send("Campos obrigatórios faltantes")
-//     } else  { 
-//        const novoProduto = await prisma.produto.create({ data: {
-//             nome: req.body.nome,
-//             preco: req.body.preco
-//         }});
-//         res.status(201).location(`/produtos/${novoProduto.id}`).send;
-//     }
-// });
-
-// app.put("/produtos/:id", async (req, res) => {
-//     const id = parseInt(req.params.id);
-//     if ((req.body.nome === undefined) || (req.body.preco === undefined)){
-//         res.status(400).send("Campos obrigatórios faltantes")
-//     } else {
-//         try {
-//             await prisma.produto.update({ 
-//                 where: { id },
-//                 data: { 
-//                     nome: req.body.nome,
-//                     preco: req.body.preco
-//                  }
-//              });
-//             res.status(204).send();
-//         } catch ( error ) {
-//             res.status(404).send("Produto não encontrado")
-//         }
-        
-//     }
-// });
-
-// app.patch("/produtos/:id", (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const produto = produtos.find(p => p.id === id);
-//     if (!produto) return res.status(404).send();
-
-//     const { nome, preco } = req.body;
-//     if (nome) produto.nome = nome;
-//     if (preco) produto.preco = preco;
-
-//     res.status(200).json(produto);
-// });
-
-// app.delete("/produtos/:id", async (req, res) => {
-//     const id = parseInt(req.params.id);
-//     try {
-//         await prisma.produto.delete({
-//             where: { id }
-//         });
-//         res.status(202).send();
-//     } catch ( error ) {
-//         res.status(404).send("Produto não encontrado")
-//     }
-    
-// });
-
-// // Rotas de usuarios da atividade Eldes
-
-// app.get("/usuarios", async (req, res) => {
-//     const usuarios = await prisma.usuarios.findMany();
-//     res.json(usuarios);
-// });
-
-// app.get("/usuarios/:id", (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const usuario = usuarios.find(u => u.id === id);
-//     if (usuario) {
-//         res.json(usuario);
-//     } else {
-//         res.status(404).send();
-//     }
-// });
-
-// app.post("/usuarios", (req, res) => {
-//     const { nome, email, senha } = req.body;
-//     const id = usuarios.length + 1;
-//     usuarios.push({ id, nome, email, senha });
-//     res.status(201).location(`/usuarios/${id}`).send();
-// });
-
-// app.put("/usuarios/:id", (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const usuario = usuarios.find(u => u.id === id);
-//     if (usuario) {
-//         const { nome, email, senha } = req.body;
-//         usuario.nome = nome;
-//         usuario.email = email;
-//         usuario.senha = senha;
-//         res.status(200).send();
-//     } else {
-//         res.status(404).send();
-//     }
-// });
-
-// app.patch("/usuarios/:id", (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const usuario = usuarios.find(u => u.id === id);
-//     if (!usuario) return res.status(404).send();
-
-//     const { nome, email, senha } = req.body;
-//     if (nome) usuario.nome = nome;
-//     if (email) usuario.email = email;
-//     if (senha) usuario.senha = senha;
-
-//     res.status(200).json(usuario);
-// });
-
-// app.delete("/usuarios/:id", (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const index = usuarios.findIndex(u => u.id === id);
-//     if (index !== -1) {
-//         usuarios.splice(index, 1);
-//         res.status(200).send();
-//     } else {
-//         res.status(404).send();
-//     }
-// });
 
 
 
