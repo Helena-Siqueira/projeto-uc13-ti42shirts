@@ -71,8 +71,8 @@ model Avaliacao {
   id Int @id @default(autoincrement())
   nota Int
   comentario String 
-  id_usuario Int
+  usuario_id Int
 
-  usuario Usuario @relation(fields:[id_usuario], references: [id])
+  usuario Usuario @relation(fields:[usuario_id], references: [id])
   @@map("avaliacoes")
 }
