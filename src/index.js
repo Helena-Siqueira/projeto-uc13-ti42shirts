@@ -63,21 +63,47 @@ app.get("/produtos/filtro/lancamentos", async (_req, res) => {
     res.json(camisetas_lancamentos);
 });
 
+//Rotas do BigLu abaixo:
+app.post("/transacao", async (_req, res) => {
 
-app.get("/transacao", async (_req, res) => {
-    const transacao = await prisma.transacao.findMany();
-    res.json(transacao);
+    if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade))  {
+       
+        res.status(400).send("Campos obrigatorios faltantes");
+
+    } else {
+
+      const novaTransacao = await prisma.transacao.create({ data: {
+        produto_id: req.body.produto_id,
+        venda_id: req.body.venda_id,
+        quantidade: req.body.quantidade
+      }});
+
+      res.status(201).location(`/venda/${venda_id}`).send();
+    }
+
 });
 
-app.get("/transacao/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
-    const transacao = await prisma.transacao.findUnique({ where: { id }, include: {vendas: true} });
-    if (transacao === null) {
+app.get("/vendas/:id_usuario", async (req, res) => {
+    const usuario_id = parseInt(req.params.id);
+    const vendas = await prisma.venda.findUnique({ where: { usuario_id } });
+    if (vendas === null) {
         res.status(404).send("Produto não encontrado");
     } else {
-        res.json(transacao);
+        res.json(vendas);
     }
 });
+
+app.get("/venda/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const venda = await prisma.venda.findUnique({ where: { id }, include: {transacao: true} });
+    if (venda === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(venda);
+    }
+});
+//Aqui se encerra as rotas feitas pelo biglu 
+
 
 app.get("/usuarios", async (_req, res) => {
     const usuarios = await prisma.usuario.findMany();
