@@ -18,10 +18,12 @@ model Produto {
   id Int @id @default(autoincrement())
   nome String
   preco Float
+  imagem String
   tamanho String
   @@map("produtos") // <----- Define o nome da tabela
   categorias Categoria [] @relation("produto_categoria")
   transacoes Transacao []
+  avaliacoes Avaliacao []
 }
 
 model Categoria {
@@ -72,7 +74,9 @@ model Avaliacao {
   nota Int
   comentario String 
   usuario_id Int
+  produto_id Int
 
   usuario Usuario @relation(fields:[usuario_id], references: [id])
+  produto Produto @relation(fields:[produto_id], references: [id])
   @@map("avaliacoes")
 }

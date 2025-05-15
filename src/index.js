@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { PrismaClient } from "./generated/prisma/index.js"
+import cors from 'cors'; // <- Importa o CORS
+import { PrismaClient } from "./generated/prisma/index.js";
 
 const app = express();
 const port = 4000;
 const prisma = new PrismaClient();
 
+app.use(cors()); // <- Ativa o CORS para todas as rotas
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -89,6 +91,20 @@ app.get("/vendas/:id_usuario", async (req, res) => {
     }
 });
 
+app.get("/avaliacao", async (_req, res) => {
+    const avaliacao = await prisma.avaliacao.findMany();
+    res.json(avaliacao);
+});
+
+app.get("/avaliacao/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    const avaliacao = await prisma.avaliacao.findUnique({ where: { id } });
+    if (avaliacao === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(avaliacao);
+    }
+});
 app.get("/venda/:id", async (req, res) => {
     const id = parseInt(req.params.id);
     const venda = await prisma.venda.findUnique({ where: { id }, include: {transacao: true} });

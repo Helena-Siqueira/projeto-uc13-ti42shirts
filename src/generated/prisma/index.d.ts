@@ -1278,11 +1278,13 @@ export namespace Prisma {
   export type ProdutoCountOutputType = {
     categorias: number
     transacoes: number
+    avaliacoes: number
   }
 
   export type ProdutoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categorias?: boolean | ProdutoCountOutputTypeCountCategoriasArgs
     transacoes?: boolean | ProdutoCountOutputTypeCountTransacoesArgs
+    avaliacoes?: boolean | ProdutoCountOutputTypeCountAvaliacoesArgs
   }
 
   // Custom InputTypes
@@ -1308,6 +1310,13 @@ export namespace Prisma {
    */
   export type ProdutoCountOutputTypeCountTransacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransacaoWhereInput
+  }
+
+  /**
+   * ProdutoCountOutputType without action
+   */
+  export type ProdutoCountOutputTypeCountAvaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
   }
 
 
@@ -1443,6 +1452,7 @@ export namespace Prisma {
     id: number | null
     nome: string | null
     preco: number | null
+    imagem: string | null
     tamanho: string | null
   }
 
@@ -1450,6 +1460,7 @@ export namespace Prisma {
     id: number | null
     nome: string | null
     preco: number | null
+    imagem: string | null
     tamanho: string | null
   }
 
@@ -1457,6 +1468,7 @@ export namespace Prisma {
     id: number
     nome: number
     preco: number
+    imagem: number
     tamanho: number
     _all: number
   }
@@ -1476,6 +1488,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     preco?: true
+    imagem?: true
     tamanho?: true
   }
 
@@ -1483,6 +1496,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     preco?: true
+    imagem?: true
     tamanho?: true
   }
 
@@ -1490,6 +1504,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     preco?: true
+    imagem?: true
     tamanho?: true
     _all?: true
   }
@@ -1584,6 +1599,7 @@ export namespace Prisma {
     id: number
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     _count: ProdutoCountAggregateOutputType | null
     _avg: ProdutoAvgAggregateOutputType | null
@@ -1610,9 +1626,11 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     preco?: boolean
+    imagem?: boolean
     tamanho?: boolean
     categorias?: boolean | Produto$categoriasArgs<ExtArgs>
     transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
+    avaliacoes?: boolean | Produto$avaliacoesArgs<ExtArgs>
     _count?: boolean | ProdutoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produto"]>
 
@@ -1622,13 +1640,15 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     preco?: boolean
+    imagem?: boolean
     tamanho?: boolean
   }
 
-  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "tamanho", ExtArgs["result"]["produto"]>
+  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "imagem" | "tamanho", ExtArgs["result"]["produto"]>
   export type ProdutoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categorias?: boolean | Produto$categoriasArgs<ExtArgs>
     transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
+    avaliacoes?: boolean | Produto$avaliacoesArgs<ExtArgs>
     _count?: boolean | ProdutoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1637,11 +1657,13 @@ export namespace Prisma {
     objects: {
       categorias: Prisma.$CategoriaPayload<ExtArgs>[]
       transacoes: Prisma.$TransacaoPayload<ExtArgs>[]
+      avaliacoes: Prisma.$AvaliacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nome: string
       preco: number
+      imagem: string
       tamanho: string
     }, ExtArgs["result"]["produto"]>
     composites: {}
@@ -1985,6 +2007,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     categorias<T extends Produto$categoriasArgs<ExtArgs> = {}>(args?: Subset<T, Produto$categoriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transacoes<T extends Produto$transacoesArgs<ExtArgs> = {}>(args?: Subset<T, Produto$transacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    avaliacoes<T extends Produto$avaliacoesArgs<ExtArgs> = {}>(args?: Subset<T, Produto$avaliacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2017,6 +2040,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Produto", 'Int'>
     readonly nome: FieldRef<"Produto", 'String'>
     readonly preco: FieldRef<"Produto", 'Float'>
+    readonly imagem: FieldRef<"Produto", 'String'>
     readonly tamanho: FieldRef<"Produto", 'String'>
   }
     
@@ -2406,6 +2430,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TransacaoScalarFieldEnum | TransacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Produto.avaliacoes
+   */
+  export type Produto$avaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
   }
 
   /**
@@ -6407,12 +6455,14 @@ export namespace Prisma {
     id: number | null
     nota: number | null
     usuario_id: number | null
+    produto_id: number | null
   }
 
   export type AvaliacaoSumAggregateOutputType = {
     id: number | null
     nota: number | null
     usuario_id: number | null
+    produto_id: number | null
   }
 
   export type AvaliacaoMinAggregateOutputType = {
@@ -6420,6 +6470,7 @@ export namespace Prisma {
     nota: number | null
     comentario: string | null
     usuario_id: number | null
+    produto_id: number | null
   }
 
   export type AvaliacaoMaxAggregateOutputType = {
@@ -6427,6 +6478,7 @@ export namespace Prisma {
     nota: number | null
     comentario: string | null
     usuario_id: number | null
+    produto_id: number | null
   }
 
   export type AvaliacaoCountAggregateOutputType = {
@@ -6434,6 +6486,7 @@ export namespace Prisma {
     nota: number
     comentario: number
     usuario_id: number
+    produto_id: number
     _all: number
   }
 
@@ -6442,12 +6495,14 @@ export namespace Prisma {
     id?: true
     nota?: true
     usuario_id?: true
+    produto_id?: true
   }
 
   export type AvaliacaoSumAggregateInputType = {
     id?: true
     nota?: true
     usuario_id?: true
+    produto_id?: true
   }
 
   export type AvaliacaoMinAggregateInputType = {
@@ -6455,6 +6510,7 @@ export namespace Prisma {
     nota?: true
     comentario?: true
     usuario_id?: true
+    produto_id?: true
   }
 
   export type AvaliacaoMaxAggregateInputType = {
@@ -6462,6 +6518,7 @@ export namespace Prisma {
     nota?: true
     comentario?: true
     usuario_id?: true
+    produto_id?: true
   }
 
   export type AvaliacaoCountAggregateInputType = {
@@ -6469,6 +6526,7 @@ export namespace Prisma {
     nota?: true
     comentario?: true
     usuario_id?: true
+    produto_id?: true
     _all?: true
   }
 
@@ -6563,6 +6621,7 @@ export namespace Prisma {
     nota: number
     comentario: string
     usuario_id: number
+    produto_id: number
     _count: AvaliacaoCountAggregateOutputType | null
     _avg: AvaliacaoAvgAggregateOutputType | null
     _sum: AvaliacaoSumAggregateOutputType | null
@@ -6589,7 +6648,9 @@ export namespace Prisma {
     nota?: boolean
     comentario?: boolean
     usuario_id?: boolean
+    produto_id?: boolean
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["avaliacao"]>
 
 
@@ -6599,23 +6660,27 @@ export namespace Prisma {
     nota?: boolean
     comentario?: boolean
     usuario_id?: boolean
+    produto_id?: boolean
   }
 
-  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nota" | "comentario" | "usuario_id", ExtArgs["result"]["avaliacao"]>
+  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nota" | "comentario" | "usuario_id" | "produto_id", ExtArgs["result"]["avaliacao"]>
   export type AvaliacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoDefaultArgs<ExtArgs>
   }
 
   export type $AvaliacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Avaliacao"
     objects: {
       usuario: Prisma.$UsuarioPayload<ExtArgs>
+      produto: Prisma.$ProdutoPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nota: number
       comentario: string
       usuario_id: number
+      produto_id: number
     }, ExtArgs["result"]["avaliacao"]>
     composites: {}
   }
@@ -6957,6 +7022,7 @@ export namespace Prisma {
   export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    produto<T extends ProdutoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoDefaultArgs<ExtArgs>>): Prisma__ProdutoClient<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6990,6 +7056,7 @@ export namespace Prisma {
     readonly nota: FieldRef<"Avaliacao", 'Int'>
     readonly comentario: FieldRef<"Avaliacao", 'String'>
     readonly usuario_id: FieldRef<"Avaliacao", 'Int'>
+    readonly produto_id: FieldRef<"Avaliacao", 'Int'>
   }
     
 
@@ -7369,6 +7436,7 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     preco: 'preco',
+    imagem: 'imagem',
     tamanho: 'tamanho'
   };
 
@@ -7421,7 +7489,8 @@ export namespace Prisma {
     id: 'id',
     nota: 'nota',
     comentario: 'comentario',
-    usuario_id: 'usuario_id'
+    usuario_id: 'usuario_id',
+    produto_id: 'produto_id'
   };
 
   export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
@@ -7437,6 +7506,7 @@ export namespace Prisma {
 
   export const ProdutoOrderByRelevanceFieldEnum: {
     nome: 'nome',
+    imagem: 'imagem',
     tamanho: 'tamanho'
   };
 
@@ -7513,18 +7583,22 @@ export namespace Prisma {
     id?: IntFilter<"Produto"> | number
     nome?: StringFilter<"Produto"> | string
     preco?: FloatFilter<"Produto"> | number
+    imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
     categorias?: CategoriaListRelationFilter
     transacoes?: TransacaoListRelationFilter
+    avaliacoes?: AvaliacaoListRelationFilter
   }
 
   export type ProdutoOrderByWithRelationInput = {
     id?: SortOrder
     nome?: SortOrder
     preco?: SortOrder
+    imagem?: SortOrder
     tamanho?: SortOrder
     categorias?: CategoriaOrderByRelationAggregateInput
     transacoes?: TransacaoOrderByRelationAggregateInput
+    avaliacoes?: AvaliacaoOrderByRelationAggregateInput
     _relevance?: ProdutoOrderByRelevanceInput
   }
 
@@ -7535,15 +7609,18 @@ export namespace Prisma {
     NOT?: ProdutoWhereInput | ProdutoWhereInput[]
     nome?: StringFilter<"Produto"> | string
     preco?: FloatFilter<"Produto"> | number
+    imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
     categorias?: CategoriaListRelationFilter
     transacoes?: TransacaoListRelationFilter
+    avaliacoes?: AvaliacaoListRelationFilter
   }, "id">
 
   export type ProdutoOrderByWithAggregationInput = {
     id?: SortOrder
     nome?: SortOrder
     preco?: SortOrder
+    imagem?: SortOrder
     tamanho?: SortOrder
     _count?: ProdutoCountOrderByAggregateInput
     _avg?: ProdutoAvgOrderByAggregateInput
@@ -7559,6 +7636,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Produto"> | number
     nome?: StringWithAggregatesFilter<"Produto"> | string
     preco?: FloatWithAggregatesFilter<"Produto"> | number
+    imagem?: StringWithAggregatesFilter<"Produto"> | string
     tamanho?: StringWithAggregatesFilter<"Produto"> | string
   }
 
@@ -7799,7 +7877,9 @@ export namespace Prisma {
     nota?: IntFilter<"Avaliacao"> | number
     comentario?: StringFilter<"Avaliacao"> | string
     usuario_id?: IntFilter<"Avaliacao"> | number
+    produto_id?: IntFilter<"Avaliacao"> | number
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    produto?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
   }
 
   export type AvaliacaoOrderByWithRelationInput = {
@@ -7807,7 +7887,9 @@ export namespace Prisma {
     nota?: SortOrder
     comentario?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
     usuario?: UsuarioOrderByWithRelationInput
+    produto?: ProdutoOrderByWithRelationInput
     _relevance?: AvaliacaoOrderByRelevanceInput
   }
 
@@ -7819,7 +7901,9 @@ export namespace Prisma {
     nota?: IntFilter<"Avaliacao"> | number
     comentario?: StringFilter<"Avaliacao"> | string
     usuario_id?: IntFilter<"Avaliacao"> | number
+    produto_id?: IntFilter<"Avaliacao"> | number
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    produto?: XOR<ProdutoScalarRelationFilter, ProdutoWhereInput>
   }, "id">
 
   export type AvaliacaoOrderByWithAggregationInput = {
@@ -7827,6 +7911,7 @@ export namespace Prisma {
     nota?: SortOrder
     comentario?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
     _count?: AvaliacaoCountOrderByAggregateInput
     _avg?: AvaliacaoAvgOrderByAggregateInput
     _max?: AvaliacaoMaxOrderByAggregateInput
@@ -7842,52 +7927,63 @@ export namespace Prisma {
     nota?: IntWithAggregatesFilter<"Avaliacao"> | number
     comentario?: StringWithAggregatesFilter<"Avaliacao"> | string
     usuario_id?: IntWithAggregatesFilter<"Avaliacao"> | number
+    produto_id?: IntWithAggregatesFilter<"Avaliacao"> | number
   }
 
   export type ProdutoCreateInput = {
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     categorias?: CategoriaCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoUncheckedCreateInput = {
     id?: number
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoUpdateInput = {
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoCreateManyInput = {
     id?: number
     nome: string
     preco: number
+    imagem: string
     tamanho: string
   }
 
   export type ProdutoUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7895,6 +7991,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
   }
 
@@ -8113,6 +8210,7 @@ export namespace Prisma {
     nota: number
     comentario: string
     usuario: UsuarioCreateNestedOneWithoutAvaliacoesInput
+    produto: ProdutoCreateNestedOneWithoutAvaliacoesInput
   }
 
   export type AvaliacaoUncheckedCreateInput = {
@@ -8120,12 +8218,14 @@ export namespace Prisma {
     nota: number
     comentario: string
     usuario_id: number
+    produto_id: number
   }
 
   export type AvaliacaoUpdateInput = {
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
     usuario?: UsuarioUpdateOneRequiredWithoutAvaliacoesNestedInput
+    produto?: ProdutoUpdateOneRequiredWithoutAvaliacoesNestedInput
   }
 
   export type AvaliacaoUncheckedUpdateInput = {
@@ -8133,6 +8233,7 @@ export namespace Prisma {
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
     usuario_id?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type AvaliacaoCreateManyInput = {
@@ -8140,6 +8241,7 @@ export namespace Prisma {
     nota: number
     comentario: string
     usuario_id: number
+    produto_id: number
   }
 
   export type AvaliacaoUpdateManyMutationInput = {
@@ -8152,6 +8254,7 @@ export namespace Prisma {
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
     usuario_id?: IntFieldUpdateOperationsInput | number
+    produto_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8203,11 +8306,21 @@ export namespace Prisma {
     none?: TransacaoWhereInput
   }
 
+  export type AvaliacaoListRelationFilter = {
+    every?: AvaliacaoWhereInput
+    some?: AvaliacaoWhereInput
+    none?: AvaliacaoWhereInput
+  }
+
   export type CategoriaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type TransacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AvaliacaoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8221,6 +8334,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     preco?: SortOrder
+    imagem?: SortOrder
     tamanho?: SortOrder
   }
 
@@ -8233,6 +8347,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     preco?: SortOrder
+    imagem?: SortOrder
     tamanho?: SortOrder
   }
 
@@ -8240,6 +8355,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     preco?: SortOrder
+    imagem?: SortOrder
     tamanho?: SortOrder
   }
 
@@ -8337,20 +8453,10 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type AvaliacaoListRelationFilter = {
-    every?: AvaliacaoWhereInput
-    some?: AvaliacaoWhereInput
-    none?: AvaliacaoWhereInput
-  }
-
   export type VendaListRelationFilter = {
     every?: VendaWhereInput
     some?: VendaWhereInput
     none?: VendaWhereInput
-  }
-
-  export type AvaliacaoOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type VendaOrderByRelationAggregateInput = {
@@ -8523,12 +8629,14 @@ export namespace Prisma {
     nota?: SortOrder
     comentario?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
   }
 
   export type AvaliacaoAvgOrderByAggregateInput = {
     id?: SortOrder
     nota?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
   }
 
   export type AvaliacaoMaxOrderByAggregateInput = {
@@ -8536,6 +8644,7 @@ export namespace Prisma {
     nota?: SortOrder
     comentario?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
   }
 
   export type AvaliacaoMinOrderByAggregateInput = {
@@ -8543,12 +8652,14 @@ export namespace Prisma {
     nota?: SortOrder
     comentario?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
   }
 
   export type AvaliacaoSumOrderByAggregateInput = {
     id?: SortOrder
     nota?: SortOrder
     usuario_id?: SortOrder
+    produto_id?: SortOrder
   }
 
   export type CategoriaCreateNestedManyWithoutProdutosInput = {
@@ -8564,6 +8675,13 @@ export namespace Prisma {
     connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
   }
 
+  export type AvaliacaoCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput> | AvaliacaoCreateWithoutProdutoInput[] | AvaliacaoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutProdutoInput | AvaliacaoCreateOrConnectWithoutProdutoInput[]
+    createMany?: AvaliacaoCreateManyProdutoInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
   export type CategoriaUncheckedCreateNestedManyWithoutProdutosInput = {
     create?: XOR<CategoriaCreateWithoutProdutosInput, CategoriaUncheckedCreateWithoutProdutosInput> | CategoriaCreateWithoutProdutosInput[] | CategoriaUncheckedCreateWithoutProdutosInput[]
     connectOrCreate?: CategoriaCreateOrConnectWithoutProdutosInput | CategoriaCreateOrConnectWithoutProdutosInput[]
@@ -8575,6 +8693,13 @@ export namespace Prisma {
     connectOrCreate?: TransacaoCreateOrConnectWithoutProdutosInput | TransacaoCreateOrConnectWithoutProdutosInput[]
     createMany?: TransacaoCreateManyProdutosInputEnvelope
     connect?: TransacaoWhereUniqueInput | TransacaoWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput> | AvaliacaoCreateWithoutProdutoInput[] | AvaliacaoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutProdutoInput | AvaliacaoCreateOrConnectWithoutProdutoInput[]
+    createMany?: AvaliacaoCreateManyProdutoInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8616,6 +8741,20 @@ export namespace Prisma {
     deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
   }
 
+  export type AvaliacaoUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput> | AvaliacaoCreateWithoutProdutoInput[] | AvaliacaoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutProdutoInput | AvaliacaoCreateOrConnectWithoutProdutoInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutProdutoInput | AvaliacaoUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: AvaliacaoCreateManyProdutoInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutProdutoInput | AvaliacaoUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutProdutoInput | AvaliacaoUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -8649,6 +8788,20 @@ export namespace Prisma {
     update?: TransacaoUpdateWithWhereUniqueWithoutProdutosInput | TransacaoUpdateWithWhereUniqueWithoutProdutosInput[]
     updateMany?: TransacaoUpdateManyWithWhereWithoutProdutosInput | TransacaoUpdateManyWithWhereWithoutProdutosInput[]
     deleteMany?: TransacaoScalarWhereInput | TransacaoScalarWhereInput[]
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput> | AvaliacaoCreateWithoutProdutoInput[] | AvaliacaoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutProdutoInput | AvaliacaoCreateOrConnectWithoutProdutoInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutProdutoInput | AvaliacaoUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: AvaliacaoCreateManyProdutoInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutProdutoInput | AvaliacaoUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutProdutoInput | AvaliacaoUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
   }
 
   export type ProdutoCreateNestedManyWithoutCategoriasInput = {
@@ -8867,12 +9020,26 @@ export namespace Prisma {
     connect?: UsuarioWhereUniqueInput
   }
 
+  export type ProdutoCreateNestedOneWithoutAvaliacoesInput = {
+    create?: XOR<ProdutoCreateWithoutAvaliacoesInput, ProdutoUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: ProdutoCreateOrConnectWithoutAvaliacoesInput
+    connect?: ProdutoWhereUniqueInput
+  }
+
   export type UsuarioUpdateOneRequiredWithoutAvaliacoesNestedInput = {
     create?: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutAvaliacoesInput
     upsert?: UsuarioUpsertWithoutAvaliacoesInput
     connect?: UsuarioWhereUniqueInput
     update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAvaliacoesInput, UsuarioUpdateWithoutAvaliacoesInput>, UsuarioUncheckedUpdateWithoutAvaliacoesInput>
+  }
+
+  export type ProdutoUpdateOneRequiredWithoutAvaliacoesNestedInput = {
+    create?: XOR<ProdutoCreateWithoutAvaliacoesInput, ProdutoUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: ProdutoCreateOrConnectWithoutAvaliacoesInput
+    upsert?: ProdutoUpsertWithoutAvaliacoesInput
+    connect?: ProdutoWhereUniqueInput
+    update?: XOR<XOR<ProdutoUpdateToOneWithWhereWithoutAvaliacoesInput, ProdutoUpdateWithoutAvaliacoesInput>, ProdutoUncheckedUpdateWithoutAvaliacoesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9022,6 +9189,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AvaliacaoCreateWithoutProdutoInput = {
+    nota: number
+    comentario: string
+    usuario: UsuarioCreateNestedOneWithoutAvaliacoesInput
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutProdutoInput = {
+    id?: number
+    nota: number
+    comentario: string
+    usuario_id: number
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutProdutoInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput>
+  }
+
+  export type AvaliacaoCreateManyProdutoInputEnvelope = {
+    data: AvaliacaoCreateManyProdutoInput | AvaliacaoCreateManyProdutoInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CategoriaUpsertWithWhereUniqueWithoutProdutosInput = {
     where: CategoriaWhereUniqueInput
     update: XOR<CategoriaUpdateWithoutProdutosInput, CategoriaUncheckedUpdateWithoutProdutosInput>
@@ -9072,19 +9262,50 @@ export namespace Prisma {
     quantidade?: FloatFilter<"Transacao"> | number
   }
 
+  export type AvaliacaoUpsertWithWhereUniqueWithoutProdutoInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutProdutoInput, AvaliacaoUncheckedUpdateWithoutProdutoInput>
+    create: XOR<AvaliacaoCreateWithoutProdutoInput, AvaliacaoUncheckedCreateWithoutProdutoInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutProdutoInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutProdutoInput, AvaliacaoUncheckedUpdateWithoutProdutoInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutProdutoInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutProdutoInput>
+  }
+
+  export type AvaliacaoScalarWhereInput = {
+    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    OR?: AvaliacaoScalarWhereInput[]
+    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    id?: IntFilter<"Avaliacao"> | number
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    usuario_id?: IntFilter<"Avaliacao"> | number
+    produto_id?: IntFilter<"Avaliacao"> | number
+  }
+
   export type ProdutoCreateWithoutCategoriasInput = {
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoUncheckedCreateWithoutCategoriasInput = {
     id?: number
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoCreateOrConnectWithoutCategoriasInput = {
@@ -9115,18 +9336,21 @@ export namespace Prisma {
     id?: IntFilter<"Produto"> | number
     nome?: StringFilter<"Produto"> | string
     preco?: FloatFilter<"Produto"> | number
+    imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
   }
 
   export type AvaliacaoCreateWithoutUsuarioInput = {
     nota: number
     comentario: string
+    produto: ProdutoCreateNestedOneWithoutAvaliacoesInput
   }
 
   export type AvaliacaoUncheckedCreateWithoutUsuarioInput = {
     id?: number
     nota: number
     comentario: string
+    produto_id: number
   }
 
   export type AvaliacaoCreateOrConnectWithoutUsuarioInput = {
@@ -9174,16 +9398,6 @@ export namespace Prisma {
   export type AvaliacaoUpdateManyWithWhereWithoutUsuarioInput = {
     where: AvaliacaoScalarWhereInput
     data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutUsuarioInput>
-  }
-
-  export type AvaliacaoScalarWhereInput = {
-    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
-    OR?: AvaliacaoScalarWhereInput[]
-    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
-    id?: IntFilter<"Avaliacao"> | number
-    nota?: IntFilter<"Avaliacao"> | number
-    comentario?: StringFilter<"Avaliacao"> | string
-    usuario_id?: IntFilter<"Avaliacao"> | number
   }
 
   export type VendaUpsertWithWhereUniqueWithoutUsuarioInput = {
@@ -9317,16 +9531,20 @@ export namespace Prisma {
   export type ProdutoCreateWithoutTransacoesInput = {
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     categorias?: CategoriaCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoUncheckedCreateWithoutTransacoesInput = {
     id?: number
     nome: string
     preco: number
+    imagem: string
     tamanho: string
     categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoCreateOrConnectWithoutTransacoesInput = {
@@ -9364,16 +9582,20 @@ export namespace Prisma {
   export type ProdutoUpdateWithoutTransacoesInput = {
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoUncheckedUpdateWithoutTransacoesInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type VendaUpsertWithoutTransacoesInput = {
@@ -9428,6 +9650,30 @@ export namespace Prisma {
     create: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
   }
 
+  export type ProdutoCreateWithoutAvaliacoesInput = {
+    nome: string
+    preco: number
+    imagem: string
+    tamanho: string
+    categorias?: CategoriaCreateNestedManyWithoutProdutosInput
+    transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoUncheckedCreateWithoutAvaliacoesInput = {
+    id?: number
+    nome: string
+    preco: number
+    imagem: string
+    tamanho: string
+    categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
+    transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
+  }
+
+  export type ProdutoCreateOrConnectWithoutAvaliacoesInput = {
+    where: ProdutoWhereUniqueInput
+    create: XOR<ProdutoCreateWithoutAvaliacoesInput, ProdutoUncheckedCreateWithoutAvaliacoesInput>
+  }
+
   export type UsuarioUpsertWithoutAvaliacoesInput = {
     update: XOR<UsuarioUpdateWithoutAvaliacoesInput, UsuarioUncheckedUpdateWithoutAvaliacoesInput>
     create: XOR<UsuarioCreateWithoutAvaliacoesInput, UsuarioUncheckedCreateWithoutAvaliacoesInput>
@@ -9464,10 +9710,47 @@ export namespace Prisma {
     vendas?: VendaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
+  export type ProdutoUpsertWithoutAvaliacoesInput = {
+    update: XOR<ProdutoUpdateWithoutAvaliacoesInput, ProdutoUncheckedUpdateWithoutAvaliacoesInput>
+    create: XOR<ProdutoCreateWithoutAvaliacoesInput, ProdutoUncheckedCreateWithoutAvaliacoesInput>
+    where?: ProdutoWhereInput
+  }
+
+  export type ProdutoUpdateToOneWithWhereWithoutAvaliacoesInput = {
+    where?: ProdutoWhereInput
+    data: XOR<ProdutoUpdateWithoutAvaliacoesInput, ProdutoUncheckedUpdateWithoutAvaliacoesInput>
+  }
+
+  export type ProdutoUpdateWithoutAvaliacoesInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
+    transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
+  }
+
+  export type ProdutoUncheckedUpdateWithoutAvaliacoesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
+    transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
+  }
+
   export type TransacaoCreateManyProdutosInput = {
     id?: number
     venda_id: number
     quantidade: number
+  }
+
+  export type AvaliacaoCreateManyProdutoInput = {
+    id?: number
+    nota: number
+    comentario: string
+    usuario_id: number
   }
 
   export type CategoriaUpdateWithoutProdutosInput = {
@@ -9501,25 +9784,50 @@ export namespace Prisma {
     quantidade?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type AvaliacaoUpdateWithoutProdutoInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario?: UsuarioUpdateOneRequiredWithoutAvaliacoesNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    usuario_id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type ProdutoUpdateWithoutCategoriasInput = {
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoUncheckedUpdateWithoutCategoriasInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoUncheckedUpdateManyWithoutCategoriasInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
+    imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
   }
 
@@ -9527,6 +9835,7 @@ export namespace Prisma {
     id?: number
     nota: number
     comentario: string
+    produto_id: number
   }
 
   export type VendaCreateManyUsuarioInput = {
@@ -9537,18 +9846,21 @@ export namespace Prisma {
   export type AvaliacaoUpdateWithoutUsuarioInput = {
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
+    produto?: ProdutoUpdateOneRequiredWithoutAvaliacoesNestedInput
   }
 
   export type AvaliacaoUncheckedUpdateWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
+    produto_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type AvaliacaoUncheckedUpdateManyWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
     nota?: IntFieldUpdateOperationsInput | number
     comentario?: StringFieldUpdateOperationsInput | string
+    produto_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type VendaUpdateWithoutUsuarioInput = {

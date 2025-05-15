@@ -124,6 +124,7 @@ exports.Prisma.ProdutoScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   preco: 'preco',
+  imagem: 'imagem',
   tamanho: 'tamanho'
 };
 
@@ -161,7 +162,8 @@ exports.Prisma.AvaliacaoScalarFieldEnum = {
   id: 'id',
   nota: 'nota',
   comentario: 'comentario',
-  usuario_id: 'usuario_id'
+  usuario_id: 'usuario_id',
+  produto_id: 'produto_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -171,6 +173,7 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.ProdutoOrderByRelevanceFieldEnum = {
   nome: 'nome',
+  imagem: 'imagem',
   tamanho: 'tamanho'
 };
 
