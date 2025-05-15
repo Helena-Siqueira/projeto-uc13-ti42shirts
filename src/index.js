@@ -77,28 +77,8 @@ app.post("/transacao", async (_req, res) => {
 
       res.status(201).location(`/venda/${venda_id}`).send();
     }
-    try {
-      const produtosFiltrados = await prisma.produto.findMany({
-        where: {
-          categorias: {
-            some: {
-              nome: tipo
-            }
-          }
-        },
-        include: {
-          categorias: true
-        }
-      });
-  
-      res.json(produtosFiltrados);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ erro: "Erro ao buscar produtos." });
-    }
+    
   });
-  
-
 });
 
 app.get("/vendas/:id_usuario", async (req, res) => {
@@ -134,6 +114,27 @@ app.get("/venda/:id", async (req, res) => {
         res.json(venda);
     }
 });
+
+app.post("/venda", async (_req, res) => {
+
+    
+    if((req.body.data === undefined) || (req.body.usuario_id === undefined))  {
+       
+        res.status(400).send("Campos obrigatorios faltantes");
+
+    } else {
+
+      const novaVenda = await prisma.venda.create({ data: {
+        data: req.body.data,
+        usuario_id: req.body.usuario_id
+    
+      }});
+
+      res.status(201).location(`/venda/${venda_id}`).send();
+    }
+    
+  });
+
 //Aqui se encerra as rotas feitas pelo biglu 
 
 
