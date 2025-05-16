@@ -115,7 +115,7 @@ app.get("/venda/:id", async (req, res) => {
     }
 });
 
-app.post("/venda", async (_req, res) => {
+app.post("/venda", async (req, res) => {
 
     
     if((req.body.data === undefined) || (req.body.usuario_id === undefined))  {
