@@ -147,3 +147,4 @@ Retorna os dados de uma venda específica.
 **Resposta / Status:**  
 - `200`: Venda encontrada  
 - `404`: Venda não encontrada
+

@@ -37,7 +37,7 @@ model Usuario {
   id              Int         @id @default(autoincrement())
   nome            String
   data_nascimento String
-  sexo            Int
+  genero          String
   email           String
   senha           String
   cpf             String
