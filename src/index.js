@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
 // Rotas de produtos
 
-app.get("/produtos", async (_req, res) => {
+app.get("/produtos", async (req, res) => {
     const produtos = await prisma.produto.findMany();
     res.json(produtos);
 });
@@ -61,7 +61,7 @@ app.get("/produtos/filtro", async (req, res) => {
    
 
 //Rotas do BigLu abaixo:
-app.post("/transacao", async (_req, res) => {
+app.post("/transacao", async (req, res) => {
 
     if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade))  {
        
@@ -75,7 +75,7 @@ app.post("/transacao", async (_req, res) => {
         quantidade: req.body.quantidade
       }});
 
-      res.status(201).location(`/venda/${venda_id}`).send();
+      res.status(201).location(`/venda/${req.body.venda_id }`).send();
     }
     
   });
@@ -91,7 +91,7 @@ app.get("/vendas/:id_usuario", async (req, res) => {
     }
 });
 
-app.get("/avaliacao", async (_req, res) => {
+app.get("/avaliacao", async (req, res) => {
     const avaliacao = await prisma.avaliacao.findMany();
     res.json(avaliacao);
 });
@@ -105,9 +105,11 @@ app.get("/avaliacao/:id", async (req, res) => {
         res.json(avaliacao);
     }
 });
+
 app.get("/venda/:id", async (req, res) => {
     const id = parseInt(req.params.id);
-    const venda = await prisma.venda.findUnique({ where: { id }, include: {transacao: true} });
+    const venda = await prisma.venda.findUnique({ where: { id }});
+    console.log(venda)
     if (venda === null) {
         res.status(404).send("Produto não encontrado");
     } else {
@@ -129,8 +131,8 @@ app.post("/venda", async (req, res) => {
         usuario_id: req.body.usuario_id
     
       }});
-
-      res.status(201).location(`/venda/${venda_id}`).send();
+      console.log(novaVenda)
+      res.json(novaVenda);
     }
     
   });
@@ -138,7 +140,7 @@ app.post("/venda", async (req, res) => {
 //Aqui se encerra as rotas feitas pelo biglu 
 
 
-app.get("/usuarios", async (_req, res) => {
+app.get("/usuarios", async (req, res) => {
     const usuarios = await prisma.usuario.findMany();
     res.json(usuarios);
 });
@@ -202,7 +204,7 @@ app.patch("/usuarios/:id", (req, res) => {
 });
 
 
-app.get("/vendas", async (_req, res) => {
+app.get("/vendas", async (req, res) => {
     const vendas = await prisma.venda.findMany();
     res.json(vendas);
 });
