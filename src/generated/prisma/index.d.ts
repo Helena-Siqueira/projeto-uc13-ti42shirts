@@ -3445,19 +3445,17 @@ export namespace Prisma {
 
   export type UsuarioAvgAggregateOutputType = {
     id: number | null
-    sexo: number | null
   }
 
   export type UsuarioSumAggregateOutputType = {
     id: number | null
-    sexo: number | null
   }
 
   export type UsuarioMinAggregateOutputType = {
     id: number | null
     nome: string | null
     data_nascimento: string | null
-    sexo: number | null
+    genero: string | null
     email: string | null
     senha: string | null
     cpf: string | null
@@ -3469,7 +3467,7 @@ export namespace Prisma {
     id: number | null
     nome: string | null
     data_nascimento: string | null
-    sexo: number | null
+    genero: string | null
     email: string | null
     senha: string | null
     cpf: string | null
@@ -3481,7 +3479,7 @@ export namespace Prisma {
     id: number
     nome: number
     data_nascimento: number
-    sexo: number
+    genero: number
     email: number
     senha: number
     cpf: number
@@ -3493,19 +3491,17 @@ export namespace Prisma {
 
   export type UsuarioAvgAggregateInputType = {
     id?: true
-    sexo?: true
   }
 
   export type UsuarioSumAggregateInputType = {
     id?: true
-    sexo?: true
   }
 
   export type UsuarioMinAggregateInputType = {
     id?: true
     nome?: true
     data_nascimento?: true
-    sexo?: true
+    genero?: true
     email?: true
     senha?: true
     cpf?: true
@@ -3517,7 +3513,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     data_nascimento?: true
-    sexo?: true
+    genero?: true
     email?: true
     senha?: true
     cpf?: true
@@ -3529,7 +3525,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     data_nascimento?: true
-    sexo?: true
+    genero?: true
     email?: true
     senha?: true
     cpf?: true
@@ -3628,7 +3624,7 @@ export namespace Prisma {
     id: number
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -3659,7 +3655,7 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     data_nascimento?: boolean
-    sexo?: boolean
+    genero?: boolean
     email?: boolean
     senha?: boolean
     cpf?: boolean
@@ -3676,7 +3672,7 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     data_nascimento?: boolean
-    sexo?: boolean
+    genero?: boolean
     email?: boolean
     senha?: boolean
     cpf?: boolean
@@ -3684,7 +3680,7 @@ export namespace Prisma {
     cep?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "data_nascimento" | "sexo" | "email" | "senha" | "cpf" | "telefone" | "cep", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "data_nascimento" | "genero" | "email" | "senha" | "cpf" | "telefone" | "cep", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     avaliacoes?: boolean | Usuario$avaliacoesArgs<ExtArgs>
     vendas?: boolean | Usuario$vendasArgs<ExtArgs>
@@ -3701,7 +3697,7 @@ export namespace Prisma {
       id: number
       nome: string
       data_nascimento: string
-      sexo: number
+      genero: string
       email: string
       senha: string
       cpf: string
@@ -4081,7 +4077,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Usuario", 'Int'>
     readonly nome: FieldRef<"Usuario", 'String'>
     readonly data_nascimento: FieldRef<"Usuario", 'String'>
-    readonly sexo: FieldRef<"Usuario", 'Int'>
+    readonly genero: FieldRef<"Usuario", 'String'>
     readonly email: FieldRef<"Usuario", 'String'>
     readonly senha: FieldRef<"Usuario", 'String'>
     readonly cpf: FieldRef<"Usuario", 'String'>
@@ -7455,7 +7451,7 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     data_nascimento: 'data_nascimento',
-    sexo: 'sexo',
+    genero: 'genero',
     email: 'email',
     senha: 'senha',
     cpf: 'cpf',
@@ -7523,6 +7519,7 @@ export namespace Prisma {
   export const UsuarioOrderByRelevanceFieldEnum: {
     nome: 'nome',
     data_nascimento: 'data_nascimento',
+    genero: 'genero',
     email: 'email',
     senha: 'senha',
     cpf: 'cpf',
@@ -7690,7 +7687,7 @@ export namespace Prisma {
     id?: IntFilter<"Usuario"> | number
     nome?: StringFilter<"Usuario"> | string
     data_nascimento?: StringFilter<"Usuario"> | string
-    sexo?: IntFilter<"Usuario"> | number
+    genero?: StringFilter<"Usuario"> | string
     email?: StringFilter<"Usuario"> | string
     senha?: StringFilter<"Usuario"> | string
     cpf?: StringFilter<"Usuario"> | string
@@ -7704,7 +7701,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     data_nascimento?: SortOrder
-    sexo?: SortOrder
+    genero?: SortOrder
     email?: SortOrder
     senha?: SortOrder
     cpf?: SortOrder
@@ -7722,7 +7719,7 @@ export namespace Prisma {
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     nome?: StringFilter<"Usuario"> | string
     data_nascimento?: StringFilter<"Usuario"> | string
-    sexo?: IntFilter<"Usuario"> | number
+    genero?: StringFilter<"Usuario"> | string
     email?: StringFilter<"Usuario"> | string
     senha?: StringFilter<"Usuario"> | string
     cpf?: StringFilter<"Usuario"> | string
@@ -7736,7 +7733,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     data_nascimento?: SortOrder
-    sexo?: SortOrder
+    genero?: SortOrder
     email?: SortOrder
     senha?: SortOrder
     cpf?: SortOrder
@@ -7756,7 +7753,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Usuario"> | number
     nome?: StringWithAggregatesFilter<"Usuario"> | string
     data_nascimento?: StringWithAggregatesFilter<"Usuario"> | string
-    sexo?: IntWithAggregatesFilter<"Usuario"> | number
+    genero?: StringWithAggregatesFilter<"Usuario"> | string
     email?: StringWithAggregatesFilter<"Usuario"> | string
     senha?: StringWithAggregatesFilter<"Usuario"> | string
     cpf?: StringWithAggregatesFilter<"Usuario"> | string
@@ -8034,7 +8031,7 @@ export namespace Prisma {
   export type UsuarioCreateInput = {
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -8048,7 +8045,7 @@ export namespace Prisma {
     id?: number
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -8061,7 +8058,7 @@ export namespace Prisma {
   export type UsuarioUpdateInput = {
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -8075,7 +8072,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -8089,7 +8086,7 @@ export namespace Prisma {
     id?: number
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -8100,7 +8097,7 @@ export namespace Prisma {
   export type UsuarioUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -8112,7 +8109,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -8473,7 +8470,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     data_nascimento?: SortOrder
-    sexo?: SortOrder
+    genero?: SortOrder
     email?: SortOrder
     senha?: SortOrder
     cpf?: SortOrder
@@ -8483,14 +8480,13 @@ export namespace Prisma {
 
   export type UsuarioAvgOrderByAggregateInput = {
     id?: SortOrder
-    sexo?: SortOrder
   }
 
   export type UsuarioMaxOrderByAggregateInput = {
     id?: SortOrder
     nome?: SortOrder
     data_nascimento?: SortOrder
-    sexo?: SortOrder
+    genero?: SortOrder
     email?: SortOrder
     senha?: SortOrder
     cpf?: SortOrder
@@ -8502,7 +8498,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     data_nascimento?: SortOrder
-    sexo?: SortOrder
+    genero?: SortOrder
     email?: SortOrder
     senha?: SortOrder
     cpf?: SortOrder
@@ -8512,7 +8508,6 @@ export namespace Prisma {
 
   export type UsuarioSumOrderByAggregateInput = {
     id?: SortOrder
-    sexo?: SortOrder
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -9428,7 +9423,7 @@ export namespace Prisma {
   export type UsuarioCreateWithoutVendasInput = {
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -9441,7 +9436,7 @@ export namespace Prisma {
     id?: number
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -9490,7 +9485,7 @@ export namespace Prisma {
   export type UsuarioUpdateWithoutVendasInput = {
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -9503,7 +9498,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -9623,7 +9618,7 @@ export namespace Prisma {
   export type UsuarioCreateWithoutAvaliacoesInput = {
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -9636,7 +9631,7 @@ export namespace Prisma {
     id?: number
     nome: string
     data_nascimento: string
-    sexo: number
+    genero: string
     email: string
     senha: string
     cpf: string
@@ -9688,7 +9683,7 @@ export namespace Prisma {
   export type UsuarioUpdateWithoutAvaliacoesInput = {
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
@@ -9701,7 +9696,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     data_nascimento?: StringFieldUpdateOperationsInput | string
-    sexo?: IntFieldUpdateOperationsInput | number
+    genero?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string

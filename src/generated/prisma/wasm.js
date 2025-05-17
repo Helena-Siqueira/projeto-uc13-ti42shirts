@@ -137,7 +137,7 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   data_nascimento: 'data_nascimento',
-  sexo: 'sexo',
+  genero: 'genero',
   email: 'email',
   senha: 'senha',
   cpf: 'cpf',
@@ -184,6 +184,7 @@ exports.Prisma.CategoriaOrderByRelevanceFieldEnum = {
 exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
   nome: 'nome',
   data_nascimento: 'data_nascimento',
+  genero: 'genero',
   email: 'email',
   senha: 'senha',
   cpf: 'cpf',
