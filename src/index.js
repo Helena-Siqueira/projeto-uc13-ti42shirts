@@ -43,6 +43,11 @@ app.get("/produtos/:id", async (req, res) => {
     }
 });
 
+app.get("/categoria", async (_req, res) => {
+    const categoria = await prisma.categoria.findMany();
+    res.json(categoria);
+})
+
 // Outras rotas da tela inicial
 
 app.get("/produtos/filtro", async (req, res) => {
@@ -58,7 +63,6 @@ app.get("/produtos/filtro", async (req, res) => {
     if (!tiposValidos.includes(tipo)) {
       return res.status(400).json({ erro: "Tipo de filtro inválido." });
     }
-   
 
 //Rotas do BigLu abaixo:
 app.post("/transacao", async (_req, res) => {
