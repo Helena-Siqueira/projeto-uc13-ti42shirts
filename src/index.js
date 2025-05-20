@@ -63,11 +63,14 @@ app.get("/produtos/filtro", async (req, res) => {
     if (!tiposValidos.includes(tipo)) {
       return res.status(400).json({ erro: "Tipo de filtro inválido." });
     }
+});
 
 //Rotas do BigLu abaixo:
 app.post("/transacao", async (req, res) => {
 
-    if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade))  {
+    console.log(req.body)
+
+    if((req.body.venda_id === undefined) || (req.body.produto_id === undefined) || (req.body.quantidade === undefined))  {
        
         res.status(400).send("Campos obrigatorios faltantes");
 
@@ -79,10 +82,13 @@ app.post("/transacao", async (req, res) => {
         quantidade: req.body.quantidade
       }});
 
-      res.status(201).location(`/venda/${req.body.venda_id }`).send();
+      return res
+        .status(201)
+        .location(`/venda/${req.body.venda_id}`)
+        .json(novaTransacao); // <-- Aqui você envia a transação criada
+
     }
     
-  });
 });
 
 app.get("/vendas/:id_usuario", async (req, res) => {
