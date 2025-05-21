@@ -14,17 +14,7 @@ app.get("/", (req, res) => {
     res.send("Bem-vindo aos nossos produtos");
 });
 
-// const produtos = [
-//     { id: 1, nome: "Água com Gás Pompeia", preco: 3 },
-//     { id: 2, nome: "Batata", preco: 8 },
-//     { id: 3, nome: "Cachorro-quente", preco: 10 },
-// ];
 
-// const usuarios = [
-//     { id: 1, nome: "Arthur", email: "arthursilvasouza00@gmail.com", senha: 123 },
-//     { id: 2, nome: "Helena", email: "helenasiqueira00@gmail.com", senha: 123 },
-//     { id: 3, nome: "Camila", email: "camilasouza00@gmail.com", senha: 123 },
-// ];
 
 // Rotas de produtos
 
@@ -204,21 +194,37 @@ app.get("/usuarios/:id", async (req, res) => {
     }
 });
 
-app.post("/usuarios", (req, res) => {
-    const { nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas } = req.body;
-    const id = usuarios.length + 1;
-    usuarios.push({ nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas });
-    res.status(201).location(`/usuarios/${id}`).send();
+app.post("/usuarios", async (req, res) => {
+    const { nome, data_nascimento, genero, email, senha, cpf, telefone, cep } = req.body;
+    
+    const novoUsuario = await prisma.usuario.create({ data: {
+        nome: nome,
+        data_nascimento: data_nascimento,
+        genero: genero,
+        email: email,
+        senha: senha,
+        cpf: cpf,
+        telefone: telefone,
+        cep: cep
+      }});
+
+      return res
+        .status(201)
+        .json(novoUsuario); // <-- Aqui você envia a transação criada
+
+
+
+
 });
 
 app.put("/usuarios/:id", (req, res) => {
     const id = parseInt(req.params.id);
-    const usuario = usuarios.find(u => u.id === id);
+    const usuario = usuario.find(u => u.id === id);
     if (usuario) {
-        const { nome, data_nascimento, sexo, email, senha, cpf, telefone, cep, avaliacoes, vendas } = req.body;
+        const { nome, data_nascimento, genero, email, senha, cpf, telefone, cep, avaliacoes, vendas } = req.body;
         usuario.nome = nome;
         usuario.data_nascimento = data_nascimento;
-        usuario.sexo = sexo;
+        usuario.genero = genero;
         usuario.email = email;
         usuario.senha = senha;
         usuario.cpf = cpf;
@@ -240,7 +246,7 @@ app.patch("/usuarios/:id", (req, res) => {
     const { nome, email, senha } = req.body;
     if (nome) usuario.nome = nome;
     if (data_nascimento) usuario.data_nascimento = data_nascimento;
-    if (sexo) usuario.sexo = sexo;
+    if (genero) usuario.genero = genero;
     if (email) usuario.email = email;
     if (senha) usuario.senha = senha;
     if (cpf) usuario.cpf = cpf;
