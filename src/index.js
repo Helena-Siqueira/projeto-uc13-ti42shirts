@@ -106,15 +106,44 @@ app.get("/avaliacao", async (req, res) => {
     res.json(avaliacao);
 });
 
-app.get("/avaliacao/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
-    const avaliacao = await prisma.avaliacao.findUnique({ where: { id } });
-    if (avaliacao === null) {
-        res.status(404).send("Produto não encontrado");
+app.get("/avaliacao/:id_produto", async (req, res) => {
+    const produto_id = parseInt(req.params.id_produto);
+
+    const avaliacao = await prisma.avaliacao.findMany({
+        where: { produto_id },
+        include: {
+            usuario: {
+                select: { nome: true } // <- Pegando apenas o nome
+            }
+        }
+    });
+
+    if (!avaliacao || avaliacao.length === 0) {
+        res.status(404).send("Nenhuma avaliação encontrada");
     } else {
         res.json(avaliacao);
     }
 });
+
+app.post("/avaliacao", async (req, res) => {
+    const { nota, comentario, usuario_id, produto_id } = req.body;
+
+    try {
+        const novaAvaliacao = await prisma.avaliacao.create({
+            data: {
+                nota: parseInt(nota),
+                comentario,
+                usuario_id: parseInt(usuario_id),
+                produto_id: parseInt(produto_id)
+            }
+        });
+        res.status(201).json(novaAvaliacao);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao criar avaliação");
+    }
+});
+
 
 app.get("/venda/:id", async (req, res) => {
     const id = parseInt(req.params.id);

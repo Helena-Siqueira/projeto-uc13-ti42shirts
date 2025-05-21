@@ -188,7 +188,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\arthur.ssouza5\\Documents\\GitHub\\projeto-uc13-ti42shirts\\src\\generated\\prisma",
+      "value": "C:\\Users\\pedro.gsleite\\Documents\\projeto-uc13-ti42shirts\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -202,7 +202,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\arthur.ssouza5\\Documents\\GitHub\\projeto-uc13-ti42shirts\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\pedro.gsleite\\Documents\\projeto-uc13-ti42shirts\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
