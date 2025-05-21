@@ -91,8 +91,18 @@ app.post("/transacao", async (req, res) => {
     
 });
 
+app.get("/transacao/:id_carrinho", async (req, res) => {
+    const venda_id = parseInt(req.params.id_carrinho);
+    const transacao = await prisma.transacao.findMany({ where: { venda_id }, include: { produtos:true } });
+    if (transacao === null) {
+        res.status(404).send("Produto não encontrado");
+    } else {
+        res.json(transacao);
+    }
+});
+
 app.get("/vendas/:id_usuario", async (req, res) => {
-    const usuario_id = parseInt(req.params.id);
+    const usuario_id = parseInt(req.params.id_usuario);
     const vendas = await prisma.venda.findUnique({ where: { usuario_id } });
     if (vendas === null) {
         res.status(404).send("Produto não encontrado");
