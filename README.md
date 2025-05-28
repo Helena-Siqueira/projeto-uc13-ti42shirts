@@ -148,3 +148,12 @@ Retorna os dados de uma venda específica.
 - `200`: Venda encontrada  
 - `404`: Venda não encontrada
 
+
+# Testes de software
+
+- Luixs e Daniels: usuário cadastro login e autenticação
+- Predo: produtos da tela inicial e filtros
+- Helena: produto individual
+- Arthur: Perfil de usuário
+
+? - Carrinho
