@@ -1454,6 +1454,7 @@ export namespace Prisma {
     preco: number | null
     imagem: string | null
     tamanho: string | null
+    descricao: string | null
   }
 
   export type ProdutoMaxAggregateOutputType = {
@@ -1462,6 +1463,7 @@ export namespace Prisma {
     preco: number | null
     imagem: string | null
     tamanho: string | null
+    descricao: string | null
   }
 
   export type ProdutoCountAggregateOutputType = {
@@ -1470,6 +1472,7 @@ export namespace Prisma {
     preco: number
     imagem: number
     tamanho: number
+    descricao: number
     _all: number
   }
 
@@ -1490,6 +1493,7 @@ export namespace Prisma {
     preco?: true
     imagem?: true
     tamanho?: true
+    descricao?: true
   }
 
   export type ProdutoMaxAggregateInputType = {
@@ -1498,6 +1502,7 @@ export namespace Prisma {
     preco?: true
     imagem?: true
     tamanho?: true
+    descricao?: true
   }
 
   export type ProdutoCountAggregateInputType = {
@@ -1506,6 +1511,7 @@ export namespace Prisma {
     preco?: true
     imagem?: true
     tamanho?: true
+    descricao?: true
     _all?: true
   }
 
@@ -1601,6 +1607,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     _count: ProdutoCountAggregateOutputType | null
     _avg: ProdutoAvgAggregateOutputType | null
     _sum: ProdutoSumAggregateOutputType | null
@@ -1628,6 +1635,7 @@ export namespace Prisma {
     preco?: boolean
     imagem?: boolean
     tamanho?: boolean
+    descricao?: boolean
     categorias?: boolean | Produto$categoriasArgs<ExtArgs>
     transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
     avaliacoes?: boolean | Produto$avaliacoesArgs<ExtArgs>
@@ -1642,9 +1650,10 @@ export namespace Prisma {
     preco?: boolean
     imagem?: boolean
     tamanho?: boolean
+    descricao?: boolean
   }
 
-  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "imagem" | "tamanho", ExtArgs["result"]["produto"]>
+  export type ProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "imagem" | "tamanho" | "descricao", ExtArgs["result"]["produto"]>
   export type ProdutoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categorias?: boolean | Produto$categoriasArgs<ExtArgs>
     transacoes?: boolean | Produto$transacoesArgs<ExtArgs>
@@ -1665,6 +1674,7 @@ export namespace Prisma {
       preco: number
       imagem: string
       tamanho: string
+      descricao: string
     }, ExtArgs["result"]["produto"]>
     composites: {}
   }
@@ -2042,6 +2052,7 @@ export namespace Prisma {
     readonly preco: FieldRef<"Produto", 'Float'>
     readonly imagem: FieldRef<"Produto", 'String'>
     readonly tamanho: FieldRef<"Produto", 'String'>
+    readonly descricao: FieldRef<"Produto", 'String'>
   }
     
 
@@ -7433,7 +7444,8 @@ export namespace Prisma {
     nome: 'nome',
     preco: 'preco',
     imagem: 'imagem',
-    tamanho: 'tamanho'
+    tamanho: 'tamanho',
+    descricao: 'descricao'
   };
 
   export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
@@ -7503,7 +7515,8 @@ export namespace Prisma {
   export const ProdutoOrderByRelevanceFieldEnum: {
     nome: 'nome',
     imagem: 'imagem',
-    tamanho: 'tamanho'
+    tamanho: 'tamanho',
+    descricao: 'descricao'
   };
 
   export type ProdutoOrderByRelevanceFieldEnum = (typeof ProdutoOrderByRelevanceFieldEnum)[keyof typeof ProdutoOrderByRelevanceFieldEnum]
@@ -7582,6 +7595,7 @@ export namespace Prisma {
     preco?: FloatFilter<"Produto"> | number
     imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
+    descricao?: StringFilter<"Produto"> | string
     categorias?: CategoriaListRelationFilter
     transacoes?: TransacaoListRelationFilter
     avaliacoes?: AvaliacaoListRelationFilter
@@ -7593,6 +7607,7 @@ export namespace Prisma {
     preco?: SortOrder
     imagem?: SortOrder
     tamanho?: SortOrder
+    descricao?: SortOrder
     categorias?: CategoriaOrderByRelationAggregateInput
     transacoes?: TransacaoOrderByRelationAggregateInput
     avaliacoes?: AvaliacaoOrderByRelationAggregateInput
@@ -7608,6 +7623,7 @@ export namespace Prisma {
     preco?: FloatFilter<"Produto"> | number
     imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
+    descricao?: StringFilter<"Produto"> | string
     categorias?: CategoriaListRelationFilter
     transacoes?: TransacaoListRelationFilter
     avaliacoes?: AvaliacaoListRelationFilter
@@ -7619,6 +7635,7 @@ export namespace Prisma {
     preco?: SortOrder
     imagem?: SortOrder
     tamanho?: SortOrder
+    descricao?: SortOrder
     _count?: ProdutoCountOrderByAggregateInput
     _avg?: ProdutoAvgOrderByAggregateInput
     _max?: ProdutoMaxOrderByAggregateInput
@@ -7635,6 +7652,7 @@ export namespace Prisma {
     preco?: FloatWithAggregatesFilter<"Produto"> | number
     imagem?: StringWithAggregatesFilter<"Produto"> | string
     tamanho?: StringWithAggregatesFilter<"Produto"> | string
+    descricao?: StringWithAggregatesFilter<"Produto"> | string
   }
 
   export type CategoriaWhereInput = {
@@ -7932,6 +7950,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
@@ -7943,6 +7962,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
@@ -7953,6 +7973,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
@@ -7964,6 +7985,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
@@ -7975,6 +7997,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
   }
 
   export type ProdutoUpdateManyMutationInput = {
@@ -7982,6 +8005,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProdutoUncheckedUpdateManyInput = {
@@ -7990,6 +8014,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
   }
 
   export type CategoriaCreateInput = {
@@ -8333,6 +8358,7 @@ export namespace Prisma {
     preco?: SortOrder
     imagem?: SortOrder
     tamanho?: SortOrder
+    descricao?: SortOrder
   }
 
   export type ProdutoAvgOrderByAggregateInput = {
@@ -8346,6 +8372,7 @@ export namespace Prisma {
     preco?: SortOrder
     imagem?: SortOrder
     tamanho?: SortOrder
+    descricao?: SortOrder
   }
 
   export type ProdutoMinOrderByAggregateInput = {
@@ -8354,6 +8381,7 @@ export namespace Prisma {
     preco?: SortOrder
     imagem?: SortOrder
     tamanho?: SortOrder
+    descricao?: SortOrder
   }
 
   export type ProdutoSumOrderByAggregateInput = {
@@ -9289,6 +9317,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
   }
@@ -9299,6 +9328,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
   }
@@ -9333,6 +9363,7 @@ export namespace Prisma {
     preco?: FloatFilter<"Produto"> | number
     imagem?: StringFilter<"Produto"> | string
     tamanho?: StringFilter<"Produto"> | string
+    descricao?: StringFilter<"Produto"> | string
   }
 
   export type AvaliacaoCreateWithoutUsuarioInput = {
@@ -9528,6 +9559,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoCreateNestedManyWithoutProdutoInput
   }
@@ -9538,6 +9570,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
     avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutProdutoInput
   }
@@ -9579,6 +9612,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
   }
@@ -9589,6 +9623,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
   }
@@ -9650,6 +9685,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoCreateNestedManyWithoutProdutosInput
   }
@@ -9660,6 +9696,7 @@ export namespace Prisma {
     preco: number
     imagem: string
     tamanho: string
+    descricao: string
     categorias?: CategoriaUncheckedCreateNestedManyWithoutProdutosInput
     transacoes?: TransacaoUncheckedCreateNestedManyWithoutProdutosInput
   }
@@ -9721,6 +9758,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
   }
@@ -9731,6 +9769,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     categorias?: CategoriaUncheckedUpdateManyWithoutProdutosNestedInput
     transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
   }
@@ -9804,6 +9843,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     transacoes?: TransacaoUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUpdateManyWithoutProdutoNestedInput
   }
@@ -9814,6 +9854,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
     transacoes?: TransacaoUncheckedUpdateManyWithoutProdutosNestedInput
     avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutProdutoNestedInput
   }
@@ -9824,6 +9865,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     imagem?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
   }
 
   export type AvaliacaoCreateManyUsuarioInput = {

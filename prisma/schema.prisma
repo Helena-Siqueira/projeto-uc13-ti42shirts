@@ -20,6 +20,7 @@ model Produto {
   preco Float
   imagem String
   tamanho String
+  descricao String
   @@map("produtos") // <----- Define o nome da tabela
   categorias Categoria [] @relation("produto_categoria")
   transacoes Transacao []

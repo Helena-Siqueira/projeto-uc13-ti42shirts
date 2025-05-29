@@ -20,6 +20,7 @@ model Produto {
   preco      Float
   imagem     String
   tamanho    String
+  descricao  String
   categorias Categoria[] @relation("produto_categoria")
   transacoes Transacao[]
   avaliacoes Avaliacao[]
