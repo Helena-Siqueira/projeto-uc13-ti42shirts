@@ -18,10 +18,10 @@ app.get("/", (req, res) => {
 
 // Rotas de produtos
 
-// app.get("/produtos", async (req, res) => {
-//     const produtos = await prisma.produto.findMany();
-//     res.json(produtos);
-// });
+app.get("/produtos", async (req, res) => {
+    const produtos = await prisma.produto.findMany();
+    res.json(produtos);
+});
 
 app.get("/produtos/:id", async (req, res) => {
     const id = parseInt(req.params.id);
@@ -37,36 +37,6 @@ app.get("/categoria", async (_req, res) => {
     const categoria = await prisma.categoria.findMany();
     res.json(categoria);
 })
-
-// GET /produtos?categorias=1,3
-app.get('/produtos', async (req, res) => {
-    const categoriasQuery = req.query.categorias;
-  
-    let whereClause = {};
-  
-    if (categoriasQuery) {
-      const categoriasIds = categoriasQuery.toString().split(',').map(id => parseInt(id));
-  
-      whereClause = {
-        categorias: {
-          some: {
-            id: {
-              in: categoriasIds
-            }
-          }
-        }
-      };
-    }
-  
-    const produtos = await prisma.produto.findMany({
-      where: whereClause,
-      include: {
-        categorias: true
-      }
-    });
-  
-    res.json(produtos);
-  });
   
 
 // Outras rotas da tela inicial
